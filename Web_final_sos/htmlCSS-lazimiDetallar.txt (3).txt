@@ -1,0 +1,1988 @@
+************************ lek2 ****************************
+-> HTML belgesi oluşturmak için kullanılan temel yapı parçaları şunlardır:
+1. **HTML Başlangıç Etiketi (`<!DOCTYPE html>`)**: HTML belgesinin türünü ve sürümünü belirtir. Bu etiket HTML5 belgesi için standart başlangıç etiketidir.
+2. **HTML Kök Elementi (`<html>`)**: HTML belgesinin kök elementidir. Tüm HTML içeriği bu elementin içine yerleştirilir. Dil özniteliği (`lang`) ile belirli bir dil tanımlanabilir.
+3. **Başlık Bölümü (`<head>`)**: HTML belgesinin başlık bilgilerini (title, meta bilgileri, bağlantılar, stil dosyaları, vb.) içerir. Bu bilgiler, tarayıcıda görünmez ancak sayfanın yapılandırılması ve tarayıcılar tarafından yorumlanması için önemlidir.
+4. **Gövde Bölümü (`<body>`)**: HTML belgesinin görünür içeriğini içerir. Bu bölümdeki elementler (başlık, paragraf, resimler, bağlantılar, listeler vb.), tarayıcı tarafından işlenerek görüntülenir.
+5. **Başlık Etiketi (`<title>`)**: HTML belgesinin tarayıcı sekmesinde görünen başlığını belirtir. Kullanıcıların sayfanın içeriğini tanımasına ve farklı sekmeler arasında gezinmesine yardımcı olur.
+6. **Meta Etiketleri (`<meta>`)**: HTML belgesinin tanımlayıcı meta verilerini içerir. Örneğin, karakter seti tanımlaması, sayfanın açıklaması, anahtar kelimeleri, tarayıcı uyumluluğu vb.
+Bu parçalar, bir HTML belgesinin temel yapı taşlarını oluşturur ve bir web sayfasının görünümünü, içeriğini ve işlevselliğini belirler.
+
+-> HTML'de listeler oluşturmak için üç temel yapı bulunmaktadır: sıralı liste (`<ol>`), sırasız liste (`<ul>`), ve tanımlama listesi (`<dl>`). İşte her birinin temel kullanımı:
+1. **Sıralı Liste (`<ol>`)**:
+   Sıralı liste, öğelerin numaralandırıldığı ve belirli bir sıraya sahip olduğu listelerdir. Öğeler genellikle numaralandırma ile gösterilir. Sıralı liste etiketi, `<ol>` ile başlar 
+ve `</ol>` ile biter. Her öğe için `<li>` (list item) etiketi kullanılır.
+   
+   ```html
+   <ol>
+       <li>İlk öğe</li>
+       <li>İkinci öğe</li>
+       <li>Üçüncü öğe</li>
+   </ol>
+   ```
+2. **Sırasız Liste (`<ul>`)**:
+   Sırasız liste, öğelerin belirli bir sıraya sahip olmadığı ve genellikle madde işaretleriyle gösterildiği listelerdir. Sırasız liste etiketi, `<ul>` ile başlar ve `</ul>` ile biter. 
+Her öğe için `<li>` (list item) etiketi kullanılır.
+   
+   ```html
+   <ul>
+       <li>İlk öğe</li>
+       <li>İkinci öğe</li>
+       <li>Üçüncü öğe</li>
+   </ul>
+   ```
+3. **Tanımlama Listesi (`<dl>`)**:
+   Tanımlama listesi, her öğenin bir açıklama ile ilişkilendirildiği listelerdir. Her öğe, `<dt>` (definition term) etiketi ile tanımlanırken, açıklamalar `<dd>` 
+(definition description) etiketi ile belirtilir. Tanımlama listesi etiketi, `<dl>` ile başlar ve `</dl>` ile biter.
+   
+   ```html
+   <dl>
+       <dt>Terim 1</dt>
+       <dd>Açıklama 1</dd>
+       <dt>Terim 2</dt>
+       <dd>Açıklama 2</dd>
+   </dl>
+   ```
+Bu temel liste yapıları, çeşitli içerikleri düzenlemek için kullanılabilir ve web sayfalarının yapısını anlamak ve okumak için önemlidir.
+
+
+-> HTML ve CSS'de miras almak için kullanılan temel kavramlar şunlardır:
+Kalıtım (Inheritance):
+HTML ve CSS'de, bir öğe (element) üzerinde belirli bir özellik tanımlanırsa, bu özellik alt öğelerine (child elements) otomatik olarak aktarılabilir.
+Örneğin, bir <div> elementine bir font rengi uygulanırsa, bu rengin içindeki tüm metin öğelerine (örneğin <p>, <span>) de uygulanacaktır.
+Öncelik (Priority):
+Özelliklerin bir öncelik sırası vardır ve bu sıra, tanımlanma şekline ve özelliklerin etki alanına bağlıdır.
+En yaygın öncelik sıralaması şu şekildedir:
+İnline CSS (en yüksek öncelik): Bir HTML elementine style özniteliği ile tanımlanan CSS.
+Internal CSS: HTML belgesinin <style> etiketleri arasına yazılan CSS.
+External CSS: Harici bir CSS dosyasına yazılan stil tanımları.
+Browser Default (en düşük öncelik): Tarayıcının varsayılan stilleri.
+Eğer aynı özellik birden fazla yerde tanımlanmışsa, daha öncelikli olan geçerli olur.
+Örneğin, bir HTML belgesinde <div> elementine içinde bir <p> elementi varsa ve her ikisine de aynı renkte bir yazı uygulanmışsa,
+ daha spesifik olan stil etki alanında öncelik kazanır. Örneğin, içerideki <p> elementine doğrudan bir stil verilmişse, bu stil, <p> etiketi üzerindeki genel stil tanımından öncelikli olacaktır.
+Bu kavramlar, belirli stilleri belirli öğelere uygularken ve stil çakışmalarını çözerken önemlidir.
+
+->
+******************************************
+Konspektlesdirmece
+******************************************
+ <header>, <footer>, <article>, <section>, <aside>, <nav> ,<main>
+Bu HTML öğeleri, HTML5'in tanıtımıyla birlikte gelen semantik öğelerdir. Bunlar, belge yapısını daha açık ve anlaşılır hale getirmek için kullanılır ve belgenin içeriğini tanımlamak için
+ kullanılır.
+<header>: Bir belgenin veya bölümünün başlık bölümünü tanımlar. Genellikle bir başlık, alt başlık, logo veya navigasyon menüsü içerebilir.
+<footer>: Bir belgenin veya bölümünün alt kısmını tanımlar. Genellikle bir altbilgi, telif hakkı bilgileri veya site haritası bağlantıları içerebilir.
+<article>: Bir belge veya sayfanın bağımsız, kapsamlı bir parçasını tanımlar. Makaleler, blog gönderileri, forum gönderileri veya haber öğeleri gibi içerikleri içerebilir.
+<section>: Bir belge veya belge parçasının bölümlerini belirtir. Genellikle içeriği mantıksal bölümlere ayırmak için kullanılır.
+<aside>: Bir belge veya belge parçasının yan bölümünü tanımlar. Genellikle reklamlar, yan menüler veya bağlantı listeleri gibi yan içerikleri içerebilir.
+<nav>: Bir belge veya belge parçasındaki navigasyon bağlantılarını içerir. Genellikle menüler veya site haritaları gibi navigasyon öğelerini içerir.
+<main>: Bir belge veya belge parçasındaki ana içeriği tanımlar. Genellikle bir web sayfasının asıl içeriğini içerir ve <header>, <footer>, <nav>, <aside> ve <section> gibi diğer semantik öğelerin dışında bulunur.
+
+*****************************************************************************************************************************************************************************************
+-> CSS1 file & 
+Web sayfalarında kullanılan "selectorler" genellikle CSS (Cascading Style Sheets) tarafından kullanılır ve HTML belgelerinde belirli öğeleri seçmek ve onlara stil uygulamak için kullanılır. 
+ჩვენ შეგვიძლია დავყოთ CSS სელექტორები ხუთ კატეგორიად:
+1. მარტივი სელექტორები (აირჩიეთ ელემენტები სახელის, ID-ის, კლასის მიხედვით)
+2. კომბინატორის სელექტორები (აირჩიეთ ელემენტები მათ შორის კონკრეტული ურთიერთობის საფუძველზე)
+3. ფსევდო კლასის სელექტორები (აირჩიეთ ელემენტები გარკვეული მდგომარეობის საფუძველზე)
+4. ფსევდოელემენტების სელექტორები (აირჩიეთ და დაამონტაჟეთ ელემენტის ნაწილი)
+5. ატრიბუტების სელექტორები (აირჩიეთ ელემენტები ატრიბუტის ან ატრიბუტის მნიშვნელობის საფუძველზე)
+
+CSS (Cascading Style Sheets) dilinde, seçiciler (selectors) belirli HTML elementlerini seçmek ve stil vermek için kullanılır. İşte CSS seçicileri hakkında detaylı açıklamalar ve örnekler:
+
+### 1. Basit Seçiciler
+
+**Element Seçiciler:**
+- Belirli bir element türünü seçer.
+```css
+p {
+  color: blue;
+}
+```
+Bu, tüm `<p>` elementlerinin rengini mavi yapar.
+
+**ID Seçiciler:**
+- Belirli bir ID'ye sahip elementi seçer. ID seçiciler "#" sembolü ile kullanılır.
+```css
+#header {
+  background-color: gray;
+}
+```
+Bu, `id="header"` olan elementi gri yapar.
+
+**Class Seçiciler:**
+- Belirli bir sınıfa (class) sahip elementleri seçer. Class seçiciler "." sembolü ile kullanılır.
+```css
+.highlight {
+  font-weight: bold;
+}
+```
+Bu, `class="highlight"` olan elementleri kalın yapar.
+
+### 2. Kombinatoryal Seçiciler
+
+**Descendant (Torun) Seçici:**
+- Belirli bir elementin içinde bulunan tüm belirtilen türdeki elementleri seçer.
+```css
+div p {
+  color: green;
+}
+```
+Bu, `<div>` içindeki tüm `<p>` elementlerini yeşil yapar.
+
+**Child (Çocuk) Seçici:**
+- Belirli bir elementin doğrudan çocuklarını seçer. ">" sembolü ile kullanılır.
+```css
+ul > li {
+  list-style-type: none;
+}
+```
+Bu, `ul` içindeki doğrudan `li` elementlerinin liste işaretlerini kaldırır.
+
+**Adjacent Sibling (Bitişik Kardeş) Seçici:**
+- Belirli bir elementten hemen sonra gelen kardeş elementi seçer. "+" sembolü ile kullanılır.
+```css
+h1 + p {
+  margin-top: 0;
+}
+```
+Bu, `h1` elementinden hemen sonra gelen `p` elementinin üst marjını sıfırlar.
+
+**General Sibling (Genel Kardeş) Seçici:**
+- Belirli bir elementin sonraki tüm kardeşlerini seçer. "~" sembolü ile kullanılır.
+```css
+h1 ~ p {
+  color: red;
+}
+```
+Bu, `h1` elementinden sonraki tüm `p` elementlerini kırmızı yapar.
+
+### 3. Pseudo-Class (Psödo Sınıf) Seçiciler
+
+**`:hover`:**
+- Bir elementin üzerine gelindiğinde uygulanır.
+```css
+a:hover {
+  color: red;
+}
+```
+Bu, bir bağlantının üzerine gelindiğinde rengini kırmızı yapar.
+
+**`:nth-child()`:**
+- Belirli bir sıradaki çocuk elementi seçer.
+```css
+li:nth-child(2) {
+  background-color: yellow;
+}
+```
+Bu, her `li` elementinin ikinci çocuğunu sarı yapar.
+
+**`:first-child`:**
+- Bir elementin ebeveyninin ilk çocuğu olan elementi seçer.
+```css
+p:first-child {
+  font-style: italic;
+}
+```
+Bu, bir ebeveynin ilk `p` çocuğunu italik yapar.
+
+**`:last-child`:**
+- Bir elementin ebeveyninin son çocuğu olan elementi seçer.
+```css
+p:last-child {
+  font-style: italic;
+}
+```
+Bu, bir ebeveynin son `p` çocuğunu italik yapar.
+
+### 4. Pseudo-Element (Psödo Eleman) Seçiciler
+
+**`::before`:**
+- Belirtilen elementin içeriğinden önce içerik ekler.
+```css
+p::before {
+  content: "Note: ";
+  font-weight: bold;
+}
+```
+Bu, her `p` elementinden önce "Note: " metnini ekler.
+
+**`::after`:**
+- Belirtilen elementin içeriğinden sonra içerik ekler.
+```css
+p::after {
+  content: " End.";
+  font-weight: bold;
+}
+```
+Bu, her `p` elementinden sonra " End." metnini ekler.
+
+**`::first-letter`:**
+- Belirtilen elementin ilk harfine stil verir.
+```css
+p::first-letter {
+  font-size: 2em;
+  color: red;
+}
+```
+Bu, her `p` elementinin ilk harfini büyük ve kırmızı yapar.
+
+**`::first-line`:**
+- Belirtilen elementin ilk satırına stil verir.
+```css
+p::first-line {
+  font-weight: bold;
+}
+```
+Bu, her `p` elementinin ilk satırını kalın yapar.
+
+### 5. Attribute (Öznitelik) Seçiciler
+
+**Belirli bir özniteliğe sahip elementleri seçer:**
+```css
+a[target] {
+  color: blue;
+}
+```
+Bu, `target` özniteliğine sahip tüm `a` elementlerini mavi yapar.
+
+**Belirli bir özniteliğin belirli bir değeri olan elementleri seçer:**
+```css
+a[target="_blank"] {
+  color: green;
+}
+```
+Bu, `target="_blank"` olan tüm `a` elementlerini yeşil yapar.
+
+**Belirli bir öznitelik değerini içeren elementleri seçer:**
+```css
+[title~="flower"] {
+  border: 1px solid red;
+}
+```
+Bu, `title` özniteliği içinde "flower" kelimesini içeren tüm elementleri kırmızı çerçeveli yapar.
+
+**Öznitelik değeri belirli bir kelimeyle başlayan elementleri seçer:**
+```css
+a[href^="https"] {
+  color: orange;
+}
+```
+Bu, `href` özniteliği "https" ile başlayan tüm `a` elementlerini turuncu yapar.
+
+**Öznitelik değeri belirli bir kelimeyle biten elementleri seçer:**
+```css
+a[href$=".pdf"] {
+  color: purple;
+}
+```
+Bu, `href` özniteliği ".pdf" ile biten tüm `a` elementlerini mor yapar.
+
+**Öznitelik değeri belirli bir kelimeyi içeren elementleri seçer:**
+```css
+a[href*="example"] {
+  color: pink;
+}
+```
+Bu, `href` özniteliği içinde "example" kelimesini içeren tüm `a` elementlerini pembe yapar.
+
+Bu seçiciler, CSS ile HTML elementlerini hedeflemek ve stil vermek için kullanabileceğiniz güçlü araçlardır.
+*****************************************************************************************************************************************************************************************
+
+1) selector {property: value}
+selector aris Cveulebriv HTML elementi (tegi an tegTa jgufi, klasi, individualuri stili (ID)), romelis garkveul Tvisebebs (property) eniWera konkretuli mniSvnelobebi (value).
+2) .class_name {property: value}
+klasebi mosaxerxebelia roca gvinda sxvadasxva tegisaTvis erTidaigive Tvisebis (Tvisebebis) miniWeba.
+3) #id_name {property: value}
+klasisagan gansxvavebiT ID seleqtori gamoiyeneba mxolod erTi unikaluri elementisaTvis stilis gansazRvrisaTvis.
+NOT:  ID'lere atanan stiller genellikle sınıflardan daha yüksek önceliklidir. Yani, aynı özelliği hem ID hem de sınıfla tanımlarsanız, ID'in stil önceliği olur.
+
+text-align	გამოიყენება სიის მარკერად სურათის ჩასმისათვის
+text-decoration	აქვს მნიშვნელობები: none,Overline,line-through,underline
+text-transform	აქვს მნიშვნელობები: uppercase, lowercase,capitalize
+text-indent	სააბზა შეწევა
+letter-spacing/word-spacing	ასოებს შორის/ სიტყვებს შორის ადგილი
+line-height	სტრიქონებს შორის ადგილის განსაზღვრა
+
+*****************************************************************************************************************************************************************************************
+
+-> CSS2 file
+ტერმინი  "box model“ გამოიყენება როდესაც საუბარია დიზაინზე და ინფორმაციის გამოტანის გზებზე
+_________________________
+|       Margin           |
+|    ___________________ |
+|   |   Border           |
+|   |   _______________  |
+|   |  |   Padding     | |  
+|   |  |    _______    | |
+|   |  |   | Content | | |
+|   |  |   |_________| | |
+|   |  |_______________| |
+|   |____________________|
+|________________________|
+mag:
+width:220px;
+padding:10px;
+border:5px solid gray;
+margin:0px;
+სრული სიგანე= width + left padding + right padding + left border + right border + left margin + right margin
+სრული სიმაღლე= height + top padding + bottom padding + top border + bottom border + top margin + bottom margin
+*****************************************************************************************************************************************************************************************
+
+-> css_მემკვ_პოზიციონირება
+`display` ve `visibility`, CSS ile öğelerin görünürlüğünü kontrol etmek için kullanılan iki farklı özelliktir:
+1. **display**:
+   - `display` özelliği, bir HTML öğesinin görüntülenme biçimini belirler.
+   - Öğenin belirli bir değeri alarak (örneğin, `block`, `inline`, `inline-block`, `none`), öğenin nasıl yerleştirildiği, kaç piksel yer kapladığı ve diğer öğelerle nasıl etkileşimde 
+bulunduğu belirlenir.
+   - Örneğin, bir öğenin `display: none;` olarak ayarlanması, öğenin tamamen gizlenmesine neden olur ve sayfa düzeninde yer kaplamaz.
+2. **visibility**:
+   - `visibility` özelliği, bir HTML öğesinin görünürlüğünü belirler, ancak öğenin yine de sayfa düzeninde yer kaplamaya devam edip etmeyeceğini kontrol etmez.
+   - Öğenin belirli bir değeri alarak (örneğin, `visible` veya `hidden`), öğenin görünür veya gizli olacağı belirlenir.
+   - `visibility: hidden;` olarak ayarlanan bir öğe, hala sayfa düzeninde yer kaplar, ancak görünmez olur. Bu nedenle, diğer öğelerin yerleşimi bu öğenin varlığına dayanır.
+Özetle, `display: none;` özelliği öğenin tamamen gizlenmesine ve yer kaplamamasına neden olurken, `visibility: hidden;` özelliği öğenin görünmez olmasına rağmen yer kaplamasını sürdürmesine neden olur.
+*****************************************************************************************************************************************************************************************
+
+არსებობს ოთხი განსხვავებული პოზიციონირების მეთოდი:
+
+სტატიური პოზიციონირება (Static Positioning)
+HTML ელემენტები გაჩუმებით სტატიურ პოზიციონირებას იყენებენ. მათზე არ
+მოქმედებს top, bottom, left, და right თვისებები.
+
+ფიქსირებული პოზიციონირება(Fixed Positioning)
+ელემენტი რომელიც იყენებს ფიქსირებულ პოზიციონირებას, განთავსდება ბრაუზერის
+ფანჯარასთან მიმართებაში. შესაბამისად ის არ გაინძრევა თუ ფანჯარას დასქროლავთ. 
+შევნიშნოთ რომ  IE7 და  IE8-ში ფიქსირებული პოზიციონირება მუშაობს  მხოლოდ იმ
+შემთხვევაში თუ !DOCTYPE არის მითითებული.
+
+Relative Positioning (Göreceli Konumlandırma):
+Göreceli konumlandırma, bir öğenin normal akış içinde bulunduğu yere göre konumlandırılmasını sağlar. Öğe, normal akış içindeki yerinden kaydırılabilir, 
+ancak bu kaydırma, diğer öğeler üzerinde herhangi bir etki yapmaz. Göreceli olarak konumlandırılan bir öğe, kendisi için belirtilen konumdan "noktasal olarak" kaydırılabilir
+
+Absolute Positioning (Mutlak Konumlandırma):
+Mutlak konumlandırma, bir öğenin normal akıştan çıkarılıp, en yakın konumlandırılmış üst öğeye göre konumlandırılmasını sağlar. Yani, bir üst öğe üzerinde 
+mutlak konumlandırılan bir öğe, bu üst öğenin içinde belirtilen konuma göre konumlanır. Diğer öğeler üzerinde herhangi bir etkisi yoktur ve normal akış içinde yer almazlar.
+*****************************************************************************************************************************************************************************************
+
+უმრავლესობა  HTML ელემენტებისა შესაძლებელია დავაკლასიფიციროთ როგორც ბლოკური და ინლაინ ელემენტები
+ბლოკური ელემენტები ბრაუზერის ფანჯარაში როგორც წესი იწყება და მთავრდება ახალი სტრიქონით. ბლოკური ელემენტებია მაგალითად:
+<h1>, <p>, <ul>, <table>
+ინლაინ ელემენტებს კი სტრიქონის წყვეტა არ გააჩნიათ. ასეთი ელემენტებია:
+<b>, <td>, <a>, <img>
+Block (Blok):
+block türü, bir öğenin içeriğinin tüm genişlik boyunca yayılacağı ve dikey olarak birbirlerinin altına yerleştirileceği anlamına gelir. 
+Blok öğeler, normal akışta birbirlerinin altında sıralanır ve genellikle bir sayfanın ana yapı taşları olarak kullanılır.
+Inline (Satır İçi):
+inline türü, bir öğenin içeriğinin bir satır boyunca yayılacağı ve diğer satır içi öğelerle aynı satırda yer alacağı anlamına gelir. 
+Satır içi öğeler, normal akış içinde birbirlerinin yanında sıralanır ve metin gibi diğer öğelerle iç içe geçebilir.
+Inline-Block (Satır İçi Blok):
+inline-block türü, bir öğenin içeriğinin bir satır boyunca yayılacağı, ancak aynı zamanda diğer blok öğeler gibi dikey olarak birbirlerinin altında 
+yerleştirilebileceği anlamına gelir. Bu, bir blok öğesinin esneklik kazanması için kullanılır, çünkü satır içi öğeler gibi yan yana yer alabilirler, ancak blok öğeler gibi dikey hizalanabilirler.
+*****************************************************************************************************************************************************************************************
+
+box-sizing, bir öğenin genişliği ve yüksekliği hesaplanırken kutu modelindeki dolgu (padding) ve kenarlık (border) değerlerinin dahil edilip 
+edilmeyeceğini belirleyen bir CSS özelliğidir. Bu özellik, bir öğenin boyutunu kontrol etmek için kullanılırken, içeriğin yanı sıra dolgu ve kenarlık 
+değerlerinin de hesaba katılıp katılmayacağını belirler.
+content-box: Bu değer, varsayılan davranışı belirtir. Genişlik ve yükseklik, içeriği içerir ve dolgu ve kenarlık değerleri dışarıda bırakılır. Bu, standart kutu modelidir.
+.box {
+    box-sizing: content-box;
+}
+border-box: Bu değer, öğenin genişliğinin ve yüksekliğinin içeriği, dolgu ve kenarlık dahil olacak şekilde hesaplanacağını belirtir.
+.box {
+    box-sizing: border-box;
+}
+
+*****************************************************************************************************************************************************************************************
+
+როდესაც ელემენტები განლაგებულია არა ჩვეულებრივი განლაგებით (NORMAL FLOW
+ში არაა ანუ) მათ შესაძლებელია ერთმანეთი გადაფარონ, იმისათვის რომ
+განვსაზღვროთ მიმდევრობა (პრიორიტეტი) არსებობს თვისება z-index, რომელსაც
+შეუძლია მიიღოს როგორც დადებითი ისე უარყოფითი მნიშვნელობები.
+ელემენტს რომლის z-index უდრო მეტია ყოველთვის გადაეფარება იმ ელემენტს
+რომლის z index ნაკლებია. 
+
+float oyrenme kisaca:
+https://youtu.be/oJe8G5XT_v4?si=5bdLHyuXv7_k48s2
+
+clear: both;, CSS'de bir öğenin float'ı temizlemek için kullanılan bir özelliktir. Float, öğelerin sağa veya sola yüzerlenmesini sağlayan bir özelliktir. 
+Ancak, float kullanan bir öğeden sonra normal akışa geri dönülmesi gerekebilir. Bu durumda clear: both; özelliği kullanılır.
+clear: both; özelliği, bir öğenin hem sağa hem de sola yüzerlenmiş öğelerin etkisini temizleyerek, kendisinden sonra gelen öğenin normal akışa geçmesini sağlar.
+
+overflow, CSS özelliğidir ve bir konteynırın içeriği konteynırın boyutlarından büyük olduğunda ne yapılacağını belirler. Yani, bir öğenin içeriği belirlenen boyutları aştığında nasıl davranılacağını kontrol eder.
+.container {
+    overflow: visible | hidden | scroll | auto;
+}
+visible: İçerik konteynırın sınırlarını aşarsa bile görünür olur. Bu, taşma durumunda içeriğin konteynırın dışına çıkmasına izin verir.
+hidden: İçeriğin konteynırın sınırlarını aşmasını önler. Taşan içerik görünmez olur ve kesilir.
+scroll: İçeriğin konteynırın sınırlarını aşması durumunda yatay ve dikey kaydırma çubuklarını gösterir. Bu şekilde, kullanıcı içeriği görmek için kaydırabilir.
+auto: İçeriğin konteynırın sınırlarını aşması durumunda yatay ve dikey kaydırma çubuklarını otomatik olarak gösterir. Eğer içerik sınırları aşmazsa, kaydırma çubukları görünmez olur.
+*****************************************************************************************************************************************************************************************
+
+-> lek5
+CSS'te, pseudo-class (sözde sınıf) ve pseudo-element (sözde öğe) kavramları, belirli koşullara veya öğenin belirli kısımlarına stil uygulamak için kullanılır. Ancak, bu iki kavram arasında belirgin farklar vardır:
+
+Pseudo-Class (Sözde Sınıf)
+Pseudo-class, belirli durumlar veya koşullar altında bir öğeye stil uygulamak için kullanılır. Bu, öğenin normal durumuna ek olarak belirli etkileşimler veya konumlar için stil tanımlamamızı sağlar.
+
+Özellikleri:
+Bir öğenin durumunu veya öğe ile ilgili belirli bir koşulu hedefler.
+Tek kolon : ile tanımlanır.
+Örnekler:
+:hover: Bir öğe üzerine fare ile gelindiğinde uygulanır.
+:active: Bir öğe tıklandığında uygulanır.
+:focus: Bir öğe odaklandığında (örn. form alanına tıklanıldığında) uygulanır.
+:nth-child(n): Belirli bir sıralamada bulunan çocuk öğeyi hedefler.
+css
+Copy code
+a:hover {
+    color: red;
+}
+
+p:nth-child(2) {
+    font-weight: bold;
+}
+Pseudo-Element (Sözde Öğe)
+Pseudo-element, bir öğenin belirli bir kısmını hedef alır ve bu kısmın stilini değiştirmek için kullanılır. Bu, öğenin içeriğine veya yapısına belirli kısımlar eklememizi veya belirli kısımlarını stilize etmemizi sağlar.
+
+Özellikleri:
+Bir öğenin belirli bir kısmını (örneğin, ilk harfi, ilk satırı veya içeriğin belirli yerleri) hedefler.
+Çift kolon :: ile tanımlanır (CSS2'de tek kolon : ile de kullanılabilir, ancak modern kullanımda çift kolon önerilir).
+Örnekler:
+::before: Bir öğenin içeriğinden önce içerik ekler.
+::after: Bir öğenin içeriğinden sonra içerik ekler.
+::first-letter: Bir öğenin ilk harfini hedefler.
+::first-line: Bir öğenin ilk satırını hedefler.
+css
+Copy code
+p::first-line {
+    font-weight: bold;
+}
+
+p::before {
+    content: "Note: ";
+    color: red;
+}
+Özet
+Pseudo-Class (Sözde Sınıf): Belirli durumlara veya koşullara göre bir öğeye stil uygular (örneğin, :hover, :active).
+Pseudo-Element (Sözde Öğe): Bir öğenin belirli bir kısmını hedef alarak stil uygular veya içeriğin belirli kısımlarına içerik ekler (örneğin, ::before, ::after, ::first-letter).
+Bu iki CSS kavramı, web sayfalarının stilini ve kullanıcı deneyimini geliştirmek için güçlü araçlar sağlar ve doğru kullanıldığında oldukça etkili olabilir.
+
+
+*****************************************************************************************************************************************************************************************
+
+box-shadow, CSS'de öğelere gölge eklemek için kullanılan bir özelliktir. Bu özellik, öğelere derinlik ve vurgulama eklemek için kullanılır.
+box-shadow özelliği, gölgenin yatay ve dikey uzaklığını, bulanıklık yarıçapını, yayılma yarıçapını ve rengini belirtmenize olanak tanır.
+element {
+    box-shadow: h-offset v-offset blur spread color;
+}
+h-offset: Gölgenin yatay uzaklığı. Pozitif değer, gölgeyi sağa, negatif değer sola kaydırır.
+v-offset: Gölgenin dikey uzaklığı. Pozitif değer, gölgeyi aşağıya, negatif değer yukarıya kaydırır.
+blur (isteğe bağlı): Gölgenin bulanıklık yarıçapı. Daha büyük değerler daha bulanık gölge oluşturur.
+spread (isteğe bağlı): Gölgenin yayılma yarıçapı. Pozitif değer gölgeyi genişletir, negatif değer daraltır.
+color: Gölgenin rengi.
+coklu golge: box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5), -5px -5px 5px rgba(0, 0, 255, 0.5);
+
+opacity თვისება გამოიყენება იმისათვის რომ განვსაზღვროთ ელემენტის გამჭვირვალეობა
+მაგალითი: 
+img:hover {
+  opacity: 0.5;
+}
+*****************************************************************************************************************************************************************************************
+
+CSS'de attribute selectors (öznitelik seçiciler) belirli bir özniteliğe sahip HTML öğelerini seçmek için kullanılır. ^=, $= ve *= gibi belirli öznitelik seçiciler,
+[att^="val"]: Öznitelik değeri belirtilen değerle başlayan öğeleri seçer.
+<a href="https://example.com">Example 1</a>
+<a href="http://example.com">Example 2</a>
+<a href="ftp://example.com">Example 3</a>
+a[href^="https"] {
+    color: green;
+}
+
+[att$="val"]: Öznitelik değeri belirtilen değerle biten öğeleri seçer.
+<img src="image.png" alt="Image 1">
+<img src="photo.jpg" alt="Image 2">
+<img src="icon.svg" alt="Image 3">
+img[src$=".jpg"] {
+    border: 2px solid blue;
+}
+
+[att*="val"]: Öznitelik değeri belirtilen değeri içeren öğeleri seçer.
+<div class="container main-content">Content 1</div>
+<div class="sidebar main-content">Content 2</div>
+<div class="footer">Content 3</div>
+div[class*="main"] {
+    background-color: yellow;
+}
+*****************************************************************************************************************************************************************************************
+
+.element {
+    border-radius: 10px 20px 30px 40px; /* Saat yönünün tersine sırayla sol üst, sağ üst, sağ alt, sol alt köşe */
+}
+
+
+imtahanda dusen 
+.element {
+    border-radius: 10px 20px 30px 40px; /* Saat yönünün tersine sırayla sol üst, sağ üst, sağ alt, sol alt köşe */
+}
+
+CSS Dosyasını Bağlama:
+<link rel="stylesheet" type="text/css" href="styles.css">
+fotograf Bağlama:
+<link rel="icon" type="image/png" href="favicon.png">
+Yazı Tipi Dosyasını Bağlama:
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+İçerik Bağlama:
+<link rel="import" href="component.html">
+
+<img src="planets.jpg" alt="Planets" usemap="#planetmap">
+<map name="planetmap">
+  <area shape="rect" coords="0,0,82,126" alt="Sun" href="sun.htm">
+  <area shape="circle" coords="90,58,3" alt="Mercury" href="mercur.htm">
+  <area shape="circle" coords="124,58,8" alt="Venus" href="venus.htm">
+</map>
+Yukarıdaki örnek, "planets.jpg" adlı bir görüntüyü gösterir. Bu görüntüye bir harita tanımlamak için <map> etiketi kullanılır ve name özniteliği "planetmap" olarak belirtilir. 
+Sonra, <area> etiketleri kullanılarak belirli alanlar tanımlanır. Her bir alanın şekli (shape), koordinatları (coords), alternatif metni (alt) ve bağlantı adresi (href) belirtilir. 
+Bu şekilde, kullanıcılar belirli alanlara tıkladığında farklı sayfalara yönlendirilebilirler.
+
+:link: Ziyaret edilmemiş bağlantıları belirtir.
+:visited: Ziyaret edilmiş bağlantıları belirtir.
+:hover: Fare bağlantının üzerine gelindiğindeki durumu belirtir.
+:active: Bağlantı tıklandığında, yani etkin olduğunda belirtir.
+*****************************************************************************************************************************************************************************************
+
+CSS Media Queries, farklı cihazlar ve ekran boyutları için farklı stiller uygulamayı sağlayan güçlü bir araçtır. Media Queries kullanarak web sayfalarınızın farklı ekran boyutlarında, çözünürlüklerde ve yönlendirmelerde (dikey/yatay) nasıl görüneceğini kontrol edebilirsiniz. Bu teknik, duyarlı (responsive) tasarımın temelini oluşturur.
+
+### Temel Kullanım
+
+Media Queries, `@media` kuralı kullanılarak tanımlanır ve genellikle bir medya türü (örneğin `screen`) ve bir veya daha fazla medya özelliği içerir.
+
+#### Örnek 1: Basit Kullanım
+
+```css
+/* Tüm ekranlar için genel stil */
+body {
+  font-size: 16px;
+  color: black;
+}
+
+/* Ekran genişliği 600 pikselden büyük olduğunda */
+@media (min-width: 600px) {
+  body {
+    font-size: 18px;
+  }
+}
+```
+
+Bu örnekte, ekran genişliği 600 pikselden büyük olduğunda metin boyutu 18 piksel olacak şekilde ayarlanır.
+
+#### Örnek 2: Birden Fazla Koşul Kullanımı
+
+```css
+/* Tüm ekranlar için genel stil */
+body {
+  font-size: 16px;
+  color: black;
+}
+
+/* Ekran genişliği 600 pikselden büyük ve 1200 pikselden küçük olduğunda */
+@media (min-width: 600px) and (max-width: 1200px) {
+  body {
+    font-size: 18px;
+  }
+}
+
+/* Ekran genişliği 1200 pikselden büyük olduğunda */
+@media (min-width: 1200px) {
+  body {
+    font-size: 20px;
+  }
+}
+```
+
+Bu örnekte, ekran genişliği belirli aralıklara göre farklı metin boyutları ayarlanır.
+
+### Yaygın Kullanılan Medya Özellikleri
+
+- **width** ve **height**: Görüntüleme alanının genişliği ve yüksekliği.
+- **min-width** ve **max-width**: Minimum ve maksimum genişlik.
+- **min-height** ve **max-height**: Minimum ve maksimum yükseklik.
+- **orientation**: Cihazın yönlendirilmesi (`portrait` veya `landscape`).
+- **resolution**: Cihazın çözünürlüğü (`dpi` veya `dpcm` cinsinden).
+
+#### Örnek 3: Orientation Kullanımı
+
+```css
+/* Ekran dikey modda (portrait) olduğunda */
+@media (orientation: portrait) {
+  body {
+    background-color: lightblue;
+  }
+}
+
+/* Ekran yatay modda (landscape) olduğunda */
+@media (orientation: landscape) {
+  body {
+    background-color: lightgreen;
+  }
+}
+```
+
+Bu örnekte, cihazın yönlendirilmesine bağlı olarak arka plan rengi değişir.
+
+### Daha Karmaşık Örnekler
+
+#### Örnek 4: Retina Ekranlar için Yüksek Çözünürlük Desteği
+
+```css
+/* Yüksek çözünürlüklü ekranlar (örneğin Retina ekranlar) için */
+@media only screen and (min-device-pixel-ratio: 2), 
+       only screen and (min-resolution: 192dpi) {
+  .high-res {
+    background-image: url('high-res-image.png');
+  }
+}
+```
+
+Bu örnekte, yüksek çözünürlüklü ekranlar için farklı bir arka plan resmi kullanılır.
+
+#### Örnek 5: Farklı Cihaz Türleri İçin
+
+```css
+/* Yazıcılar için */
+@media print {
+  body {
+    font-size: 12pt;
+    color: black;
+    background: white;
+  }
+}
+
+/* Ekranlar için */
+@media screen {
+  body {
+    font-size: 16px;
+    color: black;
+    background: lightgray;
+  }
+}
+```
+
+Bu örnekte, farklı cihaz türleri (yazıcı ve ekran) için farklı stiller uygulanır.
+
+### Örneklerle Birlikte Detaylı Kullanım
+
+Aşağıda, bir web sayfasının farklı ekran boyutlarına ve yönlendirmelere nasıl uyum sağladığını gösteren daha kapsamlı bir örnek verilmiştir:
+
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media Queries Örneği</title>
+  <style>
+    body {
+      font-size: 16px;
+      color: black;
+      background-color: white;
+    }
+
+    .container {
+      width: 100%;
+      padding: 20px;
+    }
+
+    /* Ekran genişliği 600 pikselden büyük olduğunda */
+    @media (min-width: 600px) {
+      body {
+        font-size: 18px;
+      }
+    }
+
+    /* Ekran genişliği 600 pikselden büyük ve 1200 pikselden küçük olduğunda */
+    @media (min-width: 600px) and (max-width: 1200px) {
+      body {
+        background-color: lightblue;
+      }
+    }
+
+    /* Ekran genişliği 1200 pikselden büyük olduğunda */
+    @media (min-width: 1200px) {
+      body {
+        font-size: 20px;
+        background-color: lightgreen;
+      }
+    }
+
+    /* Ekran dikey modda (portrait) olduğunda */
+    @media (orientation: portrait) {
+      .container {
+        background-color: lightcoral;
+      }
+    }
+
+    /* Ekran yatay modda (landscape) olduğunda */
+    @media (orientation: landscape) {
+      .container {
+        background-color: lightgoldenrodyellow;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <p>Bu bir medya sorguları örneğidir. Ekran boyutunu ve yönlendirmesini değiştirerek farklı stilleri görebilirsiniz.</p>
+  </div>
+</body>
+</html>
+```
+
+Bu örnekte, ekran boyutu ve yönlendirmesine göre metin boyutu, arka plan rengi ve konteynerin arka plan rengi değişir. Media Queries sayesinde web sayfası farklı cihazlar ve ekran boyutlarına uyum sağlar.
+*****************************************************************************************************************************************************************************************
+
+CSS'de arka plan özellikleri (background properties), HTML öğelerinin arka planlarını çeşitli şekillerde tanımlamak ve stil vermek için kullanılır. Bu özellikler arasında arka plan rengini, arka plan resimlerini ve arka plan resimlerinin konumunu, tekrarını ve boyutunu ayarlamak gibi işlemler bulunur. İşte en yaygın kullanılan arka plan özellikleri:
+
+### 1. `background-color`
+Bu özellik, bir öğenin arka plan rengini belirler.
+
+```css
+div {
+    background-color: lightblue;
+}
+```
+
+### 2. `background-image`
+Bu özellik, bir öğenin arka plan resmi olarak bir görüntü ayarlar.
+
+```css
+div {
+    background-image: url('image.jpg');
+}
+```
+
+### 3. `background-repeat`
+Bu özellik, arka plan resminin nasıl tekrar edeceğini belirler.
+
+- `repeat`: Hem yatay hem de dikey olarak tekrar eder.
+- `repeat-x`: Yalnızca yatay olarak tekrar eder.
+- `repeat-y`: Yalnızca dikey olarak tekrar eder.
+- `no-repeat`: Hiçbir yönde tekrar etmez.
+
+```css
+div {
+    background-image: url('image.jpg');
+    background-repeat: no-repeat;
+}
+```
+
+### 4. `background-position`
+Bu özellik, arka plan resminin başlangıç pozisyonunu belirler.
+
+```css
+div {
+    background-image: url('image.jpg');
+    background-position: center; /* Orta */
+    /* Diğer değerler: left, right, top, bottom, x% y%, x-pos y-pos */
+}
+```
+
+### 5. `background-size`
+Bu özellik, arka plan resminin boyutunu belirler.
+
+- `cover`: Arka plan resmi, öğenin tamamını kaplayacak şekilde ölçeklendirilir.
+- `contain`: Arka plan resmi, öğenin içine sığacak şekilde ölçeklendirilir.
+- Belirli boyutlar (`width height`)
+
+```css
+div {
+    background-image: url('image.jpg');
+    background-size: cover;
+}
+```
+
+### 6. `background-attachment`
+Bu özellik, arka plan resminin nasıl kaydırılacağını belirler.
+
+- `scroll`: Arka plan resmi, öğe ile birlikte kayar.
+- `fixed`: Arka plan resmi, tarayıcı penceresine sabitlenir.
+- `local`: Arka plan resmi, öğenin içeriği ile birlikte kayar.
+
+```css
+div {
+    background-image: url('image.jpg');
+    background-attachment: fixed;
+}
+```
+
+### 7. `background-clip`
+Bu özellik, arka plan resminin veya rengin nerede çizileceğini belirler.
+
+- `border-box`: Arka plan, kenarlık kutusunun kenarına kadar uzanır.
+- `padding-box`: Arka plan, iç dolgu kutusunun kenarına kadar uzanır.
+- `content-box`: Arka plan, içerik kutusunun kenarına kadar uzanır.
+
+```css
+div {
+    background-color: lightblue;
+    background-clip: padding-box;
+}
+```
+
+### 8. `background-origin`
+Bu özellik, arka plan resminin veya rengin başlangıç konumunu belirler.
+
+- `border-box`: Başlangıç konumu kenarlık kutusudur.
+- `padding-box`: Başlangıç konumu iç dolgu kutusudur.
+- `content-box`: Başlangıç konumu içerik kutusudur.
+
+```css
+div {
+    background-image: url('image.jpg');
+    background-origin: content-box;
+}
+```
+
+### 9. `background`
+Bu kısayol özelliği, bir öğenin tüm arka plan özelliklerini tek bir deklarasyonda ayarlamanıza olanak tanır.
+
+```css
+div {
+    background: lightblue url('image.jpg') no-repeat center/cover fixed;
+}
+```
+
+Yukarıdaki örnek, arka plan rengi, resmi, tekrar durumu, konumu, boyutu ve ek bağlantısını tek bir satırda tanımlar.
+
+Bu arka plan özellikleri, HTML öğelerinin arka planlarını çeşitli şekillerde kontrol etmenizi sağlar ve web sayfalarının daha çekici ve kullanıcı dostu görünmesini sağlar.
+
+
+*****************************************************************************************************************************************************************************************
+
+CSS'de gradient (degrade) efektleri, iki veya daha fazla renk arasında yumuşak geçişler oluşturur. Gradientler, arka planlar için kullanılır ve CSS'de iki ana türü vardır:
+ lineer gradientler ve radial gradientler.
+ Ayrıca, daha karmaşık geçişler için conic gradientler de kullanılabilir. Her bir gradient türünün nasıl kullanılacağını ve örneklerini aşağıda bulabilirsiniz:
+
+### 1. Lineer Gradient (linear-gradient)
+
+Lineer gradient, bir noktadan başka bir noktaya doğru çizilen düz bir çizgi boyunca renk geçişleri oluşturur.
+
+**Temel Kullanım:**
+```css
+background: linear-gradient(direction, color-stop1, color-stop2, ...);
+```
+
+**Örnekler:**
+- **Yukarıdan Aşağıya (Varsayılan)**
+  ```css
+  background: linear-gradient(red, yellow);
+  ```
+
+- **Soldan Sağa**
+  ```css
+  background: linear-gradient(to right, red, yellow);
+  ```
+
+- **Diyagonal**
+  ```css
+  background: linear-gradient(to bottom right, red, yellow);
+  ```
+
+- **Çoklu Renkler**
+  ```css
+  background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+  ```
+
+### 2. Radial Gradient (radial-gradient)
+
+Radial gradient, bir merkezden dışa doğru yayılır ve dairesel veya eliptik renk geçişleri oluşturur.
+
+**Temel Kullanım:**
+```css
+background: radial-gradient(shape size at position, color-stop1, color-stop2, ...);
+```
+
+**Örnekler:**
+- **Dairesel (Varsayılan)**
+  ```css
+  background: radial-gradient(circle, red, yellow);
+  ```
+
+- **Eliptik**
+  ```css
+  background: radial-gradient(ellipse, red, yellow);
+  ```
+
+- **Merkezi Pozisyon Belirleme**
+  ```css
+  background: radial-gradient(circle at center, red, yellow);
+  ```
+
+- **Çoklu Renkler**
+  ```css
+  background: radial-gradient(circle, red, orange, yellow, green, blue, indigo, violet);
+  ```
+
+### 3. Conic Gradient (conic-gradient)
+
+Conic gradient, bir merkez etrafında koni şeklinde renk geçişleri oluşturur. Bu özellik CSS'de daha yeni bir özelliktir ve bazı eski tarayıcılarda desteklenmeyebilir.
+
+**Temel Kullanım:**
+```css
+background: conic-gradient(from angle at position, color-stop1, color-stop2, ...);
+```
+
+**Örnekler:**
+- **Temel Conic Gradient**
+  ```css
+  background: conic-gradient(red, yellow, green);
+  ```
+
+- **Başlangıç Açısını Belirleme**
+  ```css
+  background: conic-gradient(from 45deg, red, yellow, green);
+  ```
+
+- **Pozisyon Belirleme**
+  ```css
+  background: conic-gradient(at center, red, yellow, green);
+  ```
+
+- **Çoklu Renkler**
+  ```css
+  background: conic-gradient(red, orange, yellow, green, blue, indigo, violet);
+  ```
+
+### Ek Özellikler ve Kullanımlar
+
+- **Renk Durdurucuları (Color Stops):**
+  Renk durdurucuları, renk geçişlerinin nerede başlayıp bittiğini belirlemek için kullanılır.
+
+  ```css
+  background: linear-gradient(to right, red 0%, yellow 50%, green 100%);
+  ```
+
+- **Saydamlık (Transparency):**
+  Gradientlerde saydam renkler kullanılabilir.
+
+  ```css
+  background: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));
+  ```
+
+- **Tekrarlayan Gradientler:**
+  Gradientlerin tekrar etmesi sağlanabilir.
+
+  ```css
+  background: repeating-linear-gradient(45deg, red, yellow 10%, green 20%);
+  ```
+
+Gradientler, modern web tasarımında sıkça kullanılan güçlü bir araçtır. Sayfalara derinlik ve görsel ilgi katmak için kullanılabilirler ve CSS'nin sunduğu esneklik sayesinde yaratıcı ve
+ etkileyici arka planlar oluşturmak mümkündür.
+
+*****************************************************************************************************************************************************************************************
+
+->lek6
+
+CSS timing functions, animasyon veya geçiş (transition) sırasında hızın nasıl değişeceğini belirler. Farklı zamanlama fonksiyonları, animasyonların başlangıcında, ortasında ve sonunda 4
+hızın nasıl değişeceğini kontrol ederek, kullanıcı deneyimini zenginleştirir.
+
+### Temel Zamanlama Fonksiyonları
+
+1. **linear**
+   - Animasyonun başından sonuna kadar sabit bir hızda hareket eder.
+   ```css
+   transition: all 2s linear;
+   ```
+
+2. **ease**
+   - Varsayılan zamanlama fonksiyonudur. Animasyon yavaş başlar, ortasında hızlanır ve sonunda yavaşlar.
+   ```css
+   transition: all 2s ease;
+   ```
+
+3. **ease-in**
+   - Animasyon yavaş başlar ve sonuna doğru hızlanır.
+   ```css
+   transition: all 2s ease-in;
+   ```
+
+4. **ease-out**
+   - Animasyon hızlı başlar ve sonuna doğru yavaşlar.
+   ```css
+   transition: all 2s ease-out;
+   ```
+
+5. **ease-in-out**
+   - Animasyon yavaş başlar, ortasında hızlanır ve sonunda tekrar yavaşlar.
+   ```css
+   transition: all 2s ease-in-out;
+   ```
+
+### Cubic Bezier Fonksiyonları
+
+Daha karmaşık zamanlama fonksiyonları oluşturmak için cubic-bezier fonksiyonları kullanılabilir. Cubic Bezier fonksiyonları dört değer alır: `cubic-bezier(x1, y1, x2, y2)`. Bu değerler animasyonun hız eğrisini belirler.
+
+```css
+/* Örnek Cubic Bezier */
+transition: all 2s cubic-bezier(0.25, 0.1, 0.25, 1);
+```
+
+Bu değerler ile animasyonun hız eğrisini kendiniz tanımlayabilirsiniz.
+
+### Step Fonksiyonları
+
+Adım adım geçişler için `steps` zamanlama fonksiyonu kullanılır. Bu fonksiyon animasyonu belirli sayıda adımlara böler.
+
+```css
+/* Örnek Steps */
+transition: all 2s steps(4, end);
+```
+
+Bu örnekte, animasyon 4 adıma bölünmüş ve her adımda keskin geçişler olacaktır.
+
+### Örnek Kullanımlar
+
+#### Örnek 1: Farklı Zamanlama Fonksiyonları
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timing Function Örneği</title>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: blue;
+      margin: 10px;
+    }
+
+    .linear:hover {
+      transition: all 2s linear;
+      background-color: red;
+      width: 200px;
+    }
+
+    .ease:hover {
+      transition: all 2s ease;
+      background-color: red;
+      width: 200px;
+    }
+
+    .ease-in:hover {
+      transition: all 2s ease-in;
+      background-color: red;
+      width: 200px;
+    }
+
+    .ease-out:hover {
+      transition: all 2s ease-out;
+      background-color: red;
+      width: 200px;
+    }
+
+    .ease-in-out:hover {
+      transition: all 2s ease-in-out;
+      background-color: red;
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box linear">linear</div>
+  <div class="box ease">ease</div>
+  <div class="box ease-in">ease-in</div>
+  <div class="box ease-out">ease-out</div>
+  <div class="box ease-in-out">ease-in-out</div>
+</body>
+</html>
+```
+
+#### Örnek 2: Cubic Bezier ve Steps
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cubic Bezier ve Steps Örneği</title>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: blue;
+      margin: 10px;
+    }
+
+    .cubic-bezier:hover {
+      transition: all 2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      background-color: red;
+      width: 200px;
+    }
+
+    .steps:hover {
+      transition: all 2s steps(4, end);
+      background-color: red;
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box cubic-bezier">cubic-bezier</div>
+  <div class="box steps">steps</div>
+</body>
+</html>
+```
+
+Bu örneklerde, farklı zamanlama fonksiyonlarının animasyonların nasıl değiştiğini gözlemleyebilirsiniz. Her kutunun üzerine gelindiğinde (hover), animasyonun hız eğrisine göre farklı şekilde değişim gösterdiğini göreceksiniz.
+*****************************************************************************************************************************************************************************************
+
+CSS `transition` özelliği, bir elementin belirli CSS özelliklerindeki değişikliklerin, belirli bir süre içinde yumuşak bir geçişle gerçekleşmesini sağlar. Bu, kullanıcı etkileşimlerini 
+daha çekici hale getirmek ve kullanıcı deneyimini geliştirmek için yaygın olarak kullanılır.
+
+### Temel Kullanım
+
+Bir geçiş tanımlamak için `transition` özelliğini kullanırız. Temel sentaksı şu şekildedir:
+
+```css
+selector {
+  transition: property duration timing-function delay;
+}
+```
+
+- **property**: Geçişin uygulanacağı CSS özelliği (örn. `width`, `height`, `background-color`).
+- **duration**: Geçişin ne kadar süreceği (örn. `2s`, `500ms`).
+- **timing-function**: Geçişin hız eğrisi (örn. `linear`, `ease`, `ease-in`, `ease-out`, `ease-in-out`).
+- **delay**: Geçişin başlamadan önce ne kadar bekleyeceği (örn. `1s`, `200ms`).
+
+### Örnekler
+
+#### Basit Bir Örnek
+Bu örnekte, bir div elementinin arka plan rengi değiştirildiğinde, bu değişiklik 2 saniye sürecektir.
+
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transition Örneği</title>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: blue;
+      transition: background-color 2s;
+    }
+
+    .box:hover {
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+</body>
+</html>
+```
+
+Bu örnekte, `.box` sınıfına sahip div elemanının üzerine gelindiğinde (hover), arka plan rengi 2 saniyelik bir süre içinde maviden kırmızıya geçecektir.
+
+#### Birden Fazla Özellik İçin Geçiş
+Bu örnekte, hem arka plan rengi hem de genişlik değişiklikleri için geçiş uygulanmıştır.
+
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transition Örneği</title>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: blue;
+      transition: width 2s, background-color 2s;
+    }
+
+    .box:hover {
+      width: 200px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+</body>
+</html>
+```
+
+Bu örnekte, `.box` sınıfına sahip div elemanının üzerine gelindiğinde (hover), genişlik 100px'den 200px'e ve arka plan rengi maviden
+ kırmızıya 2 saniye içinde geçiş yapacaktır.
+
+### `transition` Özelliği İçin Bileşenler
+
+#### `transition-property`
+Geçişin uygulanacağı CSS özelliklerini belirler. Örneğin:
+
+```css
+transition-property: background-color, width;
+```
+
+#### `transition-duration`
+Geçişin süresini belirler. Örneğin:
+
+```css
+transition-duration: 2s, 1s;
+```
+
+#### `transition-timing-function`
+Geçişin hız eğrisini belirler. Örneğin:
+
+```css
+transition-timing-function: ease-in, linear;
+```
+
+#### `transition-delay`
+Geçişin başlamadan önceki bekleme süresini belirler. Örneğin:
+
+```css
+transition-delay: 1s, 500ms;
+```
+
+### Daha Gelişmiş Bir Örnek
+
+Aşağıdaki örnekte, daha karmaşık bir geçiş uygulaması gösterilmektedir:
+
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transition Örneği</title>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: blue;
+      margin: 50px;
+      transition: width 2s ease-in-out 0.5s, background-color 2s ease-in 0.5s;
+    }
+
+    .box:hover {
+      width: 200px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+</body>
+</html>
+```
+
+Bu örnekte, `.box` sınıfına sahip div elemanının üzerine gelindiğinde (hover), genişlik ve arka plan rengi değişiklikleri 0.5 saniyelik
+ bir gecikme ile başlar ve 2 saniyelik bir süre içinde gerçekleşir. Genişlik değişikliği için `ease-in-out`, arka plan rengi değişikliği için `ease-in` hız eğrisi kullanılmıştır.
+
+### Sonuç
+
+CSS `transition` özelliği, web sayfalarınıza animasyonlar eklemenin basit ve etkili bir yoludur. Kullanıcı etkileşimlerine daha akıcı 
+ve görsel olarak çekici yanıtlar vermek için geçişleri kullanabilirsiniz. Bu, kullanıcı deneyimini iyileştirir ve web sayfanızın daha profesyonel görünmesini sağlar.
+*****************************************************************************************************************************************************************************************
+
+CSS animasyonları, HTML öğelerinin stil özelliklerini belirli bir süre boyunca kademeli olarak değiştirmeye olanak tanır. Bu animasyonlar, `@keyframes` kuralı 
+ile tanımlanır ve `animation` özelliği ile uygulanır. CSS animasyonları, web sayfalarına dinamik ve etkileyici görseller eklemek için güçlü bir araçtır.
+
+### Temel Kullanım
+
+1. **@keyframes**: Animasyonun adımlarını tanımlar.
+2. **animation**: Animasyonu öğeye uygular.
+
+### @keyframes Kullanımı
+
+`@keyframes`, animasyonun nasıl ilerleyeceğini tanımlar. Belirli yüzdelerde (veya `from` ve `to` anahtar kelimeleri kullanılarak) CSS özelliklerinin nasıl değişeceğini belirtebilirsiniz.
+
+**Örnek:**
+```css
+@keyframes example {
+    from {
+        background-color: red;
+        left: 0px;
+    }
+    to {
+        background-color: yellow;
+        left: 200px;
+    }
+}
+```
+
+Bu örnek, bir öğenin arka plan rengini kırmızıdan sarıya ve pozisyonunu 0 pikselden 200 piksele değiştiren bir animasyon tanımlar.
+
+### animation Özelliği
+
+`animation` özelliği, tanımlanan animasyonu uygulamak için kullanılır.
+
+**Temel Kullanım:**
+```css
+.element {
+    animation: animation-name duration timing-function delay iteration-count direction fill-mode;
+}
+```
+
+- `animation-name`: `@keyframes` ile tanımlanan animasyonun adı.
+- `duration`: Animasyonun süresi (saniye veya milisaniye cinsinden).
+- `timing-function`: Animasyonun hız eğrisi (`linear`, `ease`, `ease-in`, `ease-out`, `ease-in-out`, vb.).
+- `delay`: Animasyon başlamadan önceki gecikme süresi.
+- `iteration-count`: Animasyonun kaç kez tekrarlanacağı (`infinite` sonsuz tekrar anlamına gelir).
+- `direction`: Animasyonun oynatma yönü (`normal`, `reverse`, `alternate`, `alternate-reverse`).
+- `fill-mode`: Animasyonun başlangıç ve bitiş durumlarında nasıl davranacağını belirler (`none`, `forwards`, `backwards`, `both`).
+
+### Örnek: Basit Animasyon
+
+```css
+@keyframes moveAndChangeColor {
+    from {
+        background-color: red;
+        left: 0px;
+    }
+    to {
+        background-color: yellow;
+        left: 200px;
+    }
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    position: relative;
+    animation: moveAndChangeColor 4s ease-in-out;
+}
+```
+
+Bu örnekte, `.box` öğesi 4 saniye boyunca kırmızıdan sarıya geçer ve soldan sağa doğru 200 piksel hareket eder.
+
+### Örnek: Kompleks Animasyon
+
+Daha karmaşık animasyonlar, `@keyframes` içinde birden fazla anahtar kare (% değerleri) kullanılarak tanımlanabilir.
+
+```css
+@keyframes complexAnimation {
+    0% {
+        background-color: red;
+        transform: translateX(0px);
+    }
+    25% {
+        background-color: yellow;
+        transform: translateX(100px);
+    }
+    50% {
+        background-color: blue;
+        transform: translateX(200px);
+    }
+    75% {
+        background-color: green;
+        transform: translateX(100px);
+    }
+    100% {
+        background-color: red;
+        transform: translateX(0px);
+    }
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    position: relative;
+    animation: complexAnimation 5s infinite alternate;
+}
+```
+
+Bu örnekte, `.box` öğesi 5 saniyelik bir süre içinde renk değiştirir ve X ekseninde hareket eder. Animasyon sonsuz döngüde ve ileri-geri (`alternate`) oynatılır.
+
+### Örnek HTML ve CSS Kodu
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Animations Example</title>
+    <style>
+        @keyframes moveAndChangeColor {
+            from {
+                background-color: red;
+                left: 0px;
+            }
+            to {
+                background-color: yellow;
+                left: 200px;
+            }
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: relative;
+            animation: moveAndChangeColor 4s ease-in-out;
+        }
+
+        @keyframes complexAnimation {
+            0% {
+                background-color: red;
+                transform: translateX(0px);
+            }
+            25% {
+                background-color: yellow;
+                transform: translateX(100px);
+            }
+            50% {
+                background-color: blue;
+                transform: translateX(200px);
+            }
+            75% {
+                background-color: green;
+                transform: translateX(100px);
+            }
+            100% {
+                background-color: red;
+                transform: translateX(0px);
+            }
+        }
+
+        .box.complex {
+            animation: complexAnimation 5s infinite alternate;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box complex"></div>
+</body>
+</html>
+```
+
+Bu kodda, iki kutu (`.box` ve `.box.complex`) farklı animasyonlarla stilize edilmiştir. Birinci kutu basit bir renk değişimi ve hareket animasyonu yaparken, ikinci kutu daha karmaşık bir animasyon gerçekleştirir.
+
+*****************************************************************************************************************************************************************************************
+
+`display: flex` özelliği, esnek ve uyumlu yerleşimler oluşturmak için kullanılır. Flexbox, bir kapsayıcı (container) ve içindeki esnek öğelerden (flex items) oluşur. Kapsayıcı üzerinde 
+tanımlanan flexbox özellikleri, içindeki öğelerin nasıl yerleştirileceğini ve boyutlandırılacağını kontrol eder. İşte `display: flex` kullanımı hakkında detaylı bilgiler ve örnekler:
+
+### Temel Flexbox Kullanımı
+
+#### Flex Container ve Flex Items
+
+Flexbox düzenini oluşturmak için, bir kapsayıcıya `display: flex` değeri verilir. Bu kapsayıcı içerisindeki tüm öğeler otomatik olarak esnek öğeler haline gelir.
+
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flexbox Temel Kullanım</title>
+  <style>
+    .container {
+      display: flex;
+      background-color: #f0f0f0;
+      padding: 10px;
+    }
+    .item {
+      background-color: #4CAF50;
+      color: white;
+      margin: 5px;
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+  </div>
+</body>
+</html>
+```
+
+#### Flex Direction
+
+`flex-direction` özelliği, öğelerin yönünü belirler. Değerler: `row` (varsayılan), `row-reverse`, `column`, `column-reverse`.
+
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flex Direction</title>
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      background-color: #f0f0f0;
+      padding: 10px;
+    }
+    .item {
+      background-color: #4CAF50;
+      color: white;
+      margin: 5px;
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+  </div>
+</body>
+</html>
+```
+
+#### Justify Content
+
+`justify-content` özelliği, öğelerin ana eksen (main axis) boyunca nasıl hizalanacağını belirler. Değerler: `flex-start`, `flex-end`, `center`, `space-between`, `space-around`, 
+`space-evenly`.
+
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Justify Content</title>
+  <style>
+    .container {
+      display: flex;
+      justify-content: space-between;
+      background-color: #f0f0f0;
+      padding: 10px;
+    }
+    .item {
+      background-color: #4CAF50;
+      color: white;
+      margin: 5px;
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+  </div>
+</body>
+</html>
+```
+
+#### Align Items
+
+`align-items` özelliği, öğelerin çapraz eksen (cross axis) boyunca nasıl hizalanacağını belirler. Değerler: `stretch` (varsayılan), `flex-start`, `flex-end`, `center`, `baseline`.
+
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Align Items</title>
+  <style>
+    .container {
+      display: flex;
+      align-items: center;
+      height: 200px;
+      background-color: #f0f0f0;
+      padding: 10px;
+    }
+    .item {
+      background-color: #4CAF50;
+      color: white;
+      margin: 5px;
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+  </div>
+</body>
+</html>
+```
+
+#### Flex Wrap
+
+`flex-wrap` özelliği, öğelerin taşması durumunda nasıl sarılacağını belirler. Değerler: `nowrap` (varsayılan), `wrap`, `wrap-reverse`.
+
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flex Wrap</title>
+  <style>
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      background-color: #f0f0f0;
+      padding: 10px;
+    }
+    .item {
+      background-color: #4CAF50;
+      color: white;
+      margin: 5px;
+      padding: 10px;
+      text-align: center;
+      width: 30%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+    <div class="item">6</div>
+  </div>
+</body>
+</html>
+```
+
+### Flex Item Özellikleri
+
+#### Order
+
+`order` özelliği, esnek öğelerin sırasını belirler. Varsayılan değer 0'dır.
+
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order</title>
+  <style>
+    .container {
+      display: flex;
+      background-color: #f0f0f0;
+      padding: 10px;
+    }
+    .item {
+      background-color: #4CAF50;
+      color: white;
+      margin: 5px;
+      padding: 10px;
+      text-align: center;
+    }
+    .item2 {
+      order: 1; /* Bu öğe ikinci sıraya taşınır */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="item">1</div>
+    <div class="item item2">2</div>
+    <div class="item">3</div>
+  </div>
+</body>
+</html>
+```
+
+#### Flex Grow
+
+`flex-grow` özelliği, bir esnek öğenin boş alanı ne kadar dolduracağını belirler. Varsayılan değer 0'dır.
+
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flex Grow</title>
+  <style>
+    .container {
+      display: flex;
+      background-color: #f0f0f0;
+      padding: 10px;
+    }
+    .item {
+      background-color: #4CAF50;
+      color: white;
+      margin: 5px;
+      padding: 10px;
+      text-align: center;
+      flex-grow: 1; /* Her öğe eşit şekilde büyür */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+  </div>
+</body>
+</html>
+```
+
+#### Flex Shrink
+
+`flex-shrink` özelliği, bir esnek öğenin nasıl küçüleceğini belirler. Varsayılan değer 1'dir.
+
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flex Shrink</title>
+  <style>
+    .container {
+      display: flex;
+      background-color: #f0f0f0;
+      padding: 10px;
+      width: 200px; /* Kapsayıcı genişliği sınırlıdır */
+    }
+    .item {
+      background-color: #4CAF50;
+      color: white;
+      margin: 5px;
+      padding: 10px;
+      text-align: center;
+      flex-shrink: 1
+
+; /* Varsayılan küçülme */
+    }
+    .item2 {
+      flex-shrink: 0; /* Bu öğe küçülmez */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="item">1</div>
+    <div class="item item2">2</div>
+    <div class="item">3</div>
+  </div>
+</body>
+</html>
+```
+
+#### Flex Basis
+
+`flex-basis` özelliği, bir esnek öğenin başlangıç boyutunu belirler. Varsayılan değer `auto`'dur.
+
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flex Basis</title>
+  <style>
+    .container {
+      display: flex;
+      background-color: #f0f0f0;
+      padding: 10px;
+    }
+    .item {
+      background-color: #4CAF50;
+      color: white;
+      margin: 5px;
+      padding: 10px;
+      text-align: center;
+      flex-basis: 100px; /* Her öğe başlangıçta 100px genişliğinde olur */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+  </div>
+</body>
+</html>
+```
+
+Bu örneklerle, Flexbox'un temel özelliklerini ve kullanımını öğrenmiş oldunuz. Flexbox, özellikle tek boyutlu (satır veya sütun) düzenler için idealdir ve web tasarımında 
+esnek ve duyarlı yerleşimler oluşturmayı kolaylaştırır.
+
+
+*****************************************************************************************************************************************************************************************
+`display: grid` CSS özelliği, modern web tasarımında çok yönlü ve esnek düzenler oluşturmak için kullanılan güçlü bir araçtır. Grid Layout (Izgara Düzeni) olarak da
+ bilinen bu özellik, bir kapsayıcıyı (container) bir ızgara (grid) halinde böler ve bu ızgaranın içine yerleştirilen öğeleri (items) bu ızgara üzerinde konumlandırma ve 
+hizalama imkanı sağlar.
+
+### Temel Kullanım
+
+Bir HTML elementine `display: grid` özelliği verildiğinde, o element bir Grid Container olur. İçerisindeki öğeler (Grid Item'ler), `grid-template-columns` ve 
+`grid-template-rows` gibi özelliklerle belirlenen satır ve sütun tanımları üzerinde yer alırlar.
+
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grid Layout Temel Kullanımı</title>
+  <style>
+    .container {
+      display: grid;
+      grid-template-columns: 100px 100px 100px; /* Üç sütun tanımla */
+      grid-template-rows: 100px 100px; /* İki satır tanımla */
+      gap: 10px; /* Öğeler arasında 10px boşluk bırak */
+    }
+    .item {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+  </div>
+</body>
+</html>
+```
+
+### Özellikler ve Ayrıntılar
+
+- **grid-template-columns** ve **grid-template-rows**: Grid Container içindeki sütun ve satırları tanımlar. Değerler olarak piksel (px), yüzde (%) veya fr (fraksiyonel birim) kullanılabilir.
+
+- **gap**: Grid Item'ler arasında boşluk bırakır. `gap` özelliği, `grid-gap` veya `row-gap` / `column-gap` olarak da kullanılabilir.
+
+- **grid-column** ve **grid-row**: Grid Item'lerin hangi sütunlar veya satırlar arasında yer alacağını belirler. Örneğin, `grid-column: 1 / 3` ile bir öğenin 1. sütundan başlayıp 3. sütuna kadar genişleyeceğini belirtebilirsiniz.
+
+- **justify-items** ve **align-items**: Grid Item'lerin sırasıyla yatay ve dikey hizalamasını belirler. `justify-items: start`, `end`, `center` gibi değerler alabilir.
+
+- **justify-content** ve **align-content**: Grid Container içindeki tüm öğelerin sırasıyla yatay ve dikey hizalamasını belirler. `justify-content: start`, `end`, `center`, `space-between` gibi değerler alabilir.
+
+### Örnekler
+
+#### 1. Grid İle Basit Bir Düzen Oluşturma
+
+```html
+<style>
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; /* Üç sütun tanımla */
+    grid-template-rows: auto; /* Otomatik satır yüksekliği */
+    gap: 10px; /* Öğeler arasında 10px boşluk */
+  }
+  .item {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+</style>
+
+<div class="container">
+  <div class="item">1</div>
+  <div class="item">2</div>
+  <div class="item">3</div>
+</div>
+```
+
+#### 2. Grid İle Karmaşık Bir Düzen Oluşturma
+
+```html
+<style>
+  .container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Üç eşit genişlikte sütun */
+    grid-template-rows: 100px 200px; /* İki sabit yükseklikte satır */
+    gap: 20px; /* Öğeler arasında 20px boşluk */
+  }
+  .item {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  .item:nth-child(2) {
+    grid-column: span 2; /* İkinci öğe iki sütun kaplar */
+    grid-row: span 2; /* İkinci öğe iki satır kaplar */
+  }
+</style>
+
+<div class="container">
+  <div class="item">1</div>
+  <div class="item">2</div>
+  <div class="item">3</div>
+  <div class="item">4</div>
+</div>
+```
+
+Bu örneklerde, `display: grid` özelliği ile CSS Grid Layout kullanarak çok çeşitli düzenler oluşturabilirsiniz. Grid Layout, özellikle karmaşık ve çok boyutlu düzenlerde büyük esneklik sağlar ve modern web tasarımında yaygın olarak kullanılan bir tekniktir.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

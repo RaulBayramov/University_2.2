@@ -1,0 +1,245 @@
+jQuery, JavaScript'in işlevselliğini artıran ve kullanımını kolaylaştıran popüler bir kütüphanedir. jQuery ile DOM manipülasyonu, event handling, animasyonlar ve AJAX işlemleri oldukça basit hale gelir. İşte jQuery'nin nasıl kullanılacağına dair bazı temel örnekler:
+
+### jQuery'yi Dahil Etme
+
+Öncelikle, jQuery kütüphanesini projenize dahil etmeniz gerekir. Bunu, jQuery'nin CDN'inden doğrudan yükleyerek yapabilirsiniz.
+
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery Kullanımı</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <!-- İçerik -->
+</body>
+</html>
+```
+
+### Temel jQuery Seçicileri ve Manipülasyonu
+
+#### Element Seçimi
+
+jQuery, CSS seçicilerini kullanarak elementleri seçmenizi sağlar.
+
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery Kullanımı</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <div id="myDiv">Merhaba Dünya!</div>
+  <div class="myClass">Merhaba!</div>
+  <p>Bir paragraf.</p>
+  <p>Başka bir paragraf.</p>
+
+  <script>
+    $(document).ready(function() {
+      // ID ile element seçimi
+      var elementById = $('#myDiv');
+      console.log(elementById.html()); // "Merhaba Dünya!"
+
+      // Sınıf adı ile element seçimi
+      var elementsByClassName = $('.myClass');
+      console.log(elementsByClassName.html()); // "Merhaba!"
+
+      // Etiket adı ile element seçimi
+      var elementsByTagName = $('p');
+      elementsByTagName.each(function(index, element) {
+        console.log($(element).html());
+      });
+    });
+  </script>
+</body>
+</html>
+```
+
+#### Element Manipülasyonu
+
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery Kullanımı</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <div id="myDiv">Eski içerik</div>
+
+  <script>
+    $(document).ready(function() {
+      var element = $('#myDiv');
+
+      // İçeriği değiştirme
+      element.html('Yeni içerik');
+
+      // Stili değiştirme
+      element.css({
+        'color': 'red',
+        'fontSize': '20px'
+      });
+
+      // Öznitelik ekleme/değiştirme
+      element.attr('data-custom-attribute', 'customValue');
+
+      // Sınıf yönetimi
+      element.addClass('newClass');
+      element.removeClass('oldClass');
+      element.toggleClass('toggleClass');
+    });
+  </script>
+</body>
+</html>
+```
+
+### Event Handling
+
+jQuery ile olay dinleyicileri eklemek çok kolaydır.
+
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Handling</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <button id="myButton">Tıkla</button>
+  <p id="displayText">Bu yazı değişecek.</p>
+
+  <script>
+    $(document).ready(function() {
+      $('#myButton').click(function() {
+        $('#displayText').html('Butona tıklandı!');
+      });
+    });
+  </script>
+</body>
+</html>
+```
+
+### Dinamik Liste Ekleme
+
+Bu örnek, kullanıcıdan alınan girdilere göre dinamik olarak bir liste öğesi ekler.
+
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dinamik Liste Ekleme</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <input type="text" id="itemInput" placeholder="Liste öğesi ekle">
+  <button id="addItemButton">Ekle</button>
+  <ul id="itemList"></ul>
+
+  <script>
+    $(document).ready(function() {
+      $('#addItemButton').click(function() {
+        var newItemText = $('#itemInput').val();
+
+        if (newItemText !== '') {
+          var newItem = $('<li></li>').text(newItemText);
+          $('#itemList').append(newItem);
+          $('#itemInput').val(''); // Girdiyi temizle
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+```
+
+### Animasyonlar
+
+jQuery ile animasyon eklemek de oldukça basittir. İşte bazı temel animasyon örnekleri:
+
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery Animasyonları</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    #animateDiv {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <button id="startAnimation">Animasyonu Başlat</button>
+  <div id="animateDiv"></div>
+
+  <script>
+    $(document).ready(function() {
+      $('#startAnimation').click(function() {
+        $('#animateDiv').animate({
+          left: '250px',
+          height: '+=150px',
+          width: '+=150px'
+        }, 1000);
+      });
+    });
+  </script>
+</body>
+</html>
+```
+
+### AJAX
+
+jQuery, AJAX istekleri yapmak için basit bir arayüz sağlar. İşte bir örnek:
+
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery AJAX</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <button id="loadData">Verileri Yükle</button>
+  <div id="dataContainer"></div>
+
+  <script>
+    $(document).ready(function() {
+      $('#loadData').click(function() {
+        $.ajax({
+          url: 'https://jsonplaceholder.typicode.com/posts/1',
+          method: 'GET',
+          success: function(data) {
+            $('#dataContainer').html('<h3>' + data.title + '</h3><p>' + data.body + '</p>');
+          },
+          error: function() {
+            $('#dataContainer').html('Veriler yüklenemedi.');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
+```
+
+Bu örneklerde jQuery'nin temel kullanımını ve farklı işlevleri nasıl gerçekleştirdiğini gördünüz. jQuery, web geliştirme sürecini hızlandıran ve kolaylaştıran güçlü bir araçtır.
+

@@ -1,0 +1,1121 @@
+**************************
+lek1
+**************************
+
+ძირითადი ცნებები და განმარტებები
+1)მონაცემთა ბაზა ლოგიკურად დაკავშირებული მონაცემების ორგანიზებული კოლექცია
+2)მონაცემი არის არსებისა და მოვლენების შენახული წარმოდგენა, რომლებსაც გააჩნიათ კონკრეტული მნიშვნელობა და მნიშვნელოვანია მომხმარებლის გარემოში
+3)ინფორმაცია არის მონაცემი, რომელიც დამუშავდა იმგვარად, რომ გაიზარდა ამ მონაცემის გამომყენებლის ცოდნა.
+4)ჩვენ აღვნიშნეთ, რომ მონაცემი სასარგებლო ხდება მხოლოდ მაშინ თუ მას შეუსაბამებთ
+გარკვეულ კონტექსტს (შინაარსს). მონაცემისათვის კონტექსტის უზრუნველყოფის
+პირველად მექანიზმს წარმოადგენს მეტამონაცემი. მეტამონაცემი მონაცემია, რომელიც
+აღწერს საბოლოო მომხმარებლის მონაცემის თვისებას ან მახასიათებელს და ამ მონაცემის
+შინაარსს. ზოგიერთი ტიპიური მახასიათბებელი აღწერს მონაცემის სახელს, განმარტებას, 
+სიგრძეს (ზომას) და დასაშვებ მნიშვნელობას. მეტამონაცემი არწერს მონაცემის
+კონტექტსტს მონაცემთა წყაროს ჩათვლით, სადაც მონაცემი ინახება, რასაც მიეკუთვნება
+და რაშიც გამოიყენება. ხშირად მეტამონაცემები აღიქმება, როგორც „მონაცემები
+მონაცემთა შესახებ“. 
+Meta veri, bir veri parçasının özelliklerini ve bağlamını tanımlayan verilerdir. Diğer bir deyişle, "veri hakkında veri" olarak tanımlanabilir. Meta veri, veri setlerinin yönetimini, 
+bulunabilirliğini ve anlaşılırlığını kolaylaştırır. Meta veriler genellikle şu bilgileri içerir:
+1. **Tanımlayıcı Bilgiler**: Veri kümesinin adı, açıklaması, oluşturulma tarihi, oluşturucu kişi veya kurum.
+2. **Yapısal Bilgiler**: Verinin formatı, yapısı ve organizasyonu. Örneğin, bir dosyanın dosya tipi (PDF, CSV, vb.).
+3. **Yönetim Bilgileri**: Verinin nasıl ve ne zaman oluşturulduğu, değiştirildiği, erişildiği ve saklandığı bilgileri.
+4. **Teknik Bilgiler**: Verinin boyutu, dosya türü, veri tabanı şeması gibi teknik detaylar.
+5. **Erişim Bilgileri**: Verinin kimler tarafından erişilebileceği ve nasıl erişilebileceği bilgileri.
+6. **Kullanım Bilgileri**: Verinin nasıl kullanılacağı ve hangi amaçlar için uygun olduğu hakkında bilgiler.
+Örneğin, bir dijital fotoğrafın meta verisi, fotoğrafın çekildiği tarih, çekildiği cihazın marka ve modeli, fotoğrafın boyutu, çözünürlüğü, konumu (eğer GPS bilgisi mevcutsa) gibi 
+bilgileri içerebilir. Meta veriler, verilerin daha etkili bir şekilde yönetilmesini ve kullanılmasını sağlar.
+5)მონაცემთა ბაზის დანართი - გამოყენებითი პროგრამა
+(ან მასთან დაკავშირებული პროგრამების ნაკრები), 
+რომელიც გამოიყენება მონაცემთა ბაზის
+მომხმარებელთა სახელით მონაცემთა ბაზის მთელი
+რიგი აქტივობების შესასრულებლად (შექმნა, 
+წაკითხვა, განახლება და წაშლა).
+6)მონაცემთა მოდელი - გრაფიკული სისტემები, 
+რომლებიც გამოიყენება მონაცემების
+მახასიათებლებისა და ურთიერთკავშირის 
+გამოსახატავად.
+7)არსები (არსები) - არსები, რომელთა შესახებ ინფორმაციაც ბიზნესს აინტერესებს და ესაჭიროება.
+არსი (არსი) არსებით სახელს ჰგავს იმით, რომ ის აღწერს პიროვნებას, ადგილს, საგანს, მოვლენას ან კონცეფციას ბიზნესის გარემოში, რომლთა შესახებ ინფორმაცია უნდა ჩაიწეროს და შენარჩუნდეს.
+8)დამოკიდებულება (კავშირი) - კარგად სტრუქტურირებული მონაცემთა ბაზა ამყარებს
+ურთიერთდამოკიდებულებას (კავშირს) ორგანიზაციულ მონაცემებში არსებულ არსებს
+(არსებს) შორის ისე, რომ შესაძლებელი იყოს სასურველი ინფორმაციის მიღება. კავშირების
+უმეტესობა არის ერთი-ბევრთან (1: M) ან ბევრი-ბევრთან (M:N) ტიპის.
+9)რელაციური მონაცემთა ბაზა - მონაცემთა ბაზა, 
+რომელიც მონაცემებს წარმოადგენს ცხრილების
+ერთობლიობის სახით, რომელშიც მონაცემთა ყველა
+დამოკიდებულება წარმოდგენილია
+შემაკავშირებელი ცხრილების საერთო
+მნიშვნელობებით
+10)მონაცემთა ბაზის მართვის სისტემა (Database 
+Management System - DBMS) - პროგრამული სისტემა, 
+რომელიც გამოიყენება მომხმარებლის მონაცემთა
+ბაზების შესაქმნელად, შენარჩუნებისა და
+კონტროლირებადი წვდომის უზრუნველსაყოფად.
+11)მონაცემთა დამოუკიდებლობა - მონაცემთა
+აღწერილობის განცალკევება პროგრამებიდან, 
+რომლებიც იყენებენ ამ მონაცემებს.
+12)მომხმარებლის ხედი - მონაცემთა ბაზის ზოგიერთი
+ნაწილის ლოგიკური აღწერა, რომელსაც
+მომხმარებელი მოითხოვს გარკვეული დავალების
+შესასრულებლად.
+13)ICT (Information and Communication Technology) აღნიშნავს ინფორმაციულ და საკომუნიკაციო ტექნოლოგიებს, რომლებიც გამოიყენება ინფორმაციის დამუშავებასა და კომუნიკაციის გასაუმჯობესებლად. 
+14)მონაცემთა ბაზის შემუშავების "ქვემოდა-ზევით" (Bottom-up) მიდგომა გულისხმობს მონაცემთა ბაზის დიზაინის პროცესის დაწყებას ყველაზე დეტალური, ძირითადი ელემენტებიდან და შემდეგ სისტემის უფრო მაღალ, 
+აბსტრაქტულ დონეებზე გადანაცვლებას. ეს მიდგომა გულისხმობს მონაცემთა ელემენტების დეტალური ანალიზიდან დაწყებას და მათი გაერთიანებით კომპლექსური სისტემის შექმნას.
+15)Systems Development Life Cycle (SDLC), yani Sistem Geliştirme Yaşam Döngüsü, bir bilgi sistemi veya yazılım projesinin geliştirilmesi, uygulanması ve sürdürülmesi
+ süreçlerini düzenleyen bir metodolojidir. SDLC, projelerin zamanında, bütçeye uygun ve belirlenen gereksinimleri karşılayacak şekilde tamamlanmasını sağlamak amacıyla
+ izlenen aşamaları tanımlar.
+
+**SDLC'nin Temel Aşamaları:**
+
+1. **Gereksinim Analizi (Requirement Analysis)**: Bu aşamada, projenin gereksinimleri belirlenir. Kullanıcı ihtiyaçları ve iş gereksinimleri toplanır ve analiz edilir.
+ Gereksinimler belgelendirilir ve bir gereksinim spesifikasyonu oluşturulur.
+
+2. **Sistem Tasarımı (System Design)**: Gereksinimlere dayanarak sistemin genel yapısı tasarlanır. Bu aşama, sistemin mimarisini, veri yapısını, kullanıcı arabirimlerini
+ ve diğer bileşenleri kapsar. Sistem tasarımı, hem yüksek düzeyde (genel sistem tasarımı) hem de düşük düzeyde (ayrıntılı bileşen tasarımı) yapılabilir.
+
+3. **Uygulama ve Kodlama (Implementation and Coding)**: Tasarım aşamasında belirlenen planlara göre sistemin yazılım bileşenleri geliştirilir. Kodlama süreci, yazılımın
+ çeşitli modüllerinin ve bileşenlerinin oluşturulmasını içerir.
+
+4. **Test Etme (Testing)**: Geliştirilen yazılımın doğruluğunu, güvenilirliğini ve performansını sağlamak için çeşitli testler yapılır. Birim testleri, entegrasyon
+ testleri, sistem testleri ve kabul testleri bu aşamada gerçekleştirilir.
+
+5. **Kurulum (Deployment)**: Yazılım, gerçek çalışma ortamına kurulur ve kullanıcılar tarafından kullanılmaya başlanır. Bu aşamada, sistemin doğru çalıştığından ve 
+kullanıcı gereksinimlerini karşıladığından emin olunmalıdır.
+
+6. **Bakım (Maintenance)**: Sistem kullanıma girdikten sonra, zaman içinde güncellemeler, hata düzeltmeleri ve iyileştirmeler gerekebilir. Bu aşama, yazılımın yaşam 
+döngüsü boyunca devam eder ve sistemin düzgün çalışmasını sağlamaya yönelik faaliyetleri içerir.
+
+**SDLC'nin Avantajları:**
+
+1. **Planlı ve Disiplinli Yaklaşım**: Proje yönetimine yapılandırılmış bir yaklaşım sunar ve her aşamanın belirli hedefleri ve çıktıları vardır.
+2. **Risk Yönetimi**: Her aşamada riskler belirlenir ve yönetilir, bu da proje başarısını artırır.
+3. **Kalite Güvencesi**: Sürekli test ve doğrulama süreçleri, yazılımın kalite standartlarına uygun olmasını sağlar.
+4. **Kullanıcı Katılımı**: Gereksinim analizi ve kabul testleri aşamalarında kullanıcıların katılımı sağlanır, bu da kullanıcı memnuniyetini artırır.
+
+**SDLC'nin Dezavantajları:**
+
+1. **Esneklik Eksikliği**: Geleneksel SDLC modelleri, özellikle Waterfall (Şelale) modeli, değişikliklere karşı esnek değildir ve gereksinim değişikliklerine uyum sağlamak zor olabilir.
+2. **Uzun Geliştirme Süreci**: Tüm aşamaların tamamlanması zaman alabilir ve bu da projenin uzun sürede tamamlanmasına yol açabilir.
+3. **Yüksek Maliyet**: Ayrıntılı planlama ve belgelendirme gereksinimleri nedeniyle maliyetler artabilir.
+
+SDLC, yazılım geliştirme projelerinde yaygın olarak kullanılan ve projelerin başarılı bir şekilde tamamlanmasını sağlayan etkili bir metodolojidir. Farklı projeler için
+ çeşitli SDLC modelleri (örneğin, Şelale modeli, V modeli, Spiral modeli, Agile metodolojisi) kullanılabilir ve her bir modelin kendine özgü avantajları ve dezavantajları
+ vardır.
+
+16)"Yukarıdan aşağıya" (Top-down) ve "aşağıdan yukarıya" (Bottom-up) yaklaşımlar, veri tabanı veya sistem tasarımında kullanılan iki farklı stratejidir. Her bir yaklaşım,
+ sistemin veya veritabanının tasarımı ve geliştirilmesi sürecinde farklı bir yöntem izler.
+
+### Yukarıdan Aşağıya Yaklaşım (Top-down Approach)
+
+**Tanım:**
+Yukarıdan aşağıya yaklaşım, sistemin veya veritabanının genel yapısını belirleyerek başlar ve daha sonra detaylara inilir. İlk olarak, sistemin veya veritabanının yüksek
+ düzeyde bir tasarımı yapılır ve bu tasarım adım adım daha küçük bileşenlere ve detaylara bölünür.
+
+**Adımlar:**
+1. **Genel Tasarım:** Sistem veya veritabanının genel yapısı ve ana bileşenleri tanımlanır. Bu aşamada, sistemin amaçları, işlevleri ve büyük ölçüde nasıl çalışacağı
+ belirlenir.
+2. **Alt Sistemler ve Modüller:** Genel yapıdan başlayarak alt sistemler ve modüller tanımlanır. Her alt sistem veya modül, sistemin belirli bir işlevini veya bölümünü
+ kapsar.
+3. **Detay Tasarımı:** Her bir alt sistem veya modül daha da detaylandırılarak, spesifik bileşenler ve veri yapıları belirlenir.
+4. **Gerçekleştirme:** Detaylı tasarımdan hareketle, sistemin veya veritabanının bileşenleri kodlanır ve entegre edilir.
+5. **Test ve Bakım:** Sistem veya veritabanı test edilir, hatalar düzeltilir ve gerekli bakım yapılır.
+
+**Avantajları:**
+- **Net Bir Vizyon:** Projenin başlangıcında sistemin genel yapısı ve amaçları net bir şekilde belirlenir.
+- **Kolay Yönetim:** Büyük projelerde daha yönetilebilir bir yaklaşım sağlar.
+
+**Dezavantajları:**
+- **Esneklik Eksikliği:** Gereksinimlerde veya tasarımda büyük değişiklikler yapmak zor olabilir.
+- **Detaylar Gözden Kaçabilir:** Üst düzey tasarım sırasında bazı detaylar atlanabilir ve sonradan sorunlara yol açabilir.
+
+### Aşağıdan Yukarıya Yaklaşım (Bottom-up Approach)
+
+**Tanım:**
+Aşağıdan yukarıya yaklaşım, en temel veri elemanlarından veya bileşenlerden başlayarak genel yapıya doğru ilerler. İlk olarak, detaylı bileşenler ve modüller geliştirilir
+ ve ardından bu bileşenler bir araya getirilerek daha büyük yapılar oluşturulur.
+
+**Adımlar:**
+1. **Detaylı Bileşenlerin Tanımlanması:** Temel veri elemanları, bileşenler veya modüller tanımlanır ve geliştirilir.
+2. **Bileşenlerin Gruplandırılması:** Bu detaylı bileşenler gruplandırılarak alt sistemler veya daha büyük modüller oluşturulur.
+3. **Alt Sistemlerin Entegrasyonu:** Alt sistemler ve modüller bir araya getirilerek sistemin genel yapısı oluşturulur.
+4. **Genel Tasarımın Oluşturulması:** Alt sistemlerden hareketle genel sistem tasarımı belirlenir.
+5. **Test ve Bakım:** Sistem veya veritabanı test edilir, hatalar düzeltilir ve gerekli bakım yapılır.
+
+**Avantajları:**
+- **Esneklik:** Detaylı bileşenler üzerinde değişiklik yapmak daha kolaydır ve tasarımın ilerleyen aşamalarında entegrasyon sırasında düzeltmeler yapılabilir.
+- **Detaylı İnceleme:** Her bir bileşen detaylı olarak incelendiğinden, hatalar ve eksiklikler erken aşamada tespit edilebilir.
+
+**Dezavantajları:**
+- **Genel Vizyon Eksikliği:** Projenin başlangıcında genel bir vizyon olmayabilir ve bu da entegrasyon sırasında sorunlara yol açabilir.
+- **Entegrasyon Zorlukları:** Ayrı ayrı geliştirilmiş bileşenlerin entegrasyonu zor olabilir ve beklenmedik uyumsuzluklar ortaya çıkabilir.
+
+Her iki yaklaşımın da kendine özgü avantajları ve dezavantajları vardır ve proje gereksinimlerine, ekibin deneyimine ve mevcut kaynaklara bağlı olarak uygun bir yaklaşım 
+seçilir.
+
+17)sami ciritadi skema:
+1. გარე სქემა - ეს არის მონაცემთა ბაზის მომხმარებელი მენეჯერებისა და სხვა
+თანამშრომლების წარმოჩენები (ხედები), როგორც ნაჩვენებია ნახ. 1-9-ში, გარე სქემა
+შეიძლება წარმოდგენილი იყოს როგორც საწარმოს მონაცემთა მოდელის კომბინაცია
+(ზემოდან-ქვემოთ ხედი) და დეტალური (ან ქვემოდან-ზემოთ) მომხმარებლის ხედების
+კრებული.
+2. კონცეპტუალური სქემა - ეს სქემა აერთიანებს სხვადასხვა გარე წარმოჩენას საწარმოს
+მონაცემების ერთ, თანმიმდევრულ და ყოვლისმომცველ განსაზღვრებად. 
+კონცეპტუალური სქემა წარმოადგენს მონაცემთა არქიტექტორის ან მონაცემთა
+ადმინისტრატორის ხედვას.
+3. შიდა სქემა - შიდა სქემა შედგება ორი ცალკეული სქემისგან: ლოგიკური სქემა და
+ფიზიკური სქემა. ლოგიკური სქემა წარმოადგენს მონაცემთა წარმოების ტექნოლოგიის
+ტიპის მონაცემების წარმოდგენას (მაგალითად, რელაციური). ფიზიკური სქემა აღწერს, 
+თუ როგორ ხდება მონაცემების წარმოდგენა და შენახვა მეორად საცავში, კონკრეტული
+DBMS– ის (მაგ., Oracle) გამოყენებით.
+
+
+**************************
+ლექცია - 2
+მონაცემთა მოდელირება მონაცემთა ბაზის ფუნქციონირების
+გარემოსათვის (ორგანიზაციისათვის)
+**************************
+1) ცხრილი 2-1 . ბიზნესის (საქმიანობის) კარგი წესები
+მახასიათებელი განმარტება
+დეკლარაციული-> ბიზნესის წესი არის პოლიტიკაზე განაცხადი, და არა ის, თუ როგორ
+ხდება პოლიტიკის მირება ან განხორციელება; წესი არ აღწერს
+პროცესს ან განხორციელებას, არამედ აღწერს იმას, თუ რას ამოწმებს
+პროცესი.
+ზუსტი-> შესაბამისი ორგანიზაციისათვის წესს მხოლოდ ერთი
+ინტერპრეტაცია უნდა ჰქონდეს ყველა დაინტერესებული
+პირისათვის და მისი მნიშვნელობა უნდა იყოს მკაფიო.
+ატომური-> ბიზნესის წესი აღნიშნავს ერთ განაცხადს და არა რამდენიმეს; წესის
+არცერთი ნაწილი არ შეიძლება იდგეს განყენებულ წესად (ე.ი. წესი
+განუყოფელი, მაგრამ საკმარისია).
+თანმიმდევრული-> ბიზნესის წესი შინაგანად უნდა იყოს არაწინააღდეგობრივი (ანუ არ
+უნდა შეიცავდეს ურთიერთსაწინააღმდეგო განცხადებებს) და უნდა
+შეესაბამებოდეს (და არ ეწინააღმდეგებოდეს) სხვა წესებს.
+გამომხატველობითი-> ბიზნესის წესი უნდა იყოს ჩამოყალიბებული ბუნებრივ ენაზე,
+მაგრამ ეს უნდა იყოს ასევე წარმოდგენილი სტრუქტურულ
+ბუნებრივ ენაზე ისე, რომ არ მოხდეს არასწორი ინტერპრეტაცია.
+მკაფიო-> ბიზნესის წესები არ არის ჭარბი, მაგრამ ბიზნესის წესი შეიძლება
+ეხებოდეს სხვა წესებს (განსაკუთრებით განმარტებებს).
+ბიზნესზე ორიენტირებული -> ბიზნესის წესი ფორმულირებულია ისეთი ტერმინებით, რომელიც
+ბიზნესმენებს ესმით, და რადგან ეს წარმოადგენს ბიზნესის
+პოლიტიკის დებულებას, მხოლოდ ბიზნესმენებს შეუძლიათ
+შეცვალონ ან გააუქმონ წესი; ამრიგად, ბიზნესის წესი ბიზნესს
+2)ფაქტი არის კავშირი ორ ან მეტ ტერმინს შორის. ფაქტი დასტურდება, როგორც მარტივი
+დეკლარაციული განცხადება, რომელიც დაკავშირებულია ტერმინებთან.
+
+**************************
+lab- 2
+**************************
+1)სისტემური მონაცემთა ბაზები ავტომატურად იქმნება SQL Server-ის დაყენებისას. მათ იყენებს როგორც
+SSMS ასევე სხვა SQL Server API-ები და ხელსაწყოები, ამიტომ არ არის რეკომენდებული სისტემური
+მონაცემთა ბაზების ხელით შეცვლა:
+• master: მონაცემთა ბაზა ინახავს სისტემის დონის ყველა ინფორმაციას SQL Server-ის
+ინსტანსზე. იგი მოიცავს მეტამონაცემებს, როგორიცაა შესვლის (Logins) ანგარიშები, ბოლო
+წერტილები (endpoints), დაკავშირებული სერვერები და სისტემის კონფიგურაციის პარამეტრები.
+• model: სამოდელო მონაცემთა ბაზა გამოიყენება როგორც შაბლონი SQL Server-ის ინსტანციაზე
+შექმნილი ყველა მონაცემთა ბაზისთვის.
+• msdb: ამ მონაცემთა ბაზას იყენებს SQL Server Agent-ი შეტყობინებების (alerts) და სამუშაოების
+(jobs) დაგეგმვისთვის და ასევე მას იყენებენ SQL Server Management Studio, Service Broker და
+Database Mail.
+• tempdb: მონაცემთა ბაზა გამოიყენება დროებითი ობიექტების, შუალედური შედეგების და შიდა
+ობიექტების შესანახად, რომლებსაც მონაცემთა ბაზის ძრავა ქმნის.
+მომხმარებლის მიერ განსაზღვრული მონაცემთა ბაზები იქმნება მონაცემთა ბაზის მომხმარებლის მიერ
+T-SQL ან SSMS გამოყენებით აპლიკაციის ან/და სხვა მონაცემების შესანახად. შესაძლებელია მაქსიმუმ
+32767 მონაცემთა ბაზა შეიქმნას SQL Server ინსტანციაში.
+2) ძალიან ხშირად პროგრამისტები მიიჩნევენ რომ ოპტიმალურიცაა
+ბაზისთვის გაჩუმების პრინციპით გამოყოლი ორი ფაილი: ერთი ძირითადი ფაილი მონაცემებისათვის-
+.mdf და მეორე ტრანზაქციის ლოგი .ldf.
+3)Bu dosya uzantıları Microsoft SQL Server veritabanı dosyalarını belirtir. İşlevleri şu şekildedir:
+
+1. **.mdf (Master Data File)**: Bu dosya, SQL Server veritabanının ana veri dosyasıdır. Tüm tablo verileri, dizinler ve diğer yapılar bu dosyada depolanır.
+ Bir SQL Server veritabanı oluşturulduğunda, .mdf dosyası varsayılan olarak oluşturulur. Bir veritabanının .mdf dosyası tek bir dosya veya birden fazla dosya olabilir.
+
+2. **.ldf (Log Data File)**: Bu dosya, SQL Server veritabanının işlem günlüğü dosyasıdır. SQL Server'da gerçekleşen tüm işlemler bu dosyaya kaydedilir.
+ İşlem günlüğü, veritabanı işlemlerinin tamamlanmasını güvence altına alır ve geri alınabilirlik sağlar. .ldf dosyası, veritabanı işlemlerinin düzgün bir şekilde kaydedilmesini ve yönetilmesini sağlar.
+
+3. **.ndf (Secondary Data File)**: Bu dosya, SQL Server veritabanının ikincil veri dosyasıdır. .mdf dosyası gibi, .ndf dosyası da veri depolamak için kullanılır. 
+SQL Server veritabanının büyüklüğünü artırmak veya performansı artırmak için ek veri dosyaları (.ndf) oluşturulabilir. Bu dosyalar, .mdf dosyasının yanında veya farklı disk sürücülerinde depolanabilir.
+4)შესაბამისი ბაზის მდგომარეობა სერვერზე შეგიძლიათ ნახოთ
+EXEC sp_helpdb [Cinema] ბრძანებით.
+უკვე შექმნილი ფაილების მოდიფიკაცია შესაძლებელია MODIFY ბრძანებით, თუმცა მანამდე საჭიროა
+გავხსნათ ბაზის რედაქტირების რეჟიმი ALTER ბრძანებით. ამიერიდან თუ გვენდომება რაიმე ახალი ობიექტის
+შექმნა გამოვიყენებთ ჩვენთვის უკვე ნაცნობ ბრძანება CREATE-ს. ხოლო წასაშლელად ბრძანება DROP-ს.
+Create ობიექტის შექმნა
+Drop ობიექტის წაშლა
+Alter ობიექტის ცვლილება
+ამ შემთხვევაში ხდება შიგთავსის ცვლილება და შესაძლებელია გამოყენებული იყოს
+ქვებრძანებები ძირითადთან ერთად:
+Add ქვეობიექტის ჩამატება
+Modify ქვეობიექტის რედაქტირება
+Remove ქვეობიექტის წაშლა
+5)Filegroup, SQL Server'da veritabanı dosyalarını mantıksal olarak gruplamak için kullanılan bir yapıdır. Filegroup'lar, veritabanı dosyalarını yönetmeyi ve performansı
+ artırmayı kolaylaştırır. Veritabanındaki dosyalar (mdf, ndf) bir veya daha fazla filegroup'a ait olabilir.
+
+### Filegroup Türleri ve Değerleri
+
+1. **Primary Filegroup (Birincil Dosya Grubu)**
+   - Her veritabanında en az bir birincil dosya grubu bulunur.
+   - `PRIMARY` olarak adlandırılır.
+   - Veritabanının başlangıçta oluşturulması sırasında belirtilir.
+   - Veritabanının birincil dosya (mdf) ve diğer veritabanı meta verileri bu grupta yer alır.
+
+2. **Secondary Filegroup (İkincil Dosya Grubu)**
+   - Kullanıcının belirleyebileceği ek dosya gruplarıdır.
+   - Özelleştirilmiş adlar verilebilir.
+   - Büyük veritabanlarında performans ve yönetim kolaylığı sağlamak için kullanılır.
+   - İkincil dosya gruplarına eklenen dosyalar `ndf` uzantılıdır.
+
+### Filegroup Oluşturma ve Kullanma Örnekleri
+
+#### Primary Filegroup
+Primary filegroup, veritabanı oluşturulurken otomatik olarak oluşturulur ve genellikle veritabanının ana veri dosyasını (mdf) içerir.
+
+```sql
+CREATE DATABASE [MyDatabase]
+ON PRIMARY
+(
+    NAME = N'MyDatabase',
+    FILENAME = N'D:\MyFiles\MyDatabase.mdf',
+    SIZE = 8192KB,
+    MAXSIZE = UNLIMITED,
+    FILEGROWTH = 65536KB
+)
+```
+
+#### Secondary Filegroup
+Secondary filegroup'lar, veritabanı oluşturulurken veya sonradan eklenebilir. Bu dosya grupları, veritabanındaki büyük veri kümelerini daha iyi yönetmek ve performansı
+ optimize etmek için kullanılır.
+
+```sql
+CREATE DATABASE [MyDatabase]
+ON PRIMARY
+(
+    NAME = N'MyDatabase',
+    FILENAME = N'D:\MyFiles\MyDatabase.mdf',
+    SIZE = 8192KB,
+    MAXSIZE = UNLIMITED,
+    FILEGROWTH = 65536KB
+),
+FILEGROUP [SecondaryGroup]
+(
+    NAME = N'MyDatabase_Secondary',
+    FILENAME = N'D:\MyFiles\MyDatabase_Secondary.ndf',
+    SIZE = 1024KB,
+    MAXSIZE = UNLIMITED,
+    FILEGROWTH = 65536KB
+)
+```
+
+### Varolan Veritabanına Filegroup Ekleme
+
+Mevcut bir veritabanına yeni bir filegroup eklemek ve dosya eklemek için şu adımları izleyebilirsiniz:
+
+1. Yeni bir filegroup ekleyin.
+2. Yeni dosyayı filegroup'a ekleyin.
+
+```sql
+ALTER DATABASE [MyDatabase]
+ADD FILEGROUP [NewFileGroup];
+
+ALTER DATABASE [MyDatabase]
+ADD FILE
+(
+    NAME = N'MyDatabase_NewFile',
+    FILENAME = N'D:\MyFiles\MyDatabase_NewFile.ndf',
+    SIZE = 1024KB,
+    MAXSIZE = UNLIMITED,
+    FILEGROWTH = 65536KB
+) TO FILEGROUP [NewFileGroup];
+```
+
+### Filegroup Kullanımının Avantajları
+
+- **Performans:** Veritabanı dosyalarının farklı disklerde veya disk bölümlerinde dağıtılması, I/O performansını artırabilir.
+- **Yönetim:** Büyük veritabanlarında veri dosyalarının yönetimini kolaylaştırır.
+- **Yedekleme ve Kurtarma:** Belirli filegroup'ların yedeklenmesi ve gerektiğinde geri yüklenmesi, veritabanı yönetimini esnek hale getirir.
+
+### Filegroup'larla Çalışırken Dikkat Edilmesi Gerekenler
+
+- **Dikkatli Planlama:** Filegroup'ların ve veri dosyalarının nasıl yapılandırılacağına karar verirken dikkatli planlama yapılmalıdır.
+- **Disk Dağılımı:** Veritabanı dosyalarının farklı disklerde dağıtılması, veri okuma ve yazma performansını artırabilir.
+- **Büyüme Ayarları:** Dosyaların otomatik büyüme ayarları, disk alanının etkili kullanımını sağlamak için dikkatle yapılandırılmalıdır.
+
+Filegroup kullanımı, veritabanlarının daha verimli yönetilmesine ve performansın artırılmasına yardımcı olur. Uygun planlama ve yapılandırma ile büyük ve karmaşık 
+veritabanları daha kolay yönetilebilir hale gelir.
+
+**************************
+lek- 3
+**************************
+1)არსი (სუბიექტი) არის პირი, ადგილი, ობიექტი, ღონისძიება (მოვლენა) ან კონცეფცია
+მომხმარებლის გარემოში, რომლის შესახებ ორგანიზაციას სურს
+შეინარჩუნოს/შეინახოს/დაამუშაოს მონაცემები.
+2) არსის ეგზემპლარი არის არსის ტიპის ერთი
+შემთხვევა. ტიპი აღწერილია მონაცემთა ბაზაში მხოლოდ ერთხელ (მეტამონაცემების გამოყენებით),
+ხოლო ამ ტიპის ობიექტის მრავალი შემთხვევა შეიძლება წარმოდგენილი იყოს მონაცემთა
+ბაზაში შენახული მონაცემებით. მაგალითად, უმეტეს ორგანიზაციებში არის ერთი EMPLOYEE
+არსის ტიპი, მაგრამ მონაცემთა ბაზაში შეიძლება ინახებოდეს ასობით (ან თუნდაც ათასობით)
+ამ არსის ტიპის შემთხვევა. ჩვენ ხშირად ვიყენებთ ტერმინს „არსი“, ვიდრე „არსის
+ეგზემპლარს“, როდესაც მნიშვნელობა ნათელია ჩვენი განხილვის კონტექსტიდან.
+3)ძლიერი და სუსტი სახეობის არსის ტიპები
+ორგანიზაციაში იდენტიფიცირებული ძირითადი არსების უმეტესობა კლასიფიცირდება
+როგორც ძლიერი სახეობი არსის ტეპები. ძლიერი არსი (სუბიექტი) არის ის არსი, რომელიც
+არსებობს სხვა ტიპის არსისაგან (სუბიექტისაგან) დამოუკიდებლად (მონაცემთა
+მოდელირების ზოგი პროგრამული უზრუნველყოფა, სინამდვილეში, იყენებს ტერმინს
+დამოუკიდებელი არსი/სუბიექტი). მაგალითებად გამოდგება STUDENT (სტუდენტი),
+EMPLOYEEE (თანამშრომელი), AUTOMOBILE (ავტომობილი). ძლიერი ტიპის არსებს
+ყოველთვის აქვთ უნიკალური მახასიათებელი (ე.წ. იდენტიფიკატორი) - ეს არის ატრიბუტი
+ან ატრიბუტების კომბინაცია, რომელიც ცალსახად გამოყოფს ამ არსის თითოეულ მოვლენას
+(ეგზემპლარს).
+ამის საპირისპიროდ, სუსტი სახეობის არსის ტიპი არის ისეთი არსის ტიპი, რომლის არსებობა
+დამოკიდებულია სხვა არსზე (სუბიექტზე). (მონაცემთა მოდელირების ზოგი პროგრამა,
+სინამდვილეში, იყენებს ტერმინს დამოკიდებული არსი/სუბიექტი.) E-R დიაგრამაში სუსტი
+ტიპის არსს (სუბიექტს) არ აქვს ბიზნესისთვის მნიშვნელობა იმ არსის (სუბიექტის გარეშე),
+რომელზეც ის დამოკიდებულია. არსს, რომელზეც დამოკიდებულია სუსტი არსი ეწოდება
+საიდენტიფიკაციო მფლობელი (ან მოკლედ უბრალოდ მფლობელი). სუსტი არსს, როგორც
+წესი, არ აქვს საკუთარი იდენტიფიკატორი. 
+4) სუსტი არსის ტიპსა და მის
+მფლობელს შორის კავშირს საიდენტიფიკაციო კავშირი ეწოდება.
+5)მონაცემთა ობიექტების სახელდებისა და განსაზღვრის ზოგადი სახელმძღვანელო
+მითითებების გარდა, არსებობს რამდენიმე სპეციალური სახელმძღვანელო მითითება არსების
+ტიპების სახელდებისათვის, რომლებიც შემდეგში მდგომარეობს:
+ არსის (სუბიექტის) ტიპის სახელი არის მხოლობითი არსებითი სახელი
+არსის ტიპის სახელი უნდა იყოს სპეციფიკური ორგანიზაციისთვის
+არსის ტიპის სახელი უნდა იყოს ლაკონური და რაც შეიძლება ნაკლებსიტყვიანი.
+შესაძლებელია თითოეული ტიპის არსის სახელისთვის მიეთითოს აბრევიატურა, ან მოკლე
+სახელი, და ეს საკმარისია E-R დიაგრამაში მისი გამოყენებისათვის; აბრევიატურები უნდა
+ემორჩილებოდეს ყველა იმავე წესს, როგორც არსების სრული სახელები.
+ ღონისძიების (მოვლენების) ტიპის არსებს (სუბიექტებს) უნდა დაერქვას ღონისძიების
+შედეგის და არა ღონისძიების აქტივობის ან პროცესის შესაბამისი სახელი. 
+ერთი და იგივე ტიპის არსებისათვის გამოყენებული სახელი უნდა იყოს იგივე ყველა E-R
+დიაგრამებზე, რომელზეც ჩანს ეს არსის ტიპი.
+6)არსის (სუბიექტის) თითოეულ ტიპს აქვს მასთან დაკავშირებული ატრიბუტების ნაკრები.
+ატრიბუტი არის არსის ტიპის თვისება ან მახასიათებელი, რომელიც ორგანიზაციის ინტერესს
+წარმოადგენს. ასევე შესაძლებელია ატრიბუტი ჰქონდეს ზოგიერთ ტიპის კავშირებისაც.
+ამრიგად, ატრიბუტი არის არსებითი სახელი.
+7)სავალდებულო და არასავალდებულო ატრიბუტები
+პოტენციურად თითოეულ არსს (ან არსის ტიპის ეგზემპლარს) გააჩნია მნიშვნელობა,
+რომელიც ასოცირდება ამ ტიპის არსის თითოეულ ატრიბუტთან. ატრიბუტს, რომელიც უნდა
+არსებობდეს თითოეული არსის ეგზემპლარისათვის ეწოდება სავალდებულო ატრიბუტი,
+ხოლო ატრიბუტს, რომელსაც შეიძლება არ ჰქონდეს მნიშვნელობა, არასავალდებულო
+ატრიბუტი ეწოდება.
+8)### მარტივი და კომპოზიტიური ატრიბუტები (Simple and Composite Attributes)
+
+#### მარტივი ატრიბუტები (Simple Attributes)
+- მარტივი ატრიბუტები (ან პრიმიტიული ატრიბუტები) არ არიან გაყოფილი უფრო მცირე ნაწილებად.
+- თითოეული მარტივი ატრიბუტი ერთ გარკვეულ ღირებულებას შეიცავს.
+
+**მაგალითი:**
+- `სახელი` (Name)
+- `ასაკი` (Age)
+
+#### კომპოზიტიური ატრიბუტები (Composite Attributes)
+- კომპოზიტიური ატრიბუტები შედგებიან რამდენიმე მარტივი ატრიბუტისგან.
+- ისინი შეიძლება გაიყოს კომპონენტ ნაწილებად.
+
+**მაგალითი:**
+- `მისამართი` (Address) შეიძლება დაიყოს კომპონენტებად, როგორიცაა `ქუჩა` (Street), `ქალაქი` (City), `რეგიონი` (State), და `ფოსტალიონი კოდი` (ZIP Code).
+
+### ერთმნიშვნელოვანი და მრავალმნიშვნელოვანი ატრიბუტები (Single-valued and Multi-valued Attributes)
+
+#### ერთმნიშვნელოვანი ატრიბუტები (Single-valued Attributes)
+- ერთმნიშვნელოვანი ატრიბუტები ერთი და მხოლოდ ერთი ღირებულებას ინახავენ თითოეული სუბიექტისთვის.
+
+**მაგალითი:**
+- `სოციალური უსაფრთხოების ნომერი` (Social Security Number)
+- `დაბადების თარიღი` (Date of Birth)
+
+#### მრავალმნიშვნელოვანი ატრიბუტები (Multi-valued Attributes)
+- მრავალმნიშვნელოვანი ატრიბუტები ერთი ან მეტი ღირებულების შენახვას შეუძლებენ ერთი სუბიექტისთვის.
+
+**მაგალითი:**
+- `ტელეფონის ნომრები` (Phone Numbers) - ერთი ადამიანი შეიძლება ჰქონდეს რამდენიმე ტელეფონის ნომერი.
+- `ელ. ფოსტის მისამართები` (Email Addresses) - ერთი ადამიანი შეიძლება გამოიყენოს რამდენიმე ელ. ფოსტის მისამართი.
+
+### შენახული და ნაწარმოები ატრიბუტები (Stored and Derived Attributes)
+
+#### შენახული ატრიბუტები (Stored Attributes)
+- შენახული ატრიბუტები არის ატრიბუტები, რომლებიც პირდაპირ ინახება მონაცემთა ბაზაში.
+- მათი მნიშვნელობები არ არის დინამიურად გამოთვლილი.
+
+**მაგალითი:**
+- `სახელი` (Name)
+- `დაბადების თარიღი` (Date of Birth)
+
+#### ნაწარმოები ატრიბუტები (Derived Attributes)
+- ნაწარმოები ატრიბუტები არის ატრიბუტები, რომლებიც დინამიურად გამოთვლილია სხვა ატრიბუტების მნიშვნელობებიდან.
+- ისინი პირდაპირ არ ინახება მონაცემთა ბაზაში.
+
+**მაგალითი:**
+- `ასაკი` (Age) შეიძლება იყოს ნაწარმოები ატრიბუტი, რომელიც გამოთვლილია `დაბადების თარიღიდან` (Date of Birth).
+- `მთლიანი შემოსავალი` (Total Income) შეიძლება იყოს გამოთვლილი `საბაზისო ხელფასიდან` (Base Salary) და `ბონუსებიდან` (Bonuses).
+
+### შეჯამება
+
+- **მარტივი ატრიბუტები** არის ატრიბუტები, რომლებიც არ არიან გაყოფილი ნაწილებად, ხოლო **კომპოზიტიური ატრიბუტები** შედგებიან რამდენიმე კომპონენტისგან.
+- **ერთმნიშვნელოვანი ატრიბუტები** ინახავენ მხოლოდ ერთ ღირებულებას თითოეული სუბიექტისთვის, ხოლო **მრავალმნიშვნელოვანი ატრიბუტები** ინახავენ რამდენიმე ღირებულებას.
+- **შენახული ატრიბუტები** პირდაპირ ინახება მონაცემთა ბაზაში, ხოლო **ნაწარმოები ატრიბუტები** დინამიურად გამოთვლილია სხვა ატრიბუტებიდან.
+
+9)იდენტიფიკატორი არის ატრიბუტი (ან ატრიბუტების კომბინაცია), რომლის მნიშვნელობა
+განასხვავებს არსის ტიპის ინდივიდუალურ შემთხვევებს. არსის ტიპის ერთიდაიგივე არცერთ
+ორ ეგზემპლარს არ შეიძლება ჰქონდეს ერთიდაიგივე მნიშვნელობის იდენტიფიკატორი
+ატრიბუტი. ადრე მოყვანილ მაგალითსი STUDENT (სტუდენტი) ტიპის არსის
+იდენტიფიკატორი არის Student ID, ხოლო AUTOMOBILE- ის იდენტიფიკატორი Vehicle ID.
+გავითვალისწინოთ, რომ ატრიბუტი, როგორიცაა Student Name, არ არის იდენტიფიკატორი,
+რადგან ბევრ სტუდენტს შეიძლება ჰქონდეს იგივე სახელი და სტუდენტებს, ისევე როგორც
+ყველა ადამიანს, შეუძლიათ შეცვალონ თავიანთი სახელები. არსებობს კანდიდატი
+ინედტიფიკატორის ცნებაც. ატრიბუტი კანდიდატი იდენტიფიკატორი რომ იყოს, არსის
+თითოეული მნიშვნელობისათის უნდა ჰქონდეს ერთი მნიშვნელობა. E-R დიაგრამაზე
+იდენტიფიკატორის სახელი აღინიშნება ხაზის გასმით, როგორც ეს ნაჩვენებია STUDENT არსის
+ტიპის მაგალითზე, ნახაზი 2-9 ა. ატრიბუტი იდენტიფიკატორი რომ იყოს, ატრიბუტი უნდა
+იყოს აუცილებელი (ასე რომ განმასხვავებელი მნიშვნელობა უნდა არსებობდეს), ამიტომ
+იდენტიფიკატორი ასევე არის სქელი შრიფტით გამოსახული. E-R ნახაზის ზოგიერთი
+პროგრამა იდენტიფიკატორის წინ განათავსებს სიმბოლოს, რომელსაც ეწოდება სტერეოტიპი
+(მაგ., <<ID>> ან <<PK>>).
+ზოგიერთი არსის ტიპისთვის არ არსებობს ერთი (ან ატომური) ატრიბუტი, რომელიც
+იდენტიფიკატორის ფუნქციას შეასრულებს (ან უზრუნველყოფს უნიკალურობას). ამასთან,
+ორი (ან მეტი) ატრიბუტი, რომელიც გამოიყენება კომბინირებულად, შეიძლება გამოდგეს
+როგორც იდენტიფიკატორი. კომპოზიტური იდენტიფიკატორი არის იდენტიფიკატორი,
+რომელიც შედგება კომპოზიტური ატრიბუტისგან.
+
+**************************
+lab3
+**************************
+
+**************************
+lek4
+**************************
+1)კავშირის ტიპი არის არსებითი კავშირი არსების ტიპებს შორის. 
+2)კავშირის ეგზემპლარი არის ურთიერთდაამოკიდებულება არსის ეგზემპლაებს შორის, სადაც
+კავშირის თითოეული ეგზემპლარი ასოცირდება მასში მონაწილე თითოეული ტიპის არსიდან
+ზუსტად ერთი არსის ეგზემპლართან
+3)კავშირში ერთი ან მეტი ატრიბუტის არსებობა დამპროექტებელს მიანიშნებს, რომ კავშირი
+უნდა წარმოადგენდეს, როგორც არსის ტიპი. ამ მომენტის ხაზგასასმელად, E-R დიაგრამის
+შექმნის ინსტრუმენტების უმეტესობაში მოითხივება, რომ ასეთი ატრიბუტები განთავსდეს
+არსის ტიპში. ასოციაციური არსი არის არსის ტიპის სახეობა, რომელიც ასოცირდება ერთი ან
+მეტი არსის ტიპის ეგზემპლარებთან და შეიცავს ატრიბუტებს, რომლებიც დამახასიათებელია
+ამ ერთეულთა ეგზემპლარებს შორის კავშირისათვის.
+4)კავშირის ხაზები წყვეტილია, რადგან CERTIFICATE იდენტიფიკატორში არ შეიცავს
+დაკავშირებული არსების იდენტიფიკატორებს (სერთიფიკატის ნომერი საკმარისია ).
+როგორ მიუთითოთ იმაზე, რომ კავშირის გარდაიქმნას ასოციაციური არსის ტიპად?
+ამისათვის უნდა არსებობდეს ოთხი პირობა:
+1. კავშირში მონაწილე ყველა არსის ტიპების კავშირი უნდა იყოს ”მრავალი”.
+2. შედეგად მიღებული ასოციაციური ტიპის არსს საბოლოო მომხმარებლებისათვის აქვს
+დამოუკიდებელი მნიშვნელობა და, სასურველია, მისი იდენტიფიკაცია მოხდეს ერთი
+ატრიბუტიანი იდენტიფიკატორით.
+3. ასოციაციურ არსს იდენტიფიკატორის გარდა აქვს ერთი ან მეტი ატრიბუტი.
+4. ასოციაციური არსი მონაწილეობს ერთ ან რამდენიმე კავშირში, დამოუკიდებლად
+კავშირში მონაწილე არსებისაგან.
+5)კავშირის ხარისხი
+კავშირის ხარისხი არის არსების ტიპების რაოდენობა, რომლებიც მონაწილეობენ ამ კავშირში
+ამრიგად, ნახ. 2-11-ში კავშირი Completes (ასრულებს) არის მე -2 ხარისხის, რადგან არსებობს
+ორი არსის ტიპი: EMPLOYEEE და COURSE. სამი ყველაზე გავრცელებული კავშირის ხარისხი
+E-R მოდელებში არის უნიარული (ხარისხი 1), ბინარული (ხარისხი 2) და სამეული (ხარისხი 3).
+უფრო მაღალი ხარისხის კავშირები შესაძლებელია, მაგრამ ისინი პრაქტიკაში იშვიათად
+გვხვდება, ამიტომ შემოვიფარგლოთ ამ სამი შემთხვევით.
+6)Tabii ki! İşte unary, binary ve ternary ilişkiler hakkında Türkçe açıklamalar:
+
+### 1. Unary İlişki (Tekil İlişki)
+
+Unary ilişki, bir varlığın kendisiyle olan ilişkisidir. Bu tür ilişkilere "özyinelemeli" ilişkiler de denir.
+
+**Örnek:**
+- **Çalışan-Yönetici** (Employee-Supervisor): Bir çalışan, başka bir çalışanın yöneticisi olabilir.
+  - `Çalışan` (Employee) varlığı.
+  - `yönetir` (supervises) ilişkisi.
+
+```plaintext
+Çalışan
+---------
+ÇalışanID (PK)
+Ad
+YöneticiID (FK -> ÇalışanID)
+```
+
+### 2. Binary İlişki (İkili İlişki)
+
+Binary ilişki, iki farklı varlık arasındaki ilişkidir. Bu, en yaygın ilişki türüdür.
+
+**Örnek:**
+- **Müşteri-Sipariş** (Customer-Order): Bir müşteri, bir sipariş verebilir.
+  - `Müşteri` (Customer) varlığı.
+  - `Sipariş` (Order) varlığı.
+  - `verir` (places) ilişkisi.
+
+```plaintext
+Müşteri
+---------
+MüşteriID (PK)
+Ad
+
+Sipariş
+---------
+SiparişID (PK)
+SiparişTarihi
+MüşteriID (FK -> MüşteriID)
+```
+
+### 3. Ternary İlişki (Üçlü İlişki)
+
+Ternary ilişki, üç varlık arasındaki ilişkidir. Bu tür ilişkiler, bazen bir ilişkide ikiden fazla varlık olduğunda kullanılır.
+
+**Örnek:**
+- **Doktor-Hasta-Konsültasyon** (Doctor-Patient-Consultation): Bir doktor, belirli bir tarihte bir hasta ile konsültasyon yapar.
+  - `Doktor` (Doctor) varlığı.
+  - `Hasta` (Patient) varlığı.
+  - `Konsültasyon` (Consultation) varlığı.
+  - `yapar` (conducts) ilişkisi.
+
+```plaintext
+Doktor
+---------
+DoktorID (PK)
+Ad
+
+Hasta
+---------
+HastaID (PK)
+Ad
+
+Konsültasyon
+---------
+KonsültasyonID (PK)
+Tarih
+DoktorID (FK -> DoktorID)
+HastaID (FK -> HastaID)
+```
+
+### Özet
+
+- **Unary İlişki:** Bir varlık kendisiyle ilişkilidir.
+  - Örnek: Bir çalışan, başka bir çalışanın yöneticisidir.
+
+- **Binary İlişki:** İki farklı varlık birbiriyle ilişkilidir.
+  - Örnek: Bir müşteri, bir sipariş verir.
+
+- **Ternary İlişki:** Üç varlık birbiriyle ilişkilidir.
+  - Örnek: Bir doktor, belirli bir tarihte bir hasta ile konsültasyon yapar.
+
+Bu ilişki türleri, veri tabanı modellemesinde ve ER diyagramlarında varlıklar arasındaki ilişkileri doğru bir şekilde tanımlamak ve organize etmek için kullanılır.
+7)->მინიმალური კარდინალურობა
+კავშირის მინიმალური კარდინალურობა - ეს არის B არსის ეგზემპლარების მინიმალური
+რაოდენობა, რომელიც შეიძლება უკავშირდებოდეს A არსის თითოეულ ეგზემპლარს. ჩვენს
+DVD მაგალითში ფილმის DVD–ების მინიმალური რაოდენობა ნულოვანია. როდესაც
+მონაწილეთა მინიმალური რაოდენობა ნულოვანია, ჩვენ ვამბობთ, რომ არსის ტიპი B
+არჩევითად მონაწილეობს კავშირში. ამ მაგალითში DVD (სუსტი არსის ტიპი) არის Is Stocked
+As კავშირი სურვილისამებრ. ეს ფაქტი მითითებულია ნულოვანი სიმბოლოთი DVD არსის
+მახლობლად ხაზის გასწვრივ, ნახაზზე 2-16b.
+მაქსიმალური კარდინალურობა
+->კავშირის მაქსიმალური კარდინალურობა - ეს არის B არსის ეგზემპლარების მაქსიმალური
+რაოდენობა, რომელიც შეიძლება უკავშირდებოდეს A არსის თითოეულ ეგზემპლარს. ვიდეოს
+მაგალითში, DVD არსის ტიპის მაქსიმალური კარდინალურობა არის "მრავალი" - ეს არის
+ერთზე მეტი დაუზუსტებელი რიცხვი. ამაზე მიუთითებს "ყორნის ფეხის" სიმბოლო DVD
+არსის სიმბოლოს გვერდით ხაზზე 2-16 ბ.
+->კავშირი რა თქმა უნდა, ორმხრივია, ამიტომ MOVIE (ფილმი) გვერდითაც არის
+კარდინალურობის აღნიშვნა. მივაქციოთ ყურადრება, რომ მინიმუმი და მაქსიმუმი ორივე
+ერთის ტოლია (იხ. სურათი 2-16 ბ). ამას კარდინალურობის სავალდებულობის ერთეულს
+უწოდებენ. სხვა სიტყვებით რომ ვთქვათ, ფილმის თითოეული DVD-ზე უნდა იყოს ზუსტად
+ერთი ფილმის ასლი. ზოგადად, კავშირში მონაწილეობა შეიძლება იყოს არჩევითი ან
+სავალდებულო მონაწილე არსებისათვის. თუ მინიმალური კარდინალობა ნულოვანია,
+მონაწილეობა არჩევითია; თუ მინიმალური კარდინალურობა ერთია, მონაწილეობა
+სავალდებულოა.
+8)Bu diyagram bir ternary (üçlü) ilişkiyi ve kardinalite kısıtlamalarını göstermektedir. Diyagramda üç varlık (Vendor, Part, Warehouse) ve bunlar arasındaki ilişkiler (Supply Schedule) yer almaktadır. 
+
+### Varlıklar ve İlişkiler
+
+- **Vendor (Satıcı):** Parçaları tedarik eden varlık.
+- **Part (Parça):** Tedarik edilen ürün veya malzeme.
+- **Warehouse (Depo):** Parçaların teslim edildiği yer.
+- **Supply Schedule (Tedarik Programı):** Üç varlık arasındaki ilişkiyi tanımlayan ara tablo, taşıma modu ve birim maliyet bilgilerini içerir.
+
+### İş Kuralları ve Kardinalite Kısıtlamaları
+
+1. **Satıcı (Vendor) - Tedarik Programı (Supply Schedule) İlişkisi:**
+   - Her satıcı birçok parçayı birçok depoya tedarik edebilir.
+   - Ancak bir satıcının parça tedarik etmesi zorunlu değildir.
+   - Kardinalite: 0..* (Her satıcı 0 veya daha fazla tedarik programına sahip olabilir).
+
+2. **Parça (Part) - Tedarik Programı (Supply Schedule) İlişkisi:**
+   - Her parça birçok satıcı tarafından bir veya daha fazla depoya tedarik edilebilir.
+   - Ancak her parça en az bir satıcı tarafından bir depoya tedarik edilmelidir.
+   - Kardinalite: 1..* (Her parça en az 1 veya daha fazla tedarik programına sahip olmalıdır).
+
+3. **Depo (Warehouse) - Tedarik Programı (Supply Schedule) İlişkisi:**
+   - Her depo birçok parçayı birçok satıcıdan tedarik edebilir.
+   - Ancak her depo en az bir parçayı bir satıcıdan tedarik etmelidir.
+   - Kardinalite: 1..* (Her depo en az 1 veya daha fazla tedarik programına sahip olmalıdır).
+
+### Özet
+
+Bu diyagramda, üç varlık arasındaki ilişkiler ve bu ilişkilerin kardinalite kısıtlamaları gösterilmektedir. Kardinalite kısıtlamaları, her bir varlığın ilişki içerisindeki minimum ve maksimum katılım sayılarını belirlemektedir. Bu kurallar:
+
+- Bir satıcı herhangi bir parçayı herhangi bir depoya tedarik edebilir, ancak tedarik zorunlu değildir.
+- Bir parça birden fazla satıcı tarafından birden fazla depoya tedarik edilebilir, ancak en az bir satıcı tarafından bir depoya tedarik edilmelidir.
+- Bir depo birden fazla parçayı birden fazla satıcıdan tedarik edebilir, ancak en az bir parçayı bir satıcıdan tedarik etmelidir.
+
+Bu kurallar, veri modelinin bütünlüğünü ve iş süreçlerinin doğru bir şekilde temsil edilmesini sağlar.
+
+
+**************************
+lab4
+**************************
+
+1)ცხრილი პირველადი გასაღებით ხდება კავშირის ძირითადი ცხრილი, ხოლო მეორე
+ცხრილი რომელიც აპირებს რომ მას დაუკავშირდეს ქმნის შესაბამის ველს, ადებს მას გარე
+(Foreign) გასაღებს და მისი საშუალებით უკავშირდება ძირითად ცხრილს. შედეგად იგი
+გახდება „დამოკიდებული“ ცხრილი, რომელიც შეზღუდულია კავშირის პირობების
+შესაბამისად.
+
+
+**************************
+lek5
+**************************
+1) Veritabanı ilişkileri genellikle üç farklı tipte tanımlanır: 1:1 (bir-bir), 1:n (bir-çok), ve n:m (çok-çok). Bu ilişkileri T-SQL kullanarak nasıl tanımlayabileceğinizi ve örnek kodları aşağıda bulabilirsiniz.
+
+### 1:1 (Bir-Bir) İlişki
+
+Bir-bir ilişkide, bir tablodaki her bir kaydın başka bir tablodaki sadece bir kayıtla ilişkisi vardır. Bu ilişkiyi genellikle iki tablonun primary key'leri (birincil anahtarları) ile birbirine bağlayarak tanımlayabilirsiniz.
+
+#### Örnek
+
+- **Tablo 1:** Kişiler (Persons)
+- **Tablo 2:** Kimlikler (Identities)
+
+```sql
+CREATE TABLE Persons (
+    PersonID INT PRIMARY KEY,
+    Name NVARCHAR(100)
+);
+
+CREATE TABLE Identities (
+    IdentityID INT PRIMARY KEY,
+    PersonID INT UNIQUE,
+    IdentityNumber NVARCHAR(20),
+    FOREIGN KEY (PersonID) REFERENCES Persons(PersonID)
+);
+```
+
+### 1:n (Bir-Çok) İlişki
+
+Bir-çok ilişkide, bir tablodaki her bir kayıt başka bir tablodaki birden fazla kayıtla ilişkili olabilir. Genellikle bir tablonun primary key'si diğer tablonun foreign key'si (yabancı anahtarı) olarak kullanılır.
+
+#### Örnek
+
+- **Tablo 1:** Departmanlar (Departments)
+- **Tablo 2:** Çalışanlar (Employees)
+
+```sql
+CREATE TABLE Departments (
+    DepartmentID INT PRIMARY KEY,
+    DepartmentName NVARCHAR(100)
+);
+
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    Name NVARCHAR(100),
+    DepartmentID INT,
+    FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID)
+);
+```
+
+### n:m (Çok-Çok) İlişki
+
+Çok-çok ilişkide, bir tablodaki her bir kayıt başka bir tablodaki birden fazla kayıtla ve tersi de geçerli olacak şekilde ilişkilidir. Bu tür ilişkiler genellikle bir ara tablo (junction table veya bridge table) kullanılarak tanımlanır.
+
+#### Örnek
+
+- **Tablo 1:** Öğrenciler (Students)
+- **Tablo 2:** Dersler (Courses)
+- **Ara Tablo:** ÖğrenciDers (StudentCourses)
+
+```sql
+CREATE TABLE Students (
+    StudentID INT PRIMARY KEY,
+    Name NVARCHAR(100)
+);
+
+CREATE TABLE Courses (
+    CourseID INT PRIMARY KEY,
+    CourseName NVARCHAR(100)
+);
+
+CREATE TABLE StudentCourses (
+    StudentID INT,
+    CourseID INT,
+    PRIMARY KEY (StudentID, CourseID),
+    FOREIGN KEY (StudentID) REFERENCES Students(StudentID),
+    FOREIGN KEY (CourseID) REFERENCES Courses(CourseID)
+);
+```
+
+### Özet
+
+- **1:1 İlişki:** Bir tablodaki bir kayıt başka bir tablodaki sadece bir kayıtla ilişkilidir. Foreign key ve unique constraint kullanılarak tanımlanır.
+- **1:n İlişki:** Bir tablodaki bir kayıt başka bir tablodaki birden fazla kayıtla ilişkilidir. Foreign key kullanılarak tanımlanır.
+- **n:m İlişki:** Bir tablodaki her bir kayıt başka bir tablodaki birden fazla kayıtla ilişkilidir ve bunun tersi de geçerlidir. Bir ara tablo kullanılarak tanımlanır.
+
+Bu örnekler T-SQL kullanarak bu ilişkileri nasıl tanımlayabileceğinizi gösterir.
+
+2)Üst tip ve alt tip kavramları, varlık-ilişki (ER) modellemesinde, varlıklar arasındaki hiyerarşiyi ve özelleşmeyi (specialization) ifade etmek için kullanılır. Yukarıdaki diyagramda bu kavramlar açıkça görülmektedir.
+
+### Üst Tip (Supertype)
+
+Üst tip, ortak özelliklere sahip genel bir varlık sınıfıdır. Üst tip, alt tiplerin paylaştığı özellikleri içerir.
+
+**Örnek:**
+- **PATIENT (Hasta):** `Patient ID`, `Patient Name`, `Admit Date` gibi genel özelliklere sahiptir.
+
+### Alt Tip (Subtype)
+
+Alt tip, üst tipin daha özel bir çeşididir ve kendine özgü ek özelliklere veya ilişkilere sahip olabilir. Alt tip, üst tipin tüm özelliklerini miras alır.
+
+**Örnek:**
+- **OUTPATIENT (Ayakta Tedavi Hastası):** `Checkback Date` gibi kendine özgü bir özelliğe sahiptir.
+- **RESIDENT PATIENT (Yatan Hasta):** `Date Discharged` ve `Bed` ilişkisi gibi kendine özgü özellik ve ilişkilere sahiptir.
+
+### Diyagram Açıklaması
+
+- **Üst Tip:**
+  - **PATIENT (Hasta)**
+    - Genel özellikler: `Patient ID`, `Patient Name`, `Admit Date`
+
+- **Alt Tipler:**
+  - **OUTPATIENT (Ayakta Tedavi Hastası)**
+    - Ek özellik: `Checkback Date`
+  - **RESIDENT PATIENT (Yatan Hasta)**
+    - Ek özellik: `Date Discharged`
+    - Ek ilişki: `Bed` (Yatak) ile ilişkisi var (`Is Assigned`)
+
+### Total Specialization (Tam Özelleşme)
+
+Diyagramda "Total Specialization" belirtilmiştir. Bu, her hastanın ya `OUTPATIENT` ya da `RESIDENT PATIENT` olması gerektiği anlamına gelir. Yani, hiçbir hasta üst tip olan `PATIENT` varlığında kalamaz; mutlaka bir alt tipe ait olmalıdır.
+
+### Örnekle Açıklama
+
+1. **PATIENT (Hasta):**
+   - `Patient ID`: 1
+   - `Patient Name`: Ali Yılmaz
+   - `Admit Date`: 2024-07-21
+
+2. **OUTPATIENT (Ayakta Tedavi Hastası):**
+   - `Patient ID`: 1
+   - `Checkback Date`: 2024-08-21
+
+Bu durumda Ali Yılmaz, genel hasta özelliklerine sahip (üst tip) ve ayrıca ayakta tedavi hastası özelliklerine (alt tip) sahiptir.
+
+3. **RESIDENT PATIENT (Yatan Hasta):**
+   - `Patient ID`: 2
+   - `Date Discharged`: 2024-07-25
+   - `Bed ID`: B12
+
+Bu durumda Ayşe Kaya, genel hasta özelliklerine sahip (üst tip) ve ayrıca yatan hasta özelliklerine (alt tip) sahiptir.
+
+### Özet
+
+- **Üst Tip (Supertype):** Genel özellikleri tanımlar, örneğin `PATIENT`.
+- **Alt Tip (Subtype):** Daha özel özellikleri tanımlar ve üst tipin özelliklerini miras alır, örneğin `OUTPATIENT` ve `RESIDENT PATIENT`.
+- **Total Specialization (Tam Özelleşme):** Her üst tip varlığı, mutlaka bir alt tip varlığı olmalıdır. 
+
+Bu kavramlar, varlıklar arasındaki ilişkileri daha net bir şekilde tanımlamak ve veri modelinin esnekliğini artırmak için kullanılır.
+
+****************************
+lek5
+****************************
+1)არსების კლასტერირება წარმოადგენს არსი-კავშირი მონაცემთა მოდელის ნაწილის იმავე
+მონაცემების უფრო მაკრო-დონის ხედვად გადაქცევის საშუალებას. არსის კლასტერირება
+არის იერარქიული დეკომპოზიციის ტექნიკა (ჩალაგების პროცესი, რომლის დროსაც სისტემა
+იყოფა შემდგომ დამატებით და კიდევ შემდგომ დამატებით ნაწილებად), რამაც შეიძლება
+გაამარტივოს E-R დიაგრამების წაკითხვა და მონაცემთა ბაზების შემუშავება. 
+2)ქვეტიპი არის არსის ქვეჯგუფი არსის ტიპში, რომელიც
+მნიშვნელოვანია ორგანიზაციისთვის. მაგალითად, STUDENT არის არსის ტიპი
+უნივერსიტეტში. სტუდენტის ორი ქვეტიპია GRADUATE STUDENT (მაგისტრატურის
+სტუდენტი) და UNDERGRADUATE STUDENT (ბაკალავრიატის სტუდენტი). ამ მაგალითში,
+STUDENT- ს სუპერტიპად ვგულისხმობთ. სუპერტიპი არის ზოგადი არსის ტიპი, რომელსაც
+აქვს კავშირი ერთ ან მეტ ქვეტიპთან.
+3)განზოგადება
+ადამიანის ინტელექტის უნიკალური ასპექტია უნარი და მიდრეკილება მოახდინოს საგნების
+და გამოცდილების კლასიფიცირება და მათი თვისებების განზოგადება. მონაცემთა
+მოდელირებისას, განზოგადება არის უფრო ზოგადი არსის ტიპის განსაზღვრის პროცესი
+უფრო სპეციალიზებული არსის ტიპებიდან. 
+4)სისრულის შეზღუდვების მინიშნება
+სისრულის შეზღუდვა პასუხს სცემს კითხვას, უნდა იყოს თუ არა სუპერტიპის ეგზემპლარი
+თუნდაც მინიმუმ ერთი ქვეტიპის წევრი. სისრულის შეზღუდვას აქვს ორი შესაძლო წესი:
+სრული განკერძოება და ნაწილობრივი განკერძოება. სრული განკერძოების წესი განსაზღვრავს,
+რომ სუპერტიპი არსის თითოეული ეგზემპლარი უნდა იყოს კავშირის რომელიმე ქვეტიპის
+წევრი. ნაწილობრივი განკერძოების წესი განსაზღვრავს, რომ სუპერტიპის არსის
+ეგზემპლარისთვის ნებადართულია, რომ არ მიეკუთვნოს რომელიმე ქვეტიპს. 
+5)სრული განკერძოება აღინიშნება ორმაგი ხაზით, რომელიც ვრცელდება PATIENT
+(პაციენტი) არსის ტიპიდან წრემდე. Microsoft Visio აღნიშვნაში სრული განკერძოება ეწოდება
+"კატეგორია დასრულებულია" და ნაჩვენებია აგრეთვე ორმაგი ხაზით კატეგორიის წრის ქვეშ
+სუპერტიპსა და მასთან დაკავშირებულ ქვეტიპებს შორის.
+6)ნაწილობრივი განკერძოების წესი
+ნახაზი 3-6 ბ იმეორებს VEHICLE- ის მაგალითს და მისი ქვეტიპებს CAR და TRUCK ნახაზი 3-
+4-დან. გავიხსენოთ, რომ ამ მაგალითში მოტოციკლი არის სატრანსპორტო საშუალების ტიპი,
+მაგრამ ის მოცემულ მოდელში არ არის წარმოდგენილი ქვეტიპის სახით. ამრიგად, თუ
+სატრანსპორტო საშუალება არის მანქანა, ის უნდა წარმოიშვას CAR– ის ეგზემპლარად, ხოლო
+თუ იგი არის სატვირთო მანქანა, ის უნდა გამოჩნდეს, როგორც TRUCK (სატვირთო
+ავტომობილი) ეგზემპლარი. ამასთან, თუ სატრანსპორტო საშუალება არის მოტოციკლი, ის
+ვერ გამოჩნდება, როგორც რომელიმე ქვეტიპის ეგზემპლარი. ეს არის ნაწილობრივი
+განკერძოების მაგალითი და იგი აღინიშნება ერთი ხაზით VEHICLE სუპერტიპიდან წრისკენ
+7)თანაუკვეთობის შეზღუდვა განსაზღვრავს, შეუძლია თუ არა სუპერტიპის ეგზემპლარს
+ერთდროულად იყოს ორი (ან მეტი) ქვეტიპის წევრი. თანაუკვეთობის შეზღუდვას აქვს ორი
+შესაძლო წესი: თანაუკვეთობის წესი და გადაფარვის წესი. თანაუკვეთობის წესი
+განსაზღვრავს, რომ თუ არსის ეგზემპლარი (სუპერტიპის) არის ერთი ქვეტიპის წევრი, იგი
+ამავდროულად არ შეიძლება იყოს რომელიმე სხვა ქვეტიპის წევრი. თანაკვეთის წესი
+განსაზღვრავს, რომ არსის ეგზემპლარი ერთდროულად შეიძლება იყოს ორი (ან მეტი)
+ქვეტიპის წევრი.
+8)0zet:
+UML (Unified Modeling Language) ve ER (Entity-Relationship) modellerinde, **özelleştirme (specialization)** ve **genelleme (generalization)** kavramları belirli kurallar ve kısıtlamalar içerir. Bu kurallar, alt sınıflar ve üst sınıflar arasındaki ilişkileri ve bu ilişkilerin nasıl çalıştığını belirler. Bahsettiğiniz kavramları detaylı bir şekilde ele alalım:
+
+### Tam Özelleştirme (Total Specialization)
+
+Tam özelleştirme, bir üst sınıftaki her bir örneğin bir alt sınıfa ait olmasını gerektirir. Bu, üst sınıfta yer alan tüm varlıkların mutlaka bir alt sınıfa atanması gerektiği anlamına gelir.
+
+#### Örnek:
+
+- **Üst Sınıf:** Employee (Çalışan)
+- **Alt Sınıflar:** Hourly Employee (Saatlik Çalışan), Salaried Employee (Maaşlı Çalışan)
+
+Tam özelleştirme durumunda, her çalışan ya saatlik ya da maaşlı olarak sınıflandırılmalıdır. Hiçbir çalışan, bu iki alt sınıftan birine ait olmadan `Employee` sınıfında yer alamaz.
+
+### Kısmi Özelleştirme (Partial Specialization)
+
+Kısmi özelleştirme, bir üst sınıftaki bazı örneklerin alt sınıflara ait olmamasına izin verir. Bu, üst sınıfta yer alan varlıkların bazıları herhangi bir alt sınıfa atanmayabilir anlamına gelir.
+
+#### Örnek:
+
+- **Üst Sınıf:** Employee (Çalışan)
+- **Alt Sınıflar:** Hourly Employee (Saatlik Çalışan), Salaried Employee (Maaşlı Çalışan)
+
+Kısmi özelleştirme durumunda, bazı çalışanlar saatlik ya da maaşlı olmayabilir. Bu çalışanlar yalnızca `Employee` sınıfında yer alabilirler ve alt sınıflara ait olmayabilirler.
+
+### Ayrıcalıklı Özelleştirme (Disjoint Specialization)
+
+Ayrıcalıklı özelleştirme, bir üst sınıftaki bir örneğin yalnızca bir alt sınıfa ait olmasını gerektirir. Başka bir deyişle, bir örnek aynı anda birden fazla alt sınıfa ait olamaz.
+
+#### Örnek:
+
+- **Üst Sınıf:** Employee (Çalışan)
+- **Alt Sınıflar:** Hourly Employee (Saatlik Çalışan), Salaried Employee (Maaşlı Çalışan)
+
+Ayrıcalıklı özelleştirme durumunda, bir çalışan ya saatlik ya da maaşlı olabilir, ancak aynı anda hem saatlik hem de maaşlı olamaz.
+
+### Kesişen Özelleştirme (Overlapping Specialization)
+
+Kesişen özelleştirme, bir üst sınıftaki bir örneğin birden fazla alt sınıfa ait olmasına izin verir. Bu, bir örneğin aynı anda birden fazla alt sınıfın üyesi olabileceği anlamına gelir.
+
+#### Örnek:
+
+- **Üst Sınıf:** Employee (Çalışan)
+- **Alt Sınıflar:** Manager (Yönetici), Technical Staff (Teknik Personel)
+
+Kesişen özelleştirme durumunda, bir çalışan hem `Manager` (yönetici) hem de `Technical Staff` (teknik personel) olabilir. Aynı çalışan her iki alt sınıfa da ait olabilir.
+
+### Özet Tablo
+
+| Kurallar           | Açıklama                                                                           |
+|--------------------|------------------------------------------------------------------------------------|
+| Tam Özelleştirme   | Her örnek mutlaka bir alt sınıfa ait olmalıdır.                                     |
+| Kısmi Özelleştirme | Bazı örnekler herhangi bir alt sınıfa ait olmayabilir.                              |
+| Ayrıcalıklı Özelleştirme | Bir örnek yalnızca bir alt sınıfa ait olabilir.                                  |
+| Kesişen Özelleştirme | Bir örnek aynı anda birden fazla alt sınıfa ait olabilir.                            |
+
+Bu kurallar, veri modelleme ve sınıf diyagramlarının tasarımında önemlidir. Doğru özelleştirme ve genelleme kurallarını kullanarak, veri yapılarınızı daha doğru ve etkili bir şekilde 
+modelleyebilirsiniz.
+
+****************************************
+lek6
+****************************************
+1)Veritabanı tasarımında **bağımlılıklar (dependencies)**, bir sütunun (veya sütunlar kümesinin) değerinin diğer bir sütunun (veya sütunlar kümesinin) değeri tarafından belirlenmesi durumunu ifade eder. Bu bağımlılıklar, veri tutarlılığını ve bütünlüğünü sağlamak için önemlidir. Bağımlılıkların farklı türleri vardır ve her biri veritabanı tasarımında belirli kurallara göre uygulanır. İşte başlıca bağımlılık türleri:
+
+### 1. Fonksiyonel Bağımlılık (Functional Dependency)
+
+Bir sütunun (veya sütunlar kümesinin) değeri, başka bir sütunun (veya sütunlar kümesinin) değeri tarafından belirlendiğinde fonksiyonel bağımlılık oluşur. Fonksiyonel bağımlılık, veritabanı tablolarının normalleştirilmesi için temel bir kavramdır.
+
+- **Tanım:** A ve B sütunları için, A -> B fonksiyonel bağımlılığı, her A değeri için yalnızca bir B değeri olduğunu ifade eder.
+
+- **Örnek:**
+  - **Employee (Çalışan) Tablosu:**
+    - EmployeeID -> EmployeeName (Her çalışan ID'si, bir çalışan ismine karşılık gelir.)
+
+### 2. Kısmi Bağımlılık (Partial Dependency)
+
+Bir kısmi bağımlılık, bir sütunun (veya sütunlar kümesinin) birincil anahtarın yalnızca bir kısmına bağımlı olduğu durumu ifade eder. Kısmi bağımlılıklar, ikinci normal forma (2NF) geçişte ortadan kaldırılmalıdır.
+
+- **Tanım:** Bir sütun, birincil anahtarın tamamına değil, yalnızca bir kısmına bağımlıysa kısmi bağımlılık oluşur.
+
+- **Örnek:**
+  - **OrderDetails (Sipariş Detayları) Tablosu:**
+    - (OrderID, ProductID) -> Quantity, ProductName (ProductName, yalnızca ProductID'ye bağımlıdır.)
+
+### 3. Transitif Bağımlılık (Transitive Dependency)
+
+Bir transitif bağımlılık, bir sütunun (veya sütunlar kümesinin) değeri, bir başka sütunun (veya sütunlar kümesinin) değeri aracılığıyla dolaylı olarak belirlendiğinde oluşur. Transitif bağımlılıklar, üçüncü normal forma (3NF) geçişte ortadan kaldırılmalıdır.
+
+- **Tanım:** A -> B ve B -> C ise, A -> C transitif bağımlılığı oluşur.
+
+- **Örnek:**
+  - **Student (Öğrenci) Tablosu:**
+    - StudentID -> MajorID (StudentID, MajorID'yi belirler.)
+    - MajorID -> MajorName (MajorID, MajorName'i belirler.)
+    - Sonuç: StudentID -> MajorName (Transitif bağımlılık)
+
+### 4. Çok Değerli Bağımlılık (Multivalued Dependency)
+
+Bir çok değerli bağımlılık, bir sütunun (veya sütunlar kümesinin) değeri, başka bir sütunun (veya sütunlar kümesinin) birden fazla değer kümesini belirlediğinde oluşur. Çok değerli bağımlılıklar, dördüncü normal forma (4NF) geçişte ortadan kaldırılmalıdır.
+
+- **Tanım:** A ->> B, A sütunu B sütununun birden fazla değeriyle ilişkilendirildiğinde çok değerli bağımlılık oluşur.
+
+- **Örnek:**
+  - **Employee (Çalışan) Tablosu:**
+    - EmployeeID ->> Skill (Bir çalışan birden fazla beceriye sahip olabilir.)
+
+### 5. Birleşme Bağımlılığı (Join Dependency)
+
+Bir birleşme bağımlılığı, bir tablonun belirli alt kümelere ayrıldığında ve bu alt kümeler tekrar birleştiğinde orijinal tabloyu oluşturmaya devam ettiğinde oluşur. Birleşme bağımlılıkları, beşinci normal forma (5NF) geçişte ortadan kaldırılmalıdır.
+
+- **Tanım:** Bir tablo, belirli alt tablolara ayrılabilir ve bu alt tablolar tekrar birleştirildiğinde orijinal tabloyu oluşturabilir.
+
+- **Örnek:**
+  - **ProjectAssignment (Proje Ataması) Tablosu:**
+    - (EmployeeID, ProjectID, Role) tablosu üç ayrı tabloya bölünebilir: (EmployeeID, ProjectID), (EmployeeID, Role), (ProjectID, Role). Bu tablolar birleştiğinde orijinal tabloyu oluşturur.
+
+### Özet Tablo
+
+| Bağımlılık Türü          | Tanım                                                                           |
+|--------------------------|---------------------------------------------------------------------------------|
+| Fonksiyonel Bağımlılık   | Bir sütunun değeri, başka bir sütunun değeri tarafından belirlenir.             |
+| Kısmi Bağımlılık         | Bir sütun, birincil anahtarın tamamına değil, yalnızca bir kısmına bağımlıdır.  |
+| Transitif Bağımlılık     | Bir sütun, başka bir sütunun değeri aracılığıyla dolaylı olarak belirlenir.     |
+| Çok Değerli Bağımlılık   | Bir sütun, başka bir sütunun birden fazla değer kümesiyle ilişkilidir.          |
+| Birleşme Bağımlılığı     | Bir tablo, belirli alt tablolara ayrılabilir ve bu alt tablolar tekrar birleştiğinde orijinal tabloyu oluşturur. |
+
+Bu bağımlılıklar, veritabanı tasarımında önemli bir rol oynar ve normalizasyon süreçlerinde dikkate alınması gereken temel kavramlardır. Normalizasyon, veritabanı tablolarını bu bağımlılıklardan arındırarak veri tutarlılığını ve verimliliğini artırmayı amaçlar.
+****************************************************************************************************************************************************************
+
+2) Normalizasyon, veritabanı tasarımında, veritabanının yapısal bütünlüğünü ve veri tutarlılığını sağlamak için kullanılan bir süreçtir. Bu süreç, verilerin verimli bir şekilde saklanmasını ve işlenmesini sağlamak amacıyla veritabanı tablolarını belirli kurallara göre düzenlemeyi içerir. Normalizasyon, farklı normal form seviyeleriyle gerçekleştirilir ve her seviyede belirli gereksinimler yerine getirilir. İşte normalizasyonun temel kavramları ve normal formlar:
+
+### Normal Formlar ve Çeşitleri
+
+1. **Birinci Normal Form (1NF)**
+
+   - **Tanım:** Bir tablo, birinci normal formdadır (1NF) eğer her sütun tekil (atomic) değerlere sahipse ve her satır benzersizse. Başka bir deyişle, her hücrede yalnızca bir değer bulunmalıdır.
+   - **Kurallar:**
+     - Her sütun benzersiz olmalıdır.
+     - Tüm sütunlar tekil (atomic) değerlere sahip olmalıdır.
+     - Tabloda yinelenen gruplar olmamalıdır.
+
+   - **Örnek:**
+     ```
+     Employee
+     ---------------
+     EmployeeID | Name | PhoneNumber
+     1          | John | 123-456
+     2          | Jane | 789-012, 345-678 (Bu doğru değil, çünkü PhoneNumber sütununda birden fazla değer var)
+     ```
+
+   - **Düzeltme:**
+     ```
+     Employee
+     ---------------
+     EmployeeID | Name | PhoneNumber
+     1          | John | 123-456
+     2          | Jane | 789-012
+     2          | Jane | 345-678
+     ```
+
+2. **İkinci Normal Form (2NF)**
+
+   - **Tanım:** Bir tablo, ikinci normal formdadır (2NF) eğer birinci normal formda (1NF) ise ve her bağımlı olmayan sütun, tabloda bulunan her bir anahtarın tamamına bağımlıysa. Başka bir deyişle, kısmi bağımlılık olmamalıdır.
+   - **Kurallar:**
+     - Tabloda kısmi bağımlılıklar (partial dependencies) olmamalıdır. (Yani, bir sütun yalnızca bir kısmı olan bir anahtara bağımlı olmamalıdır.)
+
+   - **Örnek:**
+     ```
+     OrderDetails
+     ---------------
+     OrderID | ProductID | Quantity | ProductName
+     1       | 101       | 10       | Pen
+     1       | 102       | 5        | Pencil
+     ```
+
+   - **Düzeltme:**
+     ```
+     Orders
+     ---------------
+     OrderID | ProductID | Quantity
+     1       | 101       | 10
+     1       | 102       | 5
+
+     Products
+     ---------------
+     ProductID | ProductName
+     101       | Pen
+     102       | Pencil
+     ```
+
+3. **Üçüncü Normal Form (3NF)**
+
+   - **Tanım:** Bir tablo, üçüncü normal formdadır (3NF) eğer ikinci normal formda (2NF) ise ve transitif bağımlılıklar içermez. Yani, bir sütun, yalnızca anahtara bağımlı olmalıdır ve başka bir anahtar olmayan sütuna bağımlı olmamalıdır.
+   - **Kurallar:**
+     - Tabloda transitif bağımlılıklar (transitive dependencies) olmamalıdır. (Yani, bir sütun başka bir sütuna bağımlı olmamalıdır.)
+
+   - **Örnek:**
+     ```
+     Student
+     ---------------
+     StudentID | Name | MajorID | MajorName
+     1         | John | 10      | Computer Science
+     2         | Jane | 20      | Mathematics
+     ```
+
+   - **Düzeltme:**
+     ```
+     Student
+     ---------------
+     StudentID | Name | MajorID
+     1         | John | 10
+     2         | Jane | 20
+
+     Majors
+     ---------------
+     MajorID | MajorName
+     10      | Computer Science
+     20      | Mathematics
+     ```
+
+4. **Boyce-Codd Normal Form (BCNF)**
+
+   - **Tanım:** Bir tablo, Boyce-Codd normal formdadır (BCNF) eğer üçüncü normal formda (3NF) ise ve her belirleyici (determinant), bir aday anahtar (candidate key) ise. BCNF, 3NF'nin daha güçlü bir versiyonudur.
+   - **Kurallar:**
+     - Her belirleyici (determinant), bir aday anahtar (candidate key) olmalıdır.
+
+   - **Örnek:**
+     ```
+     Enrollment
+     ---------------
+     StudentID | CourseID | InstructorID
+     1         | 101      | 500
+     2         | 102      | 501
+     ```
+
+   - **Düzeltme:**
+     ```
+     Enrollment
+     ---------------
+     StudentID | CourseID
+
+     CourseInstructor
+     ---------------
+     CourseID | InstructorID
+     101      | 500
+     102      | 501
+     ```
+
+5. **Dördüncü Normal Form (4NF)** ve **Beşinci Normal Form (5NF)**
+
+   - **Dördüncü Normal Form (4NF):** Bir tablo, dördüncü normal formdadır (4NF) eğer Boyce-Codd normal formdadır (BCNF) ve çok değerli bağımlılıkları (multivalued dependencies) içermez.
+   - **Beşinci Normal Form (5NF):** Bir tablo, beşinci normal formdadır (5NF) eğer dördüncü normal formdadır (4NF) ve birleştirme bağımlılıklarını (join dependencies) içermez.
+
+### Özet
+
+Normalizasyon, veritabanı tasarımının temel prensiplerinden biridir ve veritabanının verimli, tutarlı ve güvenilir olmasını sağlar. Her normal form, belirli bir veri bütünlüğü ve verimlilik sağlamak için belirli kurallar içerir. Normalizasyon süreçleri, veritabanı tablolarının daha küçük ve daha yönetilebilir hale gelmesini sağlayarak, veri tekrarını ve veri tutarsızlığını azaltır.
+

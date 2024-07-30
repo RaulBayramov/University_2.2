@@ -1,0 +1,87 @@
+სულ=27
+1.
+mymap :: (a->b)->[a]->[b]   +5
+mymap f xs = [f x|x<-xs]
+Onise
+*Main> mymap (+5) [1,2,3]
+[6,7,8]
+it :: [Integer]
+
+
+
+2.  +5
+myfilter ::(a-> Bool)->[a]->[a]
+myfilter f [] =[]
+myfilter f (x:xs)
+   | f x = x: myfilter f xs
+   | otherwise = myfilter f xs
+Onise
+*Main> myfilter odd [1,2,3,4]
+[1,3]
+it :: [Integer]
+*Main> myfilter even [1,2,3,4]
+[2,4]
+it :: [Integer]
+
+
+
+
+4.
+Prelude> any odd [1,2,3]      მარტო მიმართვაა, განმარტება?
+True
+it :: Bool
+Onise
+Prelude> takeWhile odd [1,3,5,4,6,8,9]
+[1,3,5]
+it :: [Integer]
+
+
+
+
+5. =17
+1 - 
+getRoom :: [(NedvObject,Int)] -> [(NedvObject,Int)]
+getRoom [] = []
+getRoom ((Room a b c d,y):xs) = (Room a b c d,y) : getRoom xs
+getRoom (_:xs) = getRoom xs
+
+2 -
+getFlatByPrice :: [(NedvObject,Int)] -> Int -> [(NedvObject,Int)]
+getFlatByPrice ((Flat a b c,y):xs) price = 
+              if y == price then (Flat a b c,y):getFalatByPrice xs price 
+              else getFlatByPrice xs price
+
+
+3-
+getExceptBounds :: [(NedvObject,Int)] ->Int->[(NedvObject,Int)] 
+getExceptBounds ((Flat x y z,a):xs) sartuli = 
+       if (x==sartuli) then (Flat x y z,a):getExceptBounds xs 
+       else getExceptBounds xs 
+getExceptBounds (_:xs) = getExceptBounds xs
+
+
+4- - 
+getByType :: [(NedvObject,Int)] -> String ->Int-> [(NedvObject,Int)] 
+getByType [] _ = [] 
+getByType (x:xs) t price= case x of 
+       (Flat xx y z,a) -> if (t=="Flat") && (price==a) then x:getByType xs t 
+                          else getByType xs t 
+       (Room xx y z zz,a) -> if (t=="Room") && (price==a) then x:getByType xs t 
+                             else getByType xs t 
+       (House y,a) -> if (t=="House") && (price==a) then x:getByType xs t 
+                      else getByType xs t
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

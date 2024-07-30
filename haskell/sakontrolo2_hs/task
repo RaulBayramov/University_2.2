@@ -1,0 +1,20 @@
+double :: Num a => a -> a
+double = \x -> x * 2
+
+degree :: Int -> Int -> Int
+degree = \x y -> x ^ y
+
+sumPairs :: (Int, Int) -> (Int, Int) -> (Int, Int)
+sumPairs = \(x1, y1) (x2, y2) -> (x1 + x2, y1 + y2)
+
+main :: IO ()
+main = do
+    putStrLn "Double of 5: " 
+    print (double 5)
+
+    putStrLn "Degree of 2 to the power of 3:"
+    print (degree 2 3)
+
+    putStrLn "Sum of (1, 2) and (3, 4):"
+    print (sumPairs (1, 2) (3, 4))
+

@@ -1,0 +1,67 @@
+1.  =27
+myMap :: (a->b)->[a]->[b]  +5
+myMap _ []=[]
+myMap f (x:xs)=f x:myMap f xs
+
+*Main> myMap (+2) [1,2,3]
+[3,4,5]
+it :: [Integer]
+
+
+2.
+myfilter ::(a-> Bool)->[a]->[a]  +5
+myfilter f xs = [x|x<-xs, f x]
+
+*Main> myfilter even [1..12]
+[2,4,6,8,10,12]
+it :: [Integer]
+
+
+3.  =0
+
+
+
+
+4.
+Prelude> all even [2,4,6]   0
+True
+it :: Bool
+
+Prelude> dropWhile even [2,4,5,9,6]
+[5,9,6]
+it :: [Integer]
+
+
+
+5.
+1)17
+getFlat :: [(NedvObject,Int)] -> [(NedvObject,Int)]
+getFlat [] = []
+getFlat ((Flat a b c,y):xs) = (Flat a b c,y) : getFlat xs
+getFlat (_:xs) = getFlat xs
+
+2)
+getRoomByPrice :: [(NedvObject,Int)] -> Int -> [(NedvObject,Int)]
+getRoomByPrice [] _ = [] 
+getRoomByPrice ((Room a b c d,y):xs) price = 
+        if y>price then (Room a b c d,y):getRoomByPrice xs price 
+        else getRoomByPrice xs price
+
+3)
+getExceptBounds :: [(NedvObject,Int)] -> [(NedvObject,Int)] 
+getExceptBounds [] = [] 
+getExceptBounds ((Flat x y z,a):xs) = 
+       if (x/=z)&&(x/=1) then (Flat x y z,a):getExceptBounds xs 
+       else getExceptBounds xs 
+getExceptBounds (_:xs) = getExceptBounds xs
+
+4)
+getByType :: [(NedvObject,Int)] -> String -> [(NedvObject,Int)] 
+getByType [] _ = [] 
+getByType (x:xs) t = case x of 
+       (Flat xx y z,a) -> if t=="Flat" then x:getByType xs t 
+                          else getByType xs t 
+       (Room xx y z zz,a) -> if t=="Room" then x:getByType xs t 
+                             else getByType xs t 
+       (House y,a) -> if t=="House" then x:getByType xs t 
+                      else getByType xs t

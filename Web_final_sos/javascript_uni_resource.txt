@@ -1,0 +1,1286 @@
+**************************************
+lek1
+**************************************
+JavaScript'te `window` ve `document` nesneleri web geliştirmede temel iki nesnedir. Bunlar, bir web sayfasının yapısını ve içeriğini yönetmek için kullanılır.
+
+### Window Nesnesi
+`window` nesnesi, tarayıcı tarafından sağlanan en üst düzey nesnedir. Bir web sayfasında bulunan tüm nesneler ve fonksiyonlar, `window` nesnesinin altında yer alır. `window` nesnesi tarayıcı penceresini
+ temsil eder ve aşağıdaki gibi çeşitli özellikler ve yöntemler içerir:
+
+- **`window.alert()`**: Bir uyarı kutusu görüntüler.
+- **`window.confirm()`**: Kullanıcıdan bir onay alır (Tamam/İptal).
+- **`window.prompt()`**: Kullanıcıdan bir giriş alır.
+- **`window.open()`**: Yeni bir pencere veya sekme açar.
+- **`window.close()`**: Geçerli pencereyi kapatır.
+- **`window.location`**: Geçerli URL hakkında bilgi sağlar ve URL'yi değiştirmek için kullanılabilir.
+- **`window.history`**: Tarayıcı geçmişine erişim sağlar ve gezinme işlemlerini kontrol eder.
+- **`window.localStorage` ve `window.sessionStorage`**: Tarayıcıda veri depolamak için kullanılır.
+- **`window.setTimeout()` ve `window.setInterval()`**: Zamanlayıcı işlevleri sağlar.
+
+### Document Nesnesi
+`document` nesnesi, web sayfasının içeriğini temsil eder ve HTML belgesine erişim sağlar. `document` nesnesi, sayfa içeriğini manipüle etmek için kullanılan yöntemler ve özellikler sunar:
+
+- **`document.getElementById()`**: Belirli bir ID'ye sahip olan öğeyi seçer.
+- **`document.getElementsByClassName()`**: Belirli bir sınıfa sahip olan tüm öğeleri seçer.
+- **`document.getElementsByTagName()`**: Belirli bir etikete sahip olan tüm öğeleri seçer.
+- **`document.querySelector()`**: CSS seçicisi ile eşleşen ilk öğeyi seçer.
+- **`document.querySelectorAll()`**: CSS seçicisi ile eşleşen tüm öğeleri seçer.
+- **`document.createElement()`**: Yeni bir HTML öğesi oluşturur.
+- **`document.createTextNode()`**: Yeni bir metin düğümü oluşturur.
+- **`document.appendChild()`**: Bir öğeyi başka bir öğenin alt öğesi olarak ekler.
+- **`document.removeChild()`**: Bir öğeyi alt öğelerden çıkarır.
+- **`document.innerHTML`**: Bir öğenin HTML içeriğini ayarlar veya döner.
+- **`document.textContent`**: Bir öğenin metin içeriğini ayarlar veya döner.
+
+### Örnek Kullanımlar
+
+1. **Alert Gösterme:**
+   ```javascript
+   window.alert("Merhaba, dünya!");
+   ```
+
+2. **Bir Elemanı Seçme ve Değiştirme:**
+   ```javascript
+   var element = document.getElementById("myElement");
+   element.innerHTML = "Yeni içerik";
+   ```
+
+3. **Yeni Bir Eleman Oluşturma ve Eklemek:**
+   ```javascript
+   var newElement = document.createElement("div");
+   newElement.textContent = "Bu yeni bir div.";
+   document.body.appendChild(newElement);
+   ```
+
+4. **URL'yi Değiştirme:**
+   ```javascript
+   window.location.href = "https://www.example.com";
+   ```
+
+5. **Zamanlayıcı Kullanma:**
+   ```javascript
+   window.setTimeout(function() {
+       alert("3 saniye geçti!");
+   }, 3000);
+   ```
+
+Bu temel bilgiler, `window` ve `document` nesnelerinin nasıl çalıştığını ve web sayfalarında nasıl kullanıldığını anlamanıza yardımcı olur. Daha ileri düzey kullanım için, bu nesnelerin 
+yöntemleri ve özellikleri hakkında daha detaylı araştırma yapabilirsiniz.
+
+***************************************************************************************************************************************************************************************************************
+JavaScript'te değişkenlerin erişilebilirlik alanlarını (scope) anlamak, etkili ve hatasız kod yazabilmek için çok önemlidir. 
+JavaScript'te üç ana scope türü vardır: global scope, function scope, ve 
+block scope. Ayrıca, ES6 ile birlikte gelen `let` ve `const` anahtar kelimeleri ile block scope daha yaygın hale gelmiştir. İşte bu scope türleri hakkında detaylı bir açıklama:
+
+### 1. Global Scope (Global Kapsam)
+Global scope, değişkenlerin ve fonksiyonların tüm kod boyunca erişilebilir olduğu kapsamdır. Bir değişken, herhangi bir fonksiyonun veya blokun dışında tanımlandığında global scope'da olur.
+
+```javascript
+var globalVariable = "Bu global bir değişkendir.";
+
+function foo() {
+    console.log(globalVariable); // "Bu global bir değişkendir."
+}
+
+foo();
+console.log(globalVariable); // "Bu global bir değişkendir."
+```
+
+### 2. Function Scope (Fonksiyon Kapsamı)
+Function scope, değişkenlerin ve fonksiyonların yalnızca tanımlandıkları fonksiyon içinde erişilebilir olduğu kapsamdır. `var` anahtar kelimesi ile tanımlanan değişkenler, function scope'a sahiptir.
+
+```javascript
+function foo() {
+    var functionScopedVariable = "Bu fonksiyon kapsamlı bir değişkendir.";
+    console.log(functionScopedVariable); // "Bu fonksiyon kapsamlı bir değişkendir."
+}
+
+foo();
+console.log(functionScopedVariable); // ReferenceError: functionScopedVariable is not defined
+```
+
+### 3. Block Scope (Blok Kapsamı)
+Block scope, değişkenlerin ve fonksiyonların yalnızca tanımlandıkları blok ({}) içinde erişilebilir olduğu kapsamdır. ES6 ile gelen `let` ve `const` anahtar kelimeleri ile blok scope oluşturulur.
+
+#### `let` ve `const`
+`let` ve `const` anahtar kelimeleri, blok scope oluşturur ve bu kapsam içindeki değişkenler sadece bu blok içinde erişilebilir olur.
+
+```javascript
+if (true) {
+    let blockScopedVariable = "Bu blok kapsamlı bir değişkendir.";
+    console.log(blockScopedVariable); // "Bu blok kapsamlı bir değişkendir."
+}
+
+console.log(blockScopedVariable); // ReferenceError: blockScopedVariable is not defined
+```
+
+#### `var` ile Block Scope
+`var` anahtar kelimesi ile tanımlanan değişkenler, sadece function scope'a sahiptir ve block scope oluşturmaz.
+
+```javascript
+if (true) {
+    var functionScopedVariable = "Bu fonksiyon kapsamlı bir değişkendir.";
+    console.log(functionScopedVariable); // "Bu fonksiyon kapsamlı bir değişkendir."
+}
+
+console.log(functionScopedVariable); // "Bu fonksiyon kapsamlı bir değişkendir."
+```
+
+### Hoisting (Yukarı Taşıma)
+JavaScript'te hoisting, değişken ve fonksiyon bildirimlerinin (declaration) kapsamlarının başına taşınması işlemidir. Ancak, değer atamaları yukarı taşınmaz.
+
+#### Değişken Hoisting
+`var` ile tanımlanan değişkenler hoisted edilir, yani bildirimleri kapsamın başına taşınır, ancak değer ataması taşınmaz.
+
+```javascript
+console.log(hoistedVar); // undefined
+var hoistedVar = "Bu hoisted bir değişkendir.";
+```
+
+#### Fonksiyon Hoisting
+Fonksiyon bildirimleri tamamen hoisted edilir, yani hem bildirim hem de fonksiyon tanımı kapsamın başına taşınır.
+
+```javascript
+hoistedFunction(); // "Bu hoisted bir fonksiyondur."
+
+function hoistedFunction() {
+    console.log("Bu hoisted bir fonksiyondur.");
+}
+```
+
+### Lexical Scope (Leksikal Kapsam)
+JavaScript, lexical scope kullanır, yani bir değişkenin kapsamı, değişkenin tanımlandığı yere bağlıdır. İç içe fonksiyonlar, dış kapsamdaki değişkenlere erişebilirler.
+
+```javascript
+var outerVariable = "Dış değişken";
+
+function outerFunction() {
+    var innerVariable = "İç değişken";
+    
+    function innerFunction() {
+        console.log(outerVariable); // "Dış değişken"
+        console.log(innerVariable); // "İç değişken"
+    }
+    
+    innerFunction();
+}
+
+outerFunction();
+```
+
+Bu temel scope türleri ve hoisting kavramı, JavaScript'te değişkenlerin nasıl çalıştığını anlamanıza yardımcı olacaktır. Scope'ları doğru kullanarak daha temiz ve hatasız kod yazabilirsiniz.
+***************************************************************************************************************************************************************************************************************
+
+JavaScript'te değişkenler, verileri saklamak ve kod içinde bu verilere erişmek için kullanılır. Değişkenlerin tanımlanması ve yönetilmesi, kodun doğruluğu ve performansı için oldukça önemlidir. JavaScript'te değişken tanımlamak için `var`, `let` ve `const` anahtar kelimeleri kullanılır. İşte bu anahtar kelimeler ve değişken yönetimi hakkında detaylı bilgi:
+
+### 1. `var` Anahtar Kelimesi
+`var`, ES6 öncesinde kullanılan değişken tanımlama anahtar kelimesidir ve function scope ile çalışır. Block scope'u desteklemez.
+
+#### Özellikleri:
+- Function scope'lu değişkenler oluşturur.
+- Değişkenler hoisted edilir, yani bildirimleri kapsamın başına taşınır.
+
+#### Örnek:
+```javascript
+function exampleFunction() {
+    var x = 10;
+    if (true) {
+        var x = 20; // Aynı değişken, block scope yok.
+        console.log(x); // 20
+    }
+    console.log(x); // 20
+}
+
+exampleFunction();
+```
+
+### 2. `let` Anahtar Kelimesi
+`let`, ES6 ile gelen ve block scope sağlayan değişken tanımlama anahtar kelimesidir.
+
+#### Özellikleri:
+- Block scope ile çalışır.
+- Aynı kapsam içinde aynı isimle birden fazla değişken tanımlanamaz.
+- Hoisting yapılır, ancak var olan değere ulaşılmadan önce kullanılamaz (Temporal Dead Zone - TDZ).
+
+#### Örnek:
+```javascript
+function exampleFunction() {
+    let x = 10;
+    if (true) {
+        let x = 20; // Farklı değişken, block scope.
+        console.log(x); // 20
+    }
+    console.log(x); // 10
+}
+
+exampleFunction();
+```
+
+### 3. `const` Anahtar Kelimesi
+`const`, ES6 ile gelen ve block scope sağlayan, sabit (constant) değişken tanımlama anahtar kelimesidir. Tanımlandıktan sonra değeri değiştirilemez.
+
+#### Özellikleri:
+- Block scope ile çalışır.
+- Değeri yeniden atanamaz.
+- Hoisting yapılır, ancak var olan değere ulaşılmadan önce kullanılamaz (Temporal Dead Zone - TDZ).
+
+#### Örnek:
+```javascript
+const y = 10;
+y = 20; // TypeError: Assignment to constant variable.
+
+const obj = { a: 1 };
+obj.a = 2; // obj değiştirilebilir, ancak obj'nin kendisi yeniden atanamaz.
+console.log(obj.a); // 2
+```
+
+### Değişken Hoisting (Yukarı Taşıma)
+Hoisting, değişken ve fonksiyon bildirimlerinin kapsamın başına taşınması işlemidir. Ancak `let` ve `const` anahtar kelimeleri ile tanımlanan değişkenler için bu, Temporal Dead Zone (TDZ) ile sınırlıdır.
+
+#### Örnek:
+```javascript
+console.log(hoistedVar); // undefined
+var hoistedVar = "Bu hoisted bir değişkendir.";
+
+console.log(hoistedLet); // ReferenceError: hoistedLet is not defined
+let hoistedLet = "Bu hoisted bir değişkendir.";
+
+console.log(hoistedConst); // ReferenceError: hoistedConst is not defined
+const hoistedConst = "Bu hoisted bir değişkendir.";
+```
+
+### Değişkenlerin Kapsamı (Scope)
+Değişkenlerin erişilebilirliği, tanımlandıkları kapsam tarafından belirlenir.
+
+- **Global Scope:** Tüm kod boyunca erişilebilir.
+- **Function Scope:** Yalnızca tanımlandığı fonksiyon içinde erişilebilir.
+- **Block Scope:** Yalnızca tanımlandığı blok içinde erişilebilir (`let` ve `const` ile).
+
+#### Örnek:
+```javascript
+var globalVar = "Global değişken";
+
+function exampleFunction() {
+    var functionVar = "Fonksiyon değişkeni";
+    if (true) {
+        let blockVar = "Blok değişkeni";
+        console.log(blockVar); // "Blok değişkeni"
+    }
+    console.log(functionVar); // "Fonksiyon değişkeni"
+    console.log(globalVar); // "Global değişken"
+}
+
+exampleFunction();
+console.log(globalVar); // "Global değişken"
+console.log(functionVar); // ReferenceError: functionVar is not defined
+console.log(blockVar); // ReferenceError: blockVar is not defined
+```
+
+### Sonuç
+JavaScript'te değişkenler tanımlanırken `var`, `let` ve `const` anahtar kelimelerinin doğru kullanımı, kodun doğruluğu ve okunabilirliği için çok önemlidir. `var` genel olarak eski kodlar için kullanılırken, 
+modern JavaScript yazımında `let` ve `const` tercih edilir. `const` sabit değerler için kullanılırken, `let` değişken değerler için kullanılır. Bu kurallara dikkat ederek daha sağlam ve yönetilebilir 
+JavaScript kodları yazabilirsiniz.
+***************************************************************************************************************************************************************************************************************
+
+Evet, `let` ve `const` anahtar kelimeleri ile tanımlanan değişkenler de global scope'ta olabilirler, ancak `var` ile tanımlanan global değişkenlerden bazı farklılıkları vardır. `let` ve `const` ile tanımlanan global değişkenler global nesne (`window` veya `globalThis`) üzerinde doğrudan özellik olarak yer almazlar.
+
+### Örnek
+
+```javascript
+let globalLet = "Bu bir global let değişkenidir";
+const globalConst = "Bu bir global const değişkenidir";
+var globalVar = "Bu bir global var değişkenidir";
+
+console.log(globalLet); // "Bu bir global let değişkenidir"
+console.log(globalConst); // "Bu bir global const değişkenidir"
+console.log(globalVar); // "Bu bir global var değişkenidir"
+
+console.log(window.globalLet); // undefined
+console.log(window.globalConst); // undefined
+console.log(window.globalVar); // "Bu bir global var değişkenidir"
+```
+
+### Ayrıntılı İnceleme
+
+- **`var` ile Tanımlanan Değişkenler:**
+  `var` ile tanımlanan global değişkenler, global nesnenin (`window` veya `globalThis`) özellikleri olarak eklenirler. Bu nedenle, global nesne üzerinden erişilebilirler.
+
+- **`let` ve `const` ile Tanımlanan Değişkenler:**
+  `let` ve `const` ile tanımlanan global değişkenler, global scope'ta yer alırlar ancak global nesnenin özellikleri olarak eklenmezler. Bu değişkenlere doğrudan erişilebilir, ancak global nesne üzerinden 
+erişilemezler.
+
+### Uygulama
+
+#### Global Scope'ta `let` ve `const` Kullanımı
+
+```javascript
+let globalLet = "Bu global bir let değişkenidir";
+const globalConst = "Bu global bir const değişkenidir";
+
+console.log(globalLet); // "Bu global bir let değişkenidir"
+console.log(globalConst); // "Bu global bir const değişkenidir"
+
+// Global nesne üzerinden erişim:
+console.log(window.globalLet); // undefined
+console.log(window.globalConst); // undefined
+```
+
+#### Global Scope'ta `var` Kullanımı
+
+```javascript
+var globalVar = "Bu global bir var değişkenidir";
+
+console.log(globalVar); // "Bu global bir var değişkenidir"
+
+// Global nesne üzerinden erişim:
+console.log(window.globalVar); // "Bu global bir var değişkenidir"
+```
+
+Bu farklılıklar, kodun yönetimi ve potansiyel hataların önlenmesi açısından önemlidir. `let` ve `const` ile tanımlanan değişkenler, yanlışlıkla global nesne üzerinde bir özelliğin üzerine yazılmasını önler. 
+Bu, daha güvenli ve hata toleransı yüksek kod yazmayı sağlar.
+***************************************************************************************************************************************************************************************************************
+
+JavaScript'te veri tipleri iki ana kategoriye ayrılır: ilkel (primitive) veri tipleri ve nesne (object) veri tipleri. Bu veri tiplerini anlamak, JavaScript'te etkili ve hatasız kod yazmak 
+için oldukça önemlidir.
+
+### İlkel (Primitive) Veri Tipleri
+
+İlkel veri tipleri, tek bir değer tutar ve değiştirilemezler (immutable). JavaScript'te altı ilkel veri tipi vardır:
+
+1. **String**: Metin verilerini temsil eder. Çift veya tek tırnak içinde tanımlanır.
+   ```javascript
+   let str = "Merhaba";
+   let str2 = 'Dünya';
+   ```
+
+2. **Number**: Sayısal verileri temsil eder. Hem tam sayı (integer) hem de ondalık sayı (floating point) olabilir.
+   ```javascript
+   let num = 42;
+   let num2 = 3.14;
+   ```
+
+3. **Boolean**: Doğru veya yanlış (true veya false) değerlerini temsil eder.
+   ```javascript
+   let isTrue = true;
+   let isFalse = false;
+   ```
+
+4. **Undefined**: Bir değişkene değer atanmadığında, değeri `undefined` olur.
+   ```javascript
+   let undefinedVar;
+   console.log(undefinedVar); // undefined
+   ```
+
+5. **Null**: Bilinçli olarak boş değer atamak için kullanılır. `null` bir nesne (object) tipindedir.
+   ```javascript
+   let emptyVar = null;
+   ```
+
+6. **Symbol**: Benzersiz ve değiştirilemez (immutable) kimlikler oluşturmak için kullanılır. ES6 ile tanıtılmıştır.
+   ```javascript
+   let sym = Symbol("benzersiz");
+   ```
+
+### Nesne (Object) Veri Tipleri
+
+Nesne veri tipleri, anahtar-değer çiftleri (key-value pairs) veya daha karmaşık yapılar içerebilir. Nesneler değiştirilebilir (mutable) ve referans tipindedir. JavaScript'te birkaç temel nesne tipi vardır:
+
+1. **Object**: Anahtar-değer çiftlerinden oluşan veri yapısı.
+   ```javascript
+   let person = {
+       name: "John",
+       age: 30
+   };
+   ```
+
+2. **Array**: Sıralı veri koleksiyonlarını tutar. 
+   ```javascript
+   let numbers = [1, 2, 3, 4, 5];
+   ```
+
+3. **Function**: İşlevleri ve prosedürleri temsil eder.
+   ```javascript
+   function greet() {
+       console.log("Merhaba");
+   }
+   ```
+
+4. **Date**: Tarih ve saat bilgilerini tutar.
+   ```javascript
+   let now = new Date();
+   ```
+
+5. **RegExp**: Düzenli ifadeleri (regular expressions) temsil eder.
+   ```javascript
+   let pattern = /ab+c/;
+   ```
+
+### Örnek Kullanımlar
+
+#### İlkel Veri Tipleri
+
+```javascript
+let str = "Hello, world!";  // String
+let num = 100;              // Number
+let isAvailable = true;     // Boolean
+let undefinedVar;           // Undefined
+let nullVar = null;         // Null
+let uniqueId = Symbol("id"); // Symbol
+
+console.log(typeof str); // "string"
+console.log(typeof num); // "number"
+console.log(typeof isAvailable); // "boolean"
+console.log(typeof undefinedVar); // "undefined"
+console.log(typeof nullVar); // "object" (JavaScript'teki bir hata)
+console.log(typeof uniqueId); // "symbol"
+```
+
+#### Nesne Veri Tipleri
+
+```javascript
+let person = {
+    name: "Alice",
+    age: 25
+}; // Object
+
+let colors = ["red", "green", "blue"]; // Array
+
+function sayHello() {
+    console.log("Hello!");
+} // Function
+
+let currentDate = new Date(); // Date
+
+let regex = /hello/i; // RegExp
+
+console.log(typeof person); // "object"
+console.log(typeof colors); // "object"
+console.log(typeof sayHello); // "function"
+console.log(typeof currentDate); // "object"
+console.log(typeof regex); // "object"
+```
+
+### İlkel ve Nesne Veri Tiplerinin Farkları
+
+- İlkel veri tipleri doğrudan değer taşır ve değiştirilemez (immutable).
+- Nesne veri tipleri referanslarla çalışır ve değiştirilebilir (mutable).
+
+### Değişmezlik (Immutability) ve Değiştirilebilirlik (Mutability)
+
+```javascript
+// İlkel veri tipi örneği (değişmez)
+let a = 10;
+let b = a;
+b = 20;
+console.log(a); // 10 (değişmez)
+
+// Nesne veri tipi örneği (değiştirilebilir)
+let obj1 = { value: 10 };
+let obj2 = obj1;
+obj2.value = 20;
+console.log(obj1.value); // 20 (değiştirilebilir)
+```
+
+JavaScript'te veri tiplerini ve aralarındaki farkları anlamak, kodun nasıl çalıştığını ve değişkenlerin nasıl davrandığını anlamak açısından çok önemlidir. Bu bilgi, daha güvenli ve etkili kod yazmanıza 
+yardımcı olur.
+***************************************************************************************************************************************************************************************************************
+
+JavaScript'te atama operatörleri, bir değişkene değer atamak veya mevcut bir değeri belirli bir işlemle güncellemek için kullanılır. Atama operatörleri, değişkenlere değer atamanın yanı sıra, aritmetik ve bit düzeyinde işlemleri daha kısa ve okunabilir bir şekilde yapmamıza olanak tanır.
+
+### Temel Atama Operatörü
+
+- **Atama Operatörü (`=`)**: Sağdaki değeri soldaki değişkene atar.
+
+```javascript
+let x = 10;
+console.log(x); // 10
+```
+
+### Birleşik Atama Operatörleri
+
+Birleşik atama operatörleri, bir aritmetik operatör ve temel atama operatörünün birleşimidir. Bu operatörler, bir değişkenin mevcut değerini belirli bir işlemle günceller.
+
+- **Toplama ve Atama Operatörü (`+=`)**: Sağdaki değeri soldaki değişkene ekler ve sonucu soldaki değişkene atar.
+
+```javascript
+let x = 10;
+x += 5; // x = x + 5
+console.log(x); // 15
+```
+
+- **Çıkarma ve Atama Operatörü (`-=`)**: Sağdaki değeri soldaki değişkenden çıkarır ve sonucu soldaki değişkene atar.
+
+```javascript
+let y = 10;
+y -= 3; // y = y - 3
+console.log(y); // 7
+```
+
+- **Çarpma ve Atama Operatörü (`*=`)**: Sağdaki değeri soldaki değişkenle çarpar ve sonucu soldaki değişkene atar.
+
+```javascript
+let z = 4;
+z *= 3; // z = z * 3
+console.log(z); // 12
+```
+
+- **Bölme ve Atama Operatörü (`/=`)**: Sağdaki değeri soldaki değişkene böler ve sonucu soldaki değişkene atar.
+
+```javascript
+let a = 20;
+a /= 4; // a = a / 4
+console.log(a); // 5
+```
+
+- **Modülüs ve Atama Operatörü (`%=`)**: Soldaki değişkenin sağdaki değere bölümünden kalanı bulur ve sonucu soldaki değişkene atar.
+
+```javascript
+let b = 10;
+b %= 3; // b = b % 3
+console.log(b); // 1
+```
+
+- **Üs Alma ve Atama Operatörü (`**=`)**: Soldaki değişkenin değerini sağdaki değer kadar üs alır ve sonucu soldaki değişkene atar.
+
+```javascript
+let c = 2;
+c **= 3; // c = c ** 3
+console.log(c); // 8
+```
+
+### Bit Düzeyinde Atama Operatörleri
+
+Bit düzeyinde atama operatörleri, bit düzeyinde işlemler yaparak değişkenlerin değerlerini günceller.
+
+- **Bitwise AND ve Atama Operatörü (`&=`)**: Soldaki değişkenin değerini, sağdaki değere göre bitwise AND işlemi ile günceller.
+
+```javascript
+let d = 5; // 101 in binary
+d &= 3; // 101 & 011 = 001 (1 in decimal)
+console.log(d); // 1
+```
+
+- **Bitwise OR ve Atama Operatörü (`|=`)**: Soldaki değişkenin değerini, sağdaki değere göre bitwise OR işlemi ile günceller.
+
+```javascript
+let e = 5; // 101 in binary
+e |= 3; // 101 | 011 = 111 (7 in decimal)
+console.log(e); // 7
+```
+
+- **Bitwise XOR ve Atama Operatörü (`^=`)**: Soldaki değişkenin değerini, sağdaki değere göre bitwise XOR işlemi ile günceller.
+
+```javascript
+let f = 5; // 101 in binary
+f ^= 3; // 101 ^ 011 = 110 (6 in decimal)
+console.log(f); // 6
+```
+
+- **Bitwise Sola Kaydırma ve Atama Operatörü (`<<=`)**: Soldaki değişkenin bitlerini, sağdaki değer kadar sola kaydırır ve sonucu soldaki değişkene atar.
+
+```javascript
+let g = 5; // 101 in binary
+g <<= 1; // 101 << 1 = 1010 (10 in decimal)
+console.log(g); // 10
+```
+
+- **Bitwise Sağa Kaydırma ve Atama Operatörü (`>>=`)**: Soldaki değişkenin bitlerini, sağdaki değer kadar sağa kaydırır ve sonucu soldaki değişkene atar.
+
+```javascript
+let h = 5; // 101 in binary
+h >>= 1; // 101 >> 1 = 10 (2 in decimal)
+console.log(h); // 2
+```
+
+- **Unsigned Sağa Kaydırma ve Atama Operatörü (`>>>=`)**: Soldaki değişkenin bitlerini, sağdaki değer kadar sağa kaydırır ve sonucu soldaki değişkene atar (işaretsiz kaydırma).
+
+```javascript
+let i = -5; // binary representation depends on the system
+i >>>= 1; // unsigned right shift
+console.log(i); // Result depends on the system and representation
+```
+
+### Örnek Kullanım
+
+```javascript
+let num = 10;
+num += 5; // num = 15
+num -= 3; // num = 12
+num *= 2; // num = 24
+num /= 4; // num = 6
+num %= 4; // num = 2
+num **= 3; // num = 8
+
+console.log(num); // 8
+```
+
+Atama operatörleri, kodunuzu daha kısa ve okunabilir hale getirir. Karmaşık aritmetik veya bit düzeyinde işlemleri tek bir satırda gerçekleştirmeye olanak tanır. Bu operatörlerin doğru ve etkili kullanımı,
+ JavaScript kodunuzun performansını ve bakımını iyileştirir.
+***************************************************************************************************************************************************************************************************************
+
+JavaScript'te dialog kutuları, kullanıcı ile etkileşim kurmak için kullanılan temel araçlardır. Bu kutular, tarayıcı tarafından sağlanan yerleşik fonksiyonlar aracılığıyla gösterilir 
+ve kullanıcıdan bilgi toplamak, onay almak veya mesaj göstermek için kullanılır. İşte JavaScript'te yaygın olarak kullanılan üç dialog kutusu ve nasıl kullanıldıkları:
+
+### 1. `alert()`
+`alert()` fonksiyonu, kullanıcıya basit bir bilgi mesajı göstermek için kullanılır. Kullanıcı mesajı gördükten sonra "Tamam" butonuna basar ve ardından işlem devam eder.
+
+#### Kullanımı:
+```javascript
+alert("Bu bir uyarı mesajıdır!");
+```
+
+#### Örnek:
+```javascript
+function showAlert() {
+    alert("Dikkat! Bu bir uyarı mesajıdır.");
+}
+showAlert();
+```
+
+### 2. `prompt()`
+`prompt()` fonksiyonu, kullanıcıdan bir bilgi girişi almak için kullanılır. Bir metin kutusu ile birlikte mesaj gösterir ve kullanıcının girdiği değeri döner. Kullanıcı veri girişi yapıp "Tamam" butonuna bastığında değeri döner; "İptal" butonuna basıldığında `null` döner.
+
+#### Kullanımı:
+```javascript
+let userInput = prompt("Lütfen adınızı girin:");
+```
+
+#### Örnek:
+```javascript
+function askName() {
+    let name = prompt("Adınız nedir?");
+    if (name !== null) {
+        alert("Merhaba, " + name + "!");
+    } else {
+        alert("Kullanıcı isim girmedi.");
+    }
+}
+askName();
+```
+
+### 3. `confirm()`
+`confirm()` fonksiyonu, kullanıcıdan bir onay almak için kullanılır. Bir mesaj gösterir ve kullanıcı "Tamam" butonuna basarsa `true`, "İptal" butonuna basarsa `false` döner.
+
+#### Kullanımı:
+```javascript
+let isConfirmed = confirm("Emin misiniz?");
+```
+
+#### Örnek:
+```javascript
+function confirmAction() {
+    let result = confirm("Bu işlemi yapmak istediğinizden emin misiniz?");
+    if (result) {
+        alert("İşlem onaylandı.");
+    } else {
+        alert("İşlem iptal edildi.");
+    }
+}
+confirmAction();
+```
+
+### Özet
+
+- **`alert(message)`**: Kullanıcıya bilgi verir ve "Tamam" butonu ile devam edilir.
+- **`prompt(message, default)`**: Kullanıcıdan veri girişi alır ve girilen değeri döner. İkinci parametre olarak varsayılan bir değer belirlenebilir.
+- **`confirm(message)`**: Kullanıcıdan onay alır ve "Tamam" için `true`, "İptal" için `false` döner.
+
+#### Örnek Kullanım
+
+Aşağıda tüm bu dialog kutularını bir arada gösteren bir örnek bulunmaktadır:
+
+```javascript
+function showDialogs() {
+    alert("Bu bir bilgi mesajıdır.");
+
+    let name = prompt("Lütfen adınızı girin:", "John Doe");
+    if (name !== null) {
+        let isSure = confirm(name + ", bu ismi onaylıyor musunuz?");
+        if (isSure) {
+            alert("Merhaba, " + name + "!");
+        } else {
+            alert("İşlem iptal edildi.");
+        }
+    } else {
+        alert("Kullanıcı isim girmedi.");
+    }
+}
+
+showDialogs();
+```
+
+Bu fonksiyon, kullanıcıya bir bilgi mesajı gösterir, ardından adını sorar ve kullanıcının verdiği adı onaylayıp onaylamadığını kontrol eder. Bu sayede kullanıcı etkileşimli bir şekilde yönlendirilir.
+***************************************************************************************************************************************************************************************************************
+
+JavaScript'te `Date` nesnesi, tarih ve saat bilgilerini yönetmek ve kullanmak için kullanılan yerleşik bir nesnedir. Bu nesne sayesinde tarih ve saat bilgilerini alabilir, ayarlayabilir, karşılaştırabilir ve farklı formatlarda görüntüleyebilirsiniz.
+
+### `Date` Nesnesi Oluşturma
+
+Bir `Date` nesnesi oluşturmanın birkaç yolu vardır:
+
+1. **Geçerli Tarih ve Saat**:
+   ```javascript
+   let now = new Date();
+   console.log(now);
+   ```
+   Bu, geçerli tarih ve saat bilgilerini içeren bir `Date` nesnesi oluşturur.
+
+2. **Belirli Tarih ve Saat**:
+   ```javascript
+   let specificDate = new Date('2023-12-25T10:00:00');
+   console.log(specificDate);
+   ```
+   Bu, belirli bir tarih ve saat bilgilerini içeren bir `Date` nesnesi oluşturur. Tarih ve saat bilgisi bir dize olarak verilmiştir.
+
+3. **Yıl, Ay, Gün vb. Belirterek**:
+   ```javascript
+   let dateComponents = new Date(2023, 11, 25, 10, 0, 0); // Aylar 0-11 arasında olduğu için Aralık ayı 11'dir.
+   console.log(dateComponents);
+   ```
+   Bu, belirli bileşenlerle (yıl, ay, gün, saat, dakika, saniye, milisaniye) bir `Date` nesnesi oluşturur.
+
+### `Date` Nesnesi ile Çalışma
+
+#### Tarih ve Saat Bilgilerini Alma
+
+1. **Yıl**:
+   ```javascript
+   let year = now.getFullYear();
+   console.log(year); // 2024
+   ```
+
+2. **Ay**:
+   ```javascript
+   let month = now.getMonth();
+   console.log(month); // 0 - 11 (Ocak 0, Şubat 1, ... Aralık 11)
+   ```
+
+3. **Gün**:
+   ```javascript
+   let day = now.getDate();
+   console.log(day); // 1 - 31
+   ```
+
+4. **Haftanın Günü**:
+   ```javascript
+   let dayOfWeek = now.getDay();
+   console.log(dayOfWeek); // 0 - 6 (Pazar 0, Pazartesi 1, ... Cumartesi 6)
+   ```
+
+5. **Saat, Dakika, Saniye**:
+   ```javascript
+   let hours = now.getHours();
+   let minutes = now.getMinutes();
+   let seconds = now.getSeconds();
+   console.log(hours, minutes, seconds); // 0 - 23, 0 - 59, 0 - 59
+   ```
+
+#### Tarih ve Saat Bilgilerini Ayarlama
+
+1. **Yıl**:
+   ```javascript
+   now.setFullYear(2025);
+   console.log(now.getFullYear()); // 2025
+   ```
+
+2. **Ay**:
+   ```javascript
+   now.setMonth(5); // Haziran
+   console.log(now.getMonth()); // 5
+   ```
+
+3. **Gün**:
+   ```javascript
+   now.setDate(15);
+   console.log(now.getDate()); // 15
+   ```
+
+4. **Saat, Dakika, Saniye**:
+   ```javascript
+   now.setHours(14);
+   now.setMinutes(30);
+   now.setSeconds(45);
+   console.log(now); // Güncel tarih ile birlikte 14:30:45
+   ```
+
+### Tarih ve Saat Formatlama
+
+`Date` nesnesi, tarih ve saat bilgilerini farklı formatlarda görüntülemek için birkaç yöntem sağlar:
+
+1. **toString()**:
+   ```javascript
+   let dateString = now.toString();
+   console.log(dateString); // Örn: Wed Jul 03 2024 14:30:45 GMT+0300 (Turkey Standard Time)
+   ```
+
+2. **toDateString()**:
+   ```javascript
+   let dateOnlyString = now.toDateString();
+   console.log(dateOnlyString); // Örn: Wed Jul 03 2024
+   ```
+
+3. **toTimeString()**:
+   ```javascript
+   let timeOnlyString = now.toTimeString();
+   console.log(timeOnlyString); // Örn: 14:30:45 GMT+0300 (Turkey Standard Time)
+   ```
+
+4. **toISOString()**:
+   ```javascript
+   let isoString = now.toISOString();
+   console.log(isoString); // Örn: 2024-07-03T11:30:45.000Z
+   ```
+
+### Örnek Kullanım
+
+Aşağıda, `Date` nesnesi ile tarih ve saat bilgilerini alıp, ayarlayıp, formatlayan bir örnek bulunmaktadır:
+
+```javascript
+let now = new Date();
+console.log("Current Date and Time: ", now.toString());
+
+now.setFullYear(2025);
+now.setMonth(5); // Haziran
+now.setDate(15);
+now.setHours(14);
+now.setMinutes(30);
+now.setSeconds(45);
+
+console.log("Updated Date and Time: ", now.toString());
+
+console.log("ISO Format: ", now.toISOString());
+console.log("Date Only: ", now.toDateString());
+console.log("Time Only: ", now.toTimeString());
+```
+
+Bu kod, geçerli tarih ve saat bilgilerini alır, bazı değişiklikler yapar ve ardından farklı formatlarda görüntüler. Bu şekilde `Date` nesnesi ile çeşitli tarih ve saat işlemlerini gerçekleştirebilirsiniz.
+***************************************************************************************************************************************************************************************************************
+
+
+JavaScript'te diziler (arrays), bir veya daha fazla değeri tek bir değişkende saklamak için kullanılır. Diziler, sıralı koleksiyonlardır ve her bir değerin (elemanın) bir dizin (index) numarası vardır. İşte JavaScript dizileri hakkında kapsamlı bir rehber:
+
+### Dizi Oluşturma
+
+Dizi oluşturmanın birkaç yolu vardır:
+
+1. **Köşeli Parantez Kullanarak (Array Literal)**
+   ```javascript
+   let fruits = ["Apple", "Banana", "Cherry"];
+   ```
+
+2. **`new Array()` Yapıcısı ile**
+   ```javascript
+   let fruits = new Array("Apple", "Banana", "Cherry");
+   ```
+
+### Dizi Elemanlarına Erişim
+
+Dizi elemanlarına, dizin numaralarını kullanarak erişebilirsiniz. Dizin numaraları 0'dan başlar.
+
+```javascript
+let fruits = ["Apple", "Banana", "Cherry"];
+console.log(fruits[0]); // "Apple"
+console.log(fruits[1]); // "Banana"
+console.log(fruits[2]); // "Cherry"
+```
+
+### Dizi Elemanlarını Değiştirme
+
+Bir dizi elemanını değiştirmek için dizin numarasını kullanabilirsiniz.
+
+```javascript
+let fruits = ["Apple", "Banana", "Cherry"];
+fruits[1] = "Blueberry";
+console.log(fruits); // ["Apple", "Blueberry", "Cherry"]
+```
+
+### Dizi Uzunluğu
+
+Dizinin uzunluğunu `length` özelliği ile öğrenebilirsiniz.
+
+```javascript
+let fruits = ["Apple", "Banana", "Cherry"];
+console.log(fruits.length); // 3
+```
+
+### Dizilere Eleman Ekleme ve Çıkarma
+
+Diziye eleman eklemek ve çıkarmak için çeşitli yöntemler vardır:
+
+#### `push()`
+Dizinin sonuna bir veya daha fazla eleman ekler.
+
+```javascript
+let fruits = ["Apple", "Banana"];
+fruits.push("Cherry");
+console.log(fruits); // ["Apple", "Banana", "Cherry"]
+```
+
+#### `pop()`
+Dizinin son elemanını çıkarır.
+
+```javascript
+let fruits = ["Apple", "Banana", "Cherry"];
+let lastFruit = fruits.pop();
+console.log(fruits); // ["Apple", "Banana"]
+console.log(lastFruit); // "Cherry"
+```
+
+#### `unshift()`
+Dizinin başına bir veya daha fazla eleman ekler.
+
+```javascript
+let fruits = ["Apple", "Banana"];
+fruits.unshift("Strawberry");
+console.log(fruits); // ["Strawberry", "Apple", "Banana"]
+```
+
+#### `shift()`
+Dizinin ilk elemanını çıkarır.
+
+```javascript
+let fruits = ["Apple", "Banana", "Cherry"];
+let firstFruit = fruits.shift();
+console.log(fruits); // ["Banana", "Cherry"]
+console.log(firstFruit); // "Apple"
+```
+
+### Dizi Metotları
+
+JavaScript, dizilerle çalışmak için birçok yerleşik metod sunar. İşte bazıları:
+
+#### `forEach()`
+Dizinin her elemanı için bir fonksiyon çalıştırır.
+
+```javascript
+let fruits = ["Apple", "Banana", "Cherry"];
+fruits.forEach(function(fruit) {
+    console.log(fruit);
+});
+// "Apple"
+// "Banana"
+// "Cherry"
+```
+
+#### `map()`
+Dizinin her elemanı üzerinde bir fonksiyon çalıştırır ve yeni bir dizi döner.
+
+```javascript
+let numbers = [1, 2, 3];
+let doubled = numbers.map(function(number) {
+    return number * 2;
+});
+console.log(doubled); // [2, 4, 6]
+```
+
+#### `filter()`
+Bir koşulu sağlayan elemanlardan oluşan yeni bir dizi döner.
+
+```javascript
+let numbers = [1, 2, 3, 4, 5];
+let evens = numbers.filter(function(number) {
+    return number % 2 === 0;
+});
+console.log(evens); // [2, 4]
+```
+
+#### `reduce()`
+Dizinin tüm elemanlarını bir değere indirger.
+
+```javascript
+let numbers = [1, 2, 3, 4];
+let sum = numbers.reduce(function(total, number) {
+    return total + number;
+}, 0);
+console.log(sum); // 10
+```
+
+#### `find()`
+Bir koşulu sağlayan ilk elemanı döner.
+
+```javascript
+let numbers = [1, 2, 3, 4, 5];
+let found = numbers.find(function(number) {
+    return number > 3;
+});
+console.log(found); // 4
+```
+
+#### `sort()`
+Diziyi sıralar.
+
+```javascript
+let fruits = ["Banana", "Apple", "Cherry"];
+fruits.sort();
+console.log(fruits); // ["Apple", "Banana", "Cherry"]
+```
+
+#### `reverse()`
+Diziyi tersine çevirir.
+
+```javascript
+let fruits = ["Banana", "Apple", "Cherry"];
+fruits.reverse();
+console.log(fruits); // ["Cherry", "Apple", "Banana"]
+```
+
+### Çok Boyutlu Diziler
+
+JavaScript'te çok boyutlu diziler (dizilerin dizileri) oluşturabilirsiniz.
+
+```javascript
+let matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+console.log(matrix[0][1]); // 2
+```
+
+### Örnek Kullanım
+
+Aşağıda, bazı yaygın dizi işlemlerini gösteren bir örnek bulunmaktadır:
+
+```javascript
+let fruits = ["Apple", "Banana", "Cherry"];
+
+// Eleman ekleme
+fruits.push("Orange");
+console.log(fruits); // ["Apple", "Banana", "Cherry", "Orange"]
+
+// Eleman çıkarma
+fruits.pop();
+console.log(fruits); // ["Apple", "Banana", "Cherry"]
+
+// Dizi üzerinde döngü
+fruits.forEach(function(fruit, index) {
+    console.log(index, fruit);
+});
+// 0 "Apple"
+// 1 "Banana"
+// 2 "Cherry"
+
+// Eleman bulma
+let found = fruits.find(function(fruit) {
+    return fruit === "Banana";
+});
+console.log(found); // "Banana"
+
+// Eleman filtreleme
+let filtered = fruits.filter(function(fruit) {
+    return fruit.includes("e");
+});
+console.log(filtered); // ["Apple", "Cherry"]
+
+// Dizi elemanlarını dönüştürme
+let uppercased = fruits.map(function(fruit) {
+    return fruit.toUpperCase();
+});
+console.log(uppercased); // ["APPLE", "BANANA", "CHERRY"]
+
+// Dizi elemanlarını birleştirme
+let joined = fruits.join(", ");
+console.log(joined); // "Apple, Banana, Cherry"
+```
+
+Bu örnekler, JavaScript dizileriyle yapabileceğiniz temel işlemleri kapsar. Diziler, JavaScript'te veri saklama ve işleme için çok güçlü ve esnek bir yapıdır.
+
+***************************************************************************************************************************************************************************************************************
+
+JavaScript'te Document Object Model (DOM), HTML ve XML belgelerinin yapılandırılmış bir temsili olup, belgeleri ve belgelerdeki bileşenleri (elementler, öznitelikler, metin düğümleri vb.)
+ manipüle etmeyi sağlar. DOM, belge içeriğini, yapısını ve stilini programlı olarak değiştirmek için bir API sağlar.
+
+### Temel DOM Kavramları
+
+1. **Element Seçimi**: Belgedeki elementleri seçmek için çeşitli yöntemler kullanılır.
+2. **Element Manipülasyonu**: Elementlerin içeriği, öznitelikleri ve stilleri değiştirilir.
+3. **Event Handling**: Kullanıcı etkileşimlerine yanıt vermek için olay dinleyicileri eklenir.
+
+### Element Seçimi
+
+- **`document.getElementById`**: ID ile element seçimi.
+- **`document.getElementsByClassName`**: Sınıf adı ile element seçimi.
+- **`document.getElementsByTagName`**: Etiket adı ile element seçimi.
+- **`document.querySelector`**: CSS seçicisi ile ilk eşleşen element seçimi.
+- **`document.querySelectorAll`**: CSS seçicisi ile tüm eşleşen elementlerin seçimi.
+
+#### Örnekler:
+
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Manipülasyonu</title>
+</head>
+<body>
+  <div id="myDiv">Merhaba Dünya!</div>
+  <div class="myClass">Merhaba!</div>
+  <p>Bir paragraf.</p>
+  <p>Başka bir paragraf.</p>
+
+  <script>
+    // ID ile element seçimi
+    var elementById = document.getElementById('myDiv');
+    console.log(elementById.innerHTML); // "Merhaba Dünya!"
+
+    // Sınıf adı ile element seçimi
+    var elementsByClassName = document.getElementsByClassName('myClass');
+    console.log(elementsByClassName[0].innerHTML); // "Merhaba!"
+
+    // Etiket adı ile element seçimi
+    var elementsByTagName = document.getElementsByTagName('p');
+    console.log(elementsByTagName[0].innerHTML); // "Bir paragraf."
+
+    // CSS seçicisi ile ilk eşleşen element seçimi
+    var firstParagraph = document.querySelector('p');
+    console.log(firstParagraph.innerHTML); // "Bir paragraf."
+
+    // CSS seçicisi ile tüm eşleşen elementlerin seçimi
+    var allParagraphs = document.querySelectorAll('p');
+    allParagraphs.forEach(function(paragraph) {
+      console.log(paragraph.innerHTML);
+    });
+  </script>
+</body>
+</html>
+```
+
+### Element Manipülasyonu
+
+- **`element.innerHTML`**: Elementin içeriğini değiştirme.
+- **`element.style`**: Elementin stilini değiştirme.
+- **`element.setAttribute`**: Elementin bir özniteliğini değiştirme veya ekleme.
+- **`element.classList`**: Elementin sınıf listesini yönetme (ekleme, çıkarma, toggle etme).
+
+#### Örnekler:
+
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Element Manipülasyonu</title>
+</head>
+<body>
+  <div id="myDiv">Eski içerik</div>
+
+  <script>
+    var element = document.getElementById('myDiv');
+
+    // İçeriği değiştirme
+    element.innerHTML = 'Yeni içerik';
+
+    // Stili değiştirme
+    element.style.color = 'red';
+    element.style.fontSize = '20px';
+
+    // Öznitelik ekleme/değiştirme
+    element.setAttribute('data-custom-attribute', 'customValue');
+
+    // Sınıf yönetimi
+    element.classList.add('newClass');
+    element.classList.remove('oldClass');
+    element.classList.toggle('toggleClass');
+  </script>
+</body>
+</html>
+```
+
+### Event Handling
+
+Olaylar, kullanıcı etkileşimlerine yanıt vermek için kullanılır. Olay dinleyicileri `addEventListener` yöntemi ile eklenir.
+
+#### Örnekler:
+
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Handling</title>
+</head>
+<body>
+  <button id="myButton">Tıkla</button>
+  <p id="displayText">Bu yazı değişecek.</p>
+
+  <script>
+    var button = document.getElementById('myButton');
+    var displayText = document.getElementById('displayText');
+
+    // Olay dinleyici ekleme
+    button.addEventListener('click', function() {
+      displayText.innerHTML = 'Butona tıklandı!';
+    });
+  </script>
+</body>
+</html>
+```
+
+### Daha Karmaşık Bir Örnek: Dinamik Liste Ekleme
+
+Bu örnek, kullanıcıdan alınan girdilere göre dinamik olarak bir liste öğesi ekler.
+
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dinamik Liste Ekleme</title>
+</head>
+<body>
+  <input type="text" id="itemInput" placeholder="Liste öğesi ekle">
+  <button id="addItemButton">Ekle</button>
+  <ul id="itemList"></ul>
+
+  <script>
+    var input = document.getElementById('itemInput');
+    var button = document.getElementById('addItemButton');
+    var list = document.getElementById('itemList');
+
+    button.addEventListener('click', function() {
+      var newItemText = input.value;
+
+      if (newItemText !== '') {
+        var newItem = document.createElement('li');
+        newItem.innerHTML = newItemText;
+        list.appendChild(newItem);
+        input.value = ''; // Girdiyi temizle
+      }
+    });
+  </script>
+</body>
+</html>
+```
+
+Bu örneklerde JavaScript kullanarak DOM'u nasıl manipüle edeceğinizi ve kullanıcı etkileşimlerine nasıl yanıt vereceğinizi gördünüz. 
+DOM manipülasyonu, modern web geliştirme için temel bir yetenektir ve kullanıcı deneyimini zenginleştirmenin önemli bir yoludur.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,207 @@
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <sstream>
+#include <algorithm>
+#include <pthread.h>
+using namespace std;
+
+struct thread_data {
+    string file_name;
+    ofstream* output;
+};
+
+void spliter(string proc_data, char split_c, vector<string>&store_data){
+    string word ="";
+    int size = proc_data.size();
+    int last_index= size - 1;
+    for(int i  = 0; i< size; i++){
+        if(proc_data[i]!=split_c){
+            word+=proc_data[i];
+        }
+        else{
+            if(word.length()){
+                store_data.push_back(word);
+            }
+            word="";
+        }
+    if(i ==last_index && split_c != proc_data[last_index]){
+        store_data.push_back(word);
+    }
+    }
+}
+pthread_mutex_t file_mutex = PTHREAD_MUTEX_INITIALIZER;
+
+class peak {
+public:
+    string file_name;
+    int y4;
+    int y5;
+    int y7;
+    peak(string file_name, int y4, int y5, int y7) : file_name(file_name), y4(y4), y5(y5), y7(y7) {}
+
+    ~peak() = default;
+
+    int total() const {
+        return y4 + y5 + y7;
+    }
+};
+
+void* thread_func(void* arg) {
+    thread_data* data = static_cast<thread_data*>(arg);
+    int t_y4 = 0, t_y5 = 0, t_y7 = 0;
+    string line;
+
+    ifstream input(data->file_name);
+    if (!input.is_open()) {
+        cerr << "Dosya açılamadı: " << data->file_name << endl;
+        pthread_exit(NULL);
+    }
+    while (getline(input, line)) {
+        string peaks;
+        int y1, y2, y3, y4, y5, y6, y7, y8, y9, y10;
+        istringstream iss(line);
+        iss >> peaks >> y1 >> y2 >> y3 >> y4 >> y5 >> y6 >> y7 >> y8 >> y9 >> y10;
+        if (peaks == "peak2") {
+            t_y4 += y4;
+            t_y5 += y5;
+            t_y7 += y7;
+        }
+    }
+
+    pthread_mutex_lock(&file_mutex);
+    *data->output << data->file_name << " " << t_y4 << " " << t_y5 << " " << t_y7 << endl;
+    pthread_mutex_unlock(&file_mutex);
+    pthread_exit(NULL);
+}
+
+void* thread_func2(void* arg) {
+    string filename = *static_cast<string*>(arg);
+    ifstream input(filename);
+    if (!input.is_open()) {
+        cerr << "Dosya açılamadı: " << filename << endl;
+        pthread_exit(NULL);
+    }
+
+    vector<peak> peaks;
+    string file_name;
+    int year4, year5, year7;
+
+    while (input >> file_name >> year4 >> year5 >> year7) {
+        peaks.emplace_back(file_name, year4, year5, year7);
+    }
+
+     auto max_iter = max_element(peaks.begin(), peaks.end(), [](const peak& a, const peak& b) {
+        return a.total() < b.total();
+    });
+
+    cout << "Maximum peak: " << max_iter->file_name << " with total: " << max_iter->total() << endl;
+
+    pthread_exit(NULL);
+}
+
+int main() {
+    int thread_count = 10;
+    string file_names[] = {"data1.in", "data2.in", "data3.in", "data4.in", "data5.in", "data6.in", "data7.in", "data8.in", "data9.in", "data10.in"};
+    pthread_t threads[thread_count];
+    thread_data data[thread_count];
+    ofstream output("data.in");
+
+    for (int i = 0; i < thread_count; ++i) {
+        data[i] = {file_names[i], &output};
+        pthread_create(&threads[i], nullptr, thread_func, (void*)&data[i]);
+    }
+    for (int i = 0; i < thread_count; ++i) {
+        pthread_join(threads[i], nullptr);
+    }
+    output.close();
+
+    string filename = "data.in";
+    pthread_t find_max;
+    pthread_create(&find_max, nullptr, thread_func2, (void*)&filename);
+    pthread_join(find_max, nullptr);
+
+    return 0;
+}
+
+
+
+*********************************************
+kod2
+*********************************************
+
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <random>
+#include <string>
+#include <mutex>
+#include <thread>
+using namespace std;
+mutex file_mutex;
+void rand_num_gen(ofstream& output){
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_int_distribution<>des(0, 9);
+
+    lock_guard<mutex>gurad(file_mutex);
+    for(int i = 0; i< 12; i++){
+        string number;
+        for(int j = 0; j < 13; j++){
+            number+=to_string(des(gen));
+        }
+        output << number << endl;
+    }
+}
+int specificate_number_count(ifstream &input){
+    string line;
+    int rowNumber=1;
+    int count=0;
+    while(getline(input, line)){
+        if(rowNumber%3==0){
+            if(line[10]=='0'){
+                ++count;
+            }
+        }
+        ++rowNumber;
+    }
+    return count;
+}
+int main(){
+    int threadNum= 55;
+    ofstream output("data.in");
+    vector<thread>threads;
+    for(int i = 0; i < threadNum; i++){
+        threads.emplace_back(rand_num_gen, ref(output));
+    }
+    for(auto&i:threads){
+        i.join();
+    }
+    output.close();
+    ifstream input("data.in");
+    int result;
+    thread thread_find([&result, &input](){result = specificate_number_count(input);});
+    thread_find.join();
+    input.close();
+    cout << "result: " << result << endl;
+}
+
+
+**********************
+ganmartebebi
+
+1)ცვლადი-ბოქლომის მეთოდის გამოყენება გულისხმობს სისტემაში პროცესებისათვის საერთო
+ცვლადის შემოღებას, რომელიც გააკონტროლებს პროცესების შესვლას საკუთარ კრიტიკულ
+სექციაში. ცვლადი-ბოქლომის საწყისი ინიციალიზაცია ხდება ნულოვანი მნიშვნელობით, რაც
+გულისხმობს რომ არცერთი პროცესი არ იმყოფება საკუთარ კრიტიკულ სექციაში და ნებისმიერ
+მათგანს სურვილის შემთხვევაში შეუძლია შევიდეს იქ. პროცესი საკუთარ კრიტიკულ სექციაში
+შესვლის შემდეგ ცვლის ცვლადი-ბოქლომის მნიშვნელობას 1-ით, რაც იმის მანიშნებელია, რომ
+ურთიერთქმედი პროცესებიდან ერთ-ერთი იმყოფება საკუთარ კრიტიკულ სექციაში.
+2)დაგეგმვის ყველაზე მარტივ ალგორითმს წარმოადგენს ალგორითმი FCFS (პირველი
+შემოვიდა - პირველი მომსახურდება) (ნახ. 5.1). ამ ალგორითმის გამოყენებისას სისტემაში იქმნება 
+მზაყოფნის ცხრილი, რომელშიც პროცესები თავსდებიან სისტემაში წარმოქმნის თანმიმდევრობით. სისტემაში წარმოქმნილი ყოველი ახალი პროცესი ამ მიმდევრობაში ემატება ბოლოდან. 
+შესრულებას იწყებს ცხრილის თავში მყოფი პირველივე პროცესი. პროცესისთვის პროცესორის 
+გამოყოფა ხდება მის შესასრულებლად საჭირო დროითი შუალედით. პროცესისგან პროცესორის 
+გამონთავისუფლება მოხდება მხოლოდ მისი დასრულების ან გარკვეული მიზეზით 
+(შეტანა/გამოტანის ოპერაციის ლოდინის გამო) მისი ბლოკირების შემთხვევაში.
+3)

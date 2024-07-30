@@ -1,0 +1,2148 @@
+********************************************
+lek1
+********************************************
+
+
+Bu diyagram, bir web sunucusunda PHP ile dinamik bir web sayfasının nasıl oluşturulduğunu ve görüntülendiğini açıklıyor. İşte adım adım süreç:
+
+1. **Web Browser (Web Tarayıcı)**:
+   - Kullanıcı, web tarayıcısında bir sayfa isteği gönderir (Page Request).
+
+2. **Web Server (Web Sunucusu)**:
+   - Web sunucusu, bu isteği alır ve ilgili PHP dosyasını çalıştırır (Run Script).
+   - PHP dosyası, genellikle dinamik içerik oluşturmak için veritabanı işlemlerini içerir.
+
+3. **MySQL (Veritabanı)**:
+   - PHP dosyası, veritabanından veri almak için MySQL ile iletişim kurar (Obtain Data).
+   - PHP dosyası, veritabanından alınan verileri işler ve dinamik bir sayfa oluşturur.
+
+4. **Dynamic Page (Dinamik Sayfa)**:
+   - PHP dosyası, işlenen verilerle birlikte dinamik bir HTML sayfası oluşturur.
+
+5. **Web Browser (Web Tarayıcı)**:
+   - Oluşturulan dinamik sayfa, web tarayıcısına geri gönderilir ve kullanıcıya gösterilir.
+
+### Özet:
+Bu diyagram, kullanıcıların bir web tarayıcısından yaptığı sayfa isteklerinin PHP kullanılarak nasıl işlendiğini ve dinamik içeriklerin nasıl oluşturulduğunu gösterir.
+ PHP dosyası veritabanı (MySQL) ile iletişim kurarak gerekli verileri alır, işler ve dinamik bir sayfa oluşturur. Bu sayfa, web tarayıcısında kullanıcıya sunulur.
+
+***************************************************************************************************************************************************************************************
+ცვლადები გამოიყენება მნიშვნელობების დაბრუნებისათვის, როგორც ტექსტური სტრინგი, რიცხვები, ან მასივები. PHP-ში ყველა ცვლადი იწყება სიმბოლოთი $. PHP-ში ცვლადს არ ჭირდება გამოცხადება: PHP ავტომატურად 
+აკონვერტებს ცვლადებს მართებულ მონაცემთა ტიპებში: 
+<?php 
+          $txt = "Hello World!"; 
+$number = 16; 
+?> 
+     ცვლადისათვის სახელის განსაზღვრისას უნდა გავითვალისწინოთ: 
+	ცვლადის სახელი უნდა დაიწყოს ასოთი, ან ქვედა ტირეთი : ”_” 
+	ცვლადის სახელი უნდა შეიცავდეს ხოლოდ ასოებს და რიცხვებს (a‐Z, 0‐9, და _)
+	ცვლადის სახელი არ შეიცავს ჰარის. თუ ცვლადის სახელი შედგება ერთზე მეტი სიტყვისაგან, მაშინ ეს სიტყვები უნდა გამოიყოს ქვედა ტირეთი $my_string), ან საწყისი ასოებით ($myString) 
+
+Resimde ve açıklamada belirtilen 6 temel kuralın daha detaylı bir şekilde açıklanması:
+
+1. **Süper Global Değişkenler**:
+   - PHP'de süper global değişkenler (`$_POST`, `$_GET`, `$_SESSION`, `$_COOKIE`, `$_FILES`, `$_ENV`, `$_REQUEST`, `$_SERVER`, `$_GLOBALS`) her yerden erişilebilir. 
+Bu değişkenler, script'in herhangi bir yerinde doğrudan kullanılabilir.
+
+2. **Sabitler (Constants)**:
+   - Sabitler, bir kez tanımlandıktan sonra değiştirilemez ve script'in her yerinde (fonksiyonlar içinde ve dışında) kullanılabilir. Sabitler, `define` fonksiyonu ile tanımlanır.
+     ```php
+     define("PI", 3.14);
+     echo PI; // 3.14
+     ```
+
+3. **Global Değişkenler**:
+   - Script içinde tanımlanan global değişkenler, tüm script boyunca kullanılabilir, ancak fonksiyonlar içinde doğrudan kullanılamazlar. Fonksiyonlar içinde kullanmak için `global` 
+anahtar kelimesi ile erişmek gerekir.
+     ```php
+     $x = 5;
+     $y = 10;
+     function myTest() {
+         global $x, $y;
+         $y = $x + $y;
+     }
+     myTest();
+     echo $y; // 15
+     ```
+
+4. **$GLOBALS Dizisi**:
+   - Global değişkenlere fonksiyonlar içinden erişmek için `$GLOBALS` dizisi kullanılabilir. `$GLOBALS['değişken_ismi']` şeklinde erişim sağlanır.
+     ```php
+     $x = 5;
+     $y = 10;
+     function myTest() {
+         $GLOBALS['y'] = $GLOBALS['x'] + $GLOBALS['y'];
+     }
+     myTest();
+     echo $y; // 15
+     ```
+
+5. **Statik Değişkenler**:
+   - Fonksiyonlar içinde tanımlanan statik değişkenler, sadece tanımlandıkları fonksiyon içinde kullanılır ve fonksiyon çağrıları arasında değerlerini korur.
+     ```php
+     function myTest() {
+         static $x = 0;
+         echo $x;
+         $x++;
+     }
+     myTest(); // 0
+     myTest(); // 1
+     myTest(); // 2
+     ```
+
+6. **Yerel Değişkenler**:
+   - Fonksiyonlar içinde tanımlanan değişkenler yerel (local) değişkenlerdir ve sadece tanımlandıkları fonksiyon içinde geçerlidir. Fonksiyon dışında bu değişkenlere 
+erişilemez.
+     ```php
+     function myTest() {
+         $x = 5;
+         echo $x;
+     }
+     myTest(); // 5
+     // echo $x; // Bu hata verir çünkü $x fonksiyon dışında tanımlı değil.
+     ```
+
+Bu kurallar, PHP'de değişkenlerin ve sabitlerin kapsamlarını ve kullanım alanlarını anlamanızı sağlar. Bu kuralları bilmek, kod yazarken doğru değişkenleri doğru yerlerde
+ kullanmanıza 
+yardımcı olur.
+
+***************************************************************************************************************************************************************************************
+PHP გვაქვს 8 ტიპი რომელიც შესაძლებელია შემდეგნაირად დავაჯგუფოთ: 
+ე.წ. სკალარული ტიპები
+boolean
+Integer (PHP-ში აქვს ფიქსირებული მაქსიმალური ზომა. ინტეჯერის ზომა არის პლატფორმაზე დამოკიდებული, თუ გაინტერესებთ ზომის შემოწმება შეგიძლიათ გამოიყენოთ ჩაშენებული კონსტანტები PHP_INT_SIZE და PHP_INT_MAX)
+რა მოხდება თუ დავწერთ:
+<?php 
+$var = PHP_INT_MAX; 
+echo var_dump($var); 
+$var++; 
+echo var_dump($var); 
+?> 
+float
+string
+შერეული ტიპები
+array
+Object (მომავალში შევეხებით)
+სპეციალური ტიპები
+Resources (სპეციალური ტიპი რომელიც წარმოადგენს მიმართვას გარე რესურსზე, ისინი იქმნება სპეციალური ფუნქციების მეშვეობით მაგალითად როგორიცაა fopen(), mysql_connect(), mysql_query() , 
+pdf_open_image() და გამოიყენება ფაილებთან, ბაზებთან,სურათებთან მუშაობისას)
+NULL (PHP-ში ცვლადი არის NULL შემდეგ შემთხვევებში: მნიშვნელობა არ აქვს განსაზღვრული, მიენიჭა NULL მნიშვნელობა; მოხდა მისი გაცლა ფუნქციით unset() )
+detayli:
+PHP'deki 8 veri tipi şunlardır:
+
+1. **Boolean (Mantıksal)**:
+   - Değerler: `true` veya `false`
+   - Kullanım: Koşul ifadelerinde ve mantıksal işlemlerde kullanılır.
+   ```php
+   $is_active = true;
+   ```
+
+2. **Integer (Tam sayı)**:
+   - Değerler: -2, -1, 0, 1, 2, vb.
+   - Kullanım: Sayısal hesaplamalarda ve sayısal değere ihtiyaç duyulan yerlerde kullanılır.
+   ```php
+   $age = 25;
+   ```
+
+3. **Float (Ondalık sayı, double)**:
+   - Değerler: 3.14, 2.718, -1.23, vb.
+   - Kullanım: Ondalık sayılarla yapılan hesaplamalarda kullanılır.
+   ```php
+   $price = 19.99;
+   ```
+
+4. **String (Dize)**:
+   - Değerler: "merhaba", 'PHP', vb.
+   - Kullanım: Metin verilerini saklamak ve işlemek için kullanılır.
+   ```php
+   $name = "John Doe";
+   ```
+
+5. **Array (Dizi)**:
+   - Değerler: Birden fazla değeri tek bir değişkende saklamak için kullanılır.
+   - Kullanım: İlişkili veya indeksli verileri depolamak için kullanılır.
+   ```php
+   $colors = array("red", "green", "blue");
+   ```
+
+6. **Object (Nesne)**:
+   - Değerler: Bir sınıfın örneği olan nesneler.
+   - Kullanım: Nesne yönelimli programlamada kullanılır.
+   ```php
+   class Car {
+       public $color;
+       public $model;
+       public function __construct($color, $model) {
+           $this->color = $color;
+           $this->model = $model;
+       }
+   }
+   $myCar = new Car("black", "Toyota");
+   ```
+
+7. **NULL**:
+   - Değerler: `NULL`
+   - Kullanım: Bir değişkenin değeri olmadığını belirtmek için kullanılır.
+   ```php
+   $var = NULL;
+   ```
+
+8. **Resource (Kaynak)**:
+   - Değerler: Dosya sistemleri, veritabanı bağlantıları vb. dış kaynaklarla etkileşimleri temsil eder.
+   - Kullanım: PHP dışındaki kaynakları temsil etmek için kullanılır.
+   ```php
+   $handle = fopen("test.txt", "r");
+   ```
+
+Bu veri tipleri, PHP'de farklı türde verileri saklamak ve işlemek için kullanılır. Her bir veri tipi, belirli türde işlemler ve kullanımlar için optimize edilmiştir.
+***************************************************************************************************************************************************************************************
+
+ქვემოთ მოყვანილია სამი განსხვავებული მასივი:
+
+Numeric array(რიცხვითი მასივი) - მასივი რიცხობრივი ID გასაღებით 
+Associative array(ასოცირებული მასივი) - მასივი, სადაც თითორული ID გასაღები ასოცირებულია მნიშვნელობასთან. 
+Multidimensional array(მულტისივრცული მასივი) - მასივი შეიცავს ერთ ან მეტ მასივს.
+განვიხილოთ რიხცვითი მასივის მოცემის მაგალითები:
+
+			$names = array("Peter","Quagmire","Joe");
+  ან 
+				$names[0] = "Peter"; 
+				$names[1] = "Quagmire"; 
+				$names[2] = "Joe";
+ქვემოთ მოყვანილია სამი განსხვავებული მასივი:
+
+Numeric array(რიცხვითი მასივი) - მასივი რიცხობრივი ID გასაღებით 
+Associative array(ასოცირებული მასივი) - მასივი, სადაც თითორული ID გასაღები ასოცირებულია მნიშვნელობასთან. 
+Multidimensional array(მულტისივრცული მასივი) - მასივი შეიცავს ერთ ან მეტ მასივს.
+განვიხილოთ რიხცვითი მასივის მოცემის მაგალითები:
+
+			$names = array("Peter","Quagmire","Joe");
+  ან 
+				$names[0] = "Peter"; 
+				$names[1] = "Quagmire"; 
+				$names[2] = "Joe";
+ასოცირებული მასივით  ჩვენ შეგვიძლია მნიშვნელობები გამოვიყენოთ, როგორც გასაღებები და მივანიჭოთ მათ მნიშვნელობები. განვიხილოთ მაგალითი:
+$ages = array("Peter"=>32, "Quagmire"=>30, "Joe"=>34);
+ან
+$ages['Peter'] = "32"; 
+$ages['Quagmire'] = "30"; 
+$ages['Joe'] = "34";
+ 
+მულტისივრცულ მასივს კი ექნება სახე:
+
+$families = array ("Griffin"=>array ( "Peter“,"Lois“), "Quagmire"=>Array ( "Glenn“ ), 	            "Brown"=>array ("Cleveland", "Loretta", "Junior“ ) );
+//numeric array
+$foods = array("apple", "banana", "wotermelon");
+$global = "<br> the foods array elements are: ";
+array_push($foods, "pineapple", "coconat");
+array_pop($foods);
+foreach ($foods as $food) {
+    $global = $global . $food;
+    if ($food !== end($foods)) {
+        $global .= ", ";
+    }
+}
+echo $global . "<br>";
+
+//associative array
+$Emp = array("Raul" => 12001099633, "Ellada" => 12001097811, "Adam" => 19001029655);
+foreach ($Emp as $key => $value) {
+    echo "{$key}/ => {$value} <br>";
+}
+//მულტისივრცულ მასივ
+$Emp = array("Raul" => array("Bayramov", 12001099633), "Ellada" => array("Bayramova", 12001097811), "Adam" => array("Smith", 19001029655));
+foreach ($Emp as $key => $value) {
+    echo $key . "=>";
+    foreach ($value as $element) {
+        echo $element . ", ";
+    }
+    echo "<br>";
+}
+
+PHP'de dizilerle (arrays) çalışmak için çok sayıda yerleşik fonksiyon bulunmaktadır. Bu fonksiyonlar, dizileri oluşturma, değiştirme, sıralama, filtreleme ve diğer 
+çeşitli işlemleri gerçekleştirmek için kullanılır. İşte PHP'de sık kullanılan bazı dizi fonksiyonları:
+
+### 1. **array()**
+Dizi oluşturmak için kullanılır.
+
+```php
+$fruits = array("apple", "banana", "orange");
+```
+
+### 2. **count()**
+Bir dizideki eleman sayısını döndürür.
+
+```php
+$fruits = array("apple", "banana", "orange");
+echo count($fruits); // Outputs: 3
+```
+
+### 3. **array_push()**
+Bir dizinin sonuna bir veya daha fazla eleman ekler.
+
+```php
+$fruits = array("apple", "banana");
+array_push($fruits, "orange", "grape");
+print_r($fruits); // Outputs: Array ( [0] => apple [1] => banana [2] => orange [3] => grape )
+```
+
+### 4. **array_pop()**
+Bir dizinin son elemanını çıkarır ve döndürür.
+
+```php
+$fruits = array("apple", "banana", "orange");
+$lastFruit = array_pop($fruits);
+echo $lastFruit; // Outputs: orange
+print_r($fruits); // Outputs: Array ( [0] => apple [1] => banana )
+```
+
+### 5. **array_shift()**
+Bir dizinin ilk elemanını çıkarır ve döndürür.
+
+```php
+$fruits = array("apple", "banana", "orange");
+$firstFruit = array_shift($fruits);
+echo $firstFruit; // Outputs: apple
+print_r($fruits); // Outputs: Array ( [0] => banana [1] => orange )
+```
+
+### 6. **array_unshift()**
+Bir dizinin başına bir veya daha fazla eleman ekler.
+
+```php
+$fruits = array("banana", "orange");
+array_unshift($fruits, "apple", "grape");
+print_r($fruits); // Outputs: Array ( [0] => apple [1] => grape [2] => banana [3] => orange )
+```
+
+### 7. **in_array()**
+Bir değerin bir dizide olup olmadığını kontrol eder.
+
+```php
+$fruits = array("apple", "banana", "orange");
+if (in_array("banana", $fruits)) {
+    echo "Banana is in the array!";
+}
+```
+
+### 8. **array_keys()**
+Bir dizinin tüm anahtarlarını döndürür.
+
+```php
+$fruits = array("a" => "apple", "b" => "banana", "c" => "orange");
+$keys = array_keys($fruits);
+print_r($keys); // Outputs: Array ( [0] => a [1] => b [2] => c )
+```
+
+### 9. **array_values()**
+Bir dizinin tüm değerlerini döndürür.
+
+```php
+$fruits = array("a" => "apple", "b" => "banana", "c" => "orange");
+$values = array_values($fruits);
+print_r($values); // Outputs: Array ( [0] => apple [1] => banana [2] => orange )
+```
+
+### 10. **array_merge()**
+Bir veya daha fazla diziyi birleştirir.
+
+```php
+$array1 = array("color" => "red", 2, 4);
+$array2 = array("a", "b", "color" => "green", "shape" => "trapezoid", 4);
+$result = array_merge($array1, $array2);
+print_r($result);
+// Outputs: Array ( [color] => green [0] => 2 [1] => 4 [2] => a [3] => b [shape] => trapezoid [4] => 4 )
+```
+
+### 11. **array_diff()**
+Bir veya daha fazla dizideki farklı elemanları döndürür.
+
+```php
+$array1 = array("a" => "green", "red", "blue", "red");
+$array2 = array("b" => "green", "yellow", "red");
+$result = array_diff($array1, $array2);
+print_r($result);
+// Outputs: Array ( [1] => blue )
+```
+
+### 12. **sort()**
+Bir diziyi sıralar.
+
+```php
+$fruits = array("lemon", "orange", "banana", "apple");
+sort($fruits);
+print_r($fruits);
+// Outputs: Array ( [0] => apple [1] => banana [2] => lemon [3] => orange )
+```
+
+### 13. **rsort()**
+Bir diziyi ters sırada sıralar.
+
+```php
+$fruits = array("lemon", "orange", "banana", "apple");
+rsort($fruits);
+print_r($fruits);
+// Outputs: Array ( [0] => orange [1] => lemon [2] => banana [3] => apple )
+```
+
+### 14. **array_slice()**
+Bir dizinin belirli bir kısmını döndürür.
+
+```php
+$fruits = array("apple", "banana", "orange", "grape");
+$slicedArray = array_slice($fruits, 1, 2);
+print_r($slicedArray);
+// Outputs: Array ( [0] => banana [1] => orange )
+```
+
+### 15. **array_map()**
+Bir dizinin her bir elemanına bir fonksiyon uygular.
+
+```php
+$numbers = array(1, 2, 3, 4, 5);
+$squaredNumbers = array_map(function($num) {
+    return $num * $num;
+}, $numbers);
+print_r($squaredNumbers);
+// Outputs: Array ( [0] => 1 [1] => 4 [2] => 9 [3] => 16 [4] => 25 )
+```
+
+Bu fonksiyonlar, PHP'de dizilerle çalışırken oldukça kullanışlıdır ve dizileri yönetmek, işlemek ve manipüle etmek için çeşitli yollar sunar.
+
+***************************************************************************************************************************************************************************************
+
+PHP'de `include` ve `require` ifadeleri, bir dosyanın içeriğini başka bir dosyaya eklemek için kullanılır. Her ikisi de benzer şekilde çalışır, ancak önemli
+ farklılıkları vardır:
+
+### 1. `include`
+
+`include`, belirtilen dosyanın içeriğini çağıran dosyaya dahil eder. Eğer dosya bulunamazsa, bir uyarı mesajı verir ve script çalışmaya devam eder.
+
+**Kullanım:**
+
+```php
+include 'dosya.php';
+```
+
+**Örnek:**
+
+```php
+// main.php
+echo "Bu ana dosyadır.";
+include 'ekstra.php';
+echo "Bu ana dosyanın sonudur.";
+```
+
+```php
+// ekstra.php
+echo "Bu ekstra dosyadır.";
+```
+
+**Çıktı:**
+
+```
+Bu ana dosyadır.
+Bu ekstra dosyadır.
+Bu ana dosyanın sonudur.
+```
+
+Eğer `ekstra.php` dosyası bulunamazsa:
+
+```
+Bu ana dosyadır.
+Warning: include(ekstra.php): failed to open stream: No such file or directory in /path/to/main.php on line X
+Bu ana dosyanın sonudur.
+```
+
+### 2. `require`
+
+`require` da, belirtilen dosyanın içeriğini çağıran dosyaya dahil eder. Ancak, dosya bulunamazsa bir fatal error (ölümcül hata) verir ve script çalışmayı durdurur.
+
+**Kullanım:**
+
+```php
+require 'dosya.php';
+```
+
+**Örnek:**
+
+```php
+// main.php
+echo "Bu ana dosyadır.";
+require 'ekstra.php';
+echo "Bu ana dosyanın sonudur.";
+```
+
+**Çıktı:**
+
+```
+Bu ana dosyadır.
+Bu ekstra dosyadır.
+Bu ana dosyanın sonudur.
+```
+
+Eğer `ekstra.php` dosyası bulunamazsa:
+
+```
+Bu ana dosyadır.
+Fatal error: require(): Failed opening required 'ekstra.php' (include_path='.:/usr/share/php') in /path/to/main.php on line X
+```
+
+### 3. `include_once` ve `require_once`
+
+`include` ve `require` ifadelerinin her ikisinin de `*_once` versiyonları vardır. Bu versiyonlar, dosyanın yalnızca bir kez dahil edilmesini sağlar.
+ Eğer dosya daha önce dahil edilmişse, tekrar dahil edilmez.
+
+**Kullanım:**
+
+```php
+include_once 'dosya.php';
+require_once 'dosya.php';
+```
+
+**Örnek:**
+
+```php
+// main.php
+include_once 'ekstra.php';
+include_once 'ekstra.php';
+require_once 'ekstra.php';
+require_once 'ekstra.php';
+```
+
+Bu durumda, `ekstra.php` dosyası sadece bir kez dahil edilir ve daha sonra tekrar dahil edilmez. Bu, dosyaların birden fazla kez dahil edilmesi sonucu oluşabilecek
+ hataları önlemek için kullanışlıdır.
+
+### 4. Kısaca Karşılaştırma
+
+| Özellik                  | `include`                     | `require`                     |
+|--------------------------|-------------------------------|-------------------------------|
+| Dosya Bulunamazsa        | Uyarı verir, script devam eder| Fatal error, script durur     |
+| Kullanım Senaryoları     | Opsiyonel dosyalar            | Gerekli dosyalar              |
+| `_once` Versiyonu        | `include_once`                | `require_once`                |
+
+Bu farklar, hangi durumda hangi ifadeyi kullanmanız gerektiğine karar vermenize yardımcı olacaktır. `require` ifadesi, bir dosyanın scriptin düzgün çalışması için mutlaka gerekli 
+olduğu durumlarda kullanılırken, `include` ifadesi daha opsiyonel dosyalar için kullanılabilir.
+***************************************************************************************************************************************************************************************
+
+
+PHP'de fonksiyonlar, belirli bir görevi gerçekleştirmek için tekrar kullanılabilir kod blokları oluşturmanın temel yollarından biridir. Fonksiyonlar, kodunuzu daha düzenli,
+ okunabilir ve bakımını kolay hale getirir. PHP'de fonksiyonlar, kullanıcı tanımlı ve yerleşik (built-in) fonksiyonlar olarak ikiye ayrılır. Aşağıda, PHP'de fonksiyonlarla ilgili temel 
+bilgileri ve örnekleri bulabilirsiniz:
+
+### Kullanıcı Tanımlı Fonksiyonlar
+
+Kendi fonksiyonlarınızı tanımlayabilir ve gerektiğinde çağırabilirsiniz.
+
+#### Basit Bir Fonksiyon
+
+```php
+<?php
+function greet() {
+    echo "Hello, World!";
+}
+
+// Fonksiyonu çağırma
+greet();
+?>
+```
+
+#### Parametre Alan Fonksiyon
+
+```php
+<?php
+function greet($name) {
+    echo "Hello, " . $name . "!";
+}
+
+// Fonksiyonu çağırma
+greet("Alice");
+?>
+```
+
+#### Varsayılan Değerli Parametreler
+
+```php
+<?php
+function greet($name = "Guest") {
+    echo "Hello, " . $name . "!";
+}
+
+// Varsayılan değerle çağırma
+greet();
+
+// Parametre ile çağırma
+greet("Alice");
+?>
+```
+
+#### Döndürülen Değer ile Fonksiyon
+
+```php
+<?php
+function add($a, $b) {
+    return $a + $b;
+}
+
+// Fonksiyonun döndürdüğü değeri kullanma
+$result = add(5, 3);
+echo $result; // Outputs: 8
+?>
+```
+
+### Yerleşik (Built-in) Fonksiyonlar
+
+PHP, birçok yerleşik fonksiyon sunar. Bu fonksiyonlar, dizilerle çalışma, dizgilerle çalışma, dosya işlemleri ve daha pek çok farklı işlevi yerine getirmek için kullanılır.
+
+#### Dizgi Fonksiyonları
+
+```php
+<?php
+// strlen(): Dizgenin uzunluğunu döndürür
+echo strlen("Hello, World!"); // Outputs: 13
+
+// strpos(): Bir dizgede belirli bir alt dizgenin konumunu bulur
+echo strpos("Hello, World!", "World"); // Outputs: 7
+
+// str_replace(): Bir dizgedeki belirli bir alt dizgeyi başka bir alt dizgeyle değiştirir
+echo str_replace("World", "PHP", "Hello, World!"); // Outputs: Hello, PHP!
+?>
+```
+
+#### Dizi Fonksiyonları
+
+```php
+<?php
+// count(): Dizideki eleman sayısını döndürür
+$fruits = array("apple", "banana", "orange");
+echo count($fruits); // Outputs: 3
+
+// array_merge(): İki veya daha fazla diziyi birleştirir
+$array1 = array("a", "b", "c");
+$array2 = array("d", "e", "f");
+$mergedArray = array_merge($array1, $array2);
+print_r($mergedArray); // Outputs: Array ( [0] => a [1] => b [2] => c [3] => d [4] => e [5] => f )
+
+// array_pop(): Dizinin son elemanını çıkarır ve döndürür
+$fruits = array("apple", "banana", "orange");
+$lastFruit = array_pop($fruits);
+echo $lastFruit; // Outputs: orange
+?>
+```
+
+#### Matematik Fonksiyonları
+
+```php
+<?php
+// abs(): Bir sayının mutlak değerini döndürür
+echo abs(-4.2); // Outputs: 4.2
+
+// round(): Bir sayıyı belirtilen ondalık basamak sayısına yuvarlar
+echo round(3.14159, 2); // Outputs: 3.14
+
+// rand(): Belirtilen aralıkta rastgele bir sayı döndürür
+echo rand(1, 10); // Outputs: 1 ile 10 arasında rastgele bir sayı
+?>
+```
+
+### Fonksiyonlar Hakkında Diğer Önemli Bilgiler
+
+#### Değişken Kapsamı (Variable Scope)
+
+Fonksiyon içindeki değişkenler, fonksiyon dışında tanımlanan değişkenlerden bağımsızdır. Bu değişkenler yerel (local) kapsamda kabul edilir.
+
+```php
+<?php
+$x = 10; // Global değişken
+
+function test() {
+    $x = 5; // Yerel değişken
+    echo $x; // Outputs: 5
+}
+
+test();
+echo $x; // Outputs: 10
+?>
+```
+
+#### Global Değişkenler
+
+`global` anahtar kelimesi kullanılarak fonksiyon içinde global değişkenlere erişilebilir.
+
+```php
+<?php
+$x = 10;
+$y = 20;
+
+function test() {
+    global $x, $y;
+    $y = $x + $y;
+}
+
+test();
+echo $y; // Outputs: 30
+?>
+```
+
+#### Statik Değişkenler
+
+Fonksiyon içindeki bir değişkeni statik olarak tanımlayabilirsiniz. Statik değişkenler, fonksiyon çağrıları arasında değerlerini korur.
+
+```php
+<?php
+function test() {
+    static $count = 0;
+    $count++;
+    echo $count . "<br>";
+}
+
+test(); // Outputs: 1
+test(); // Outputs: 2
+test(); // Outputs: 3
+?>
+```
+
+PHP'deki fonksiyonlar, kodunuzu daha modüler ve yönetilebilir hale getirmek için güçlü araçlardır. Kendi fonksiyonlarınızı yazabilir veya yerleşik fonksiyonları kullanarak çeşitli 
+işlemleri kolayca gerçekleştirebilirsiniz.
+
+***************************************************************************************************************************************************************************************
+
+PHP, dizgilerle (string) çalışmak için birçok yerleşik fonksiyon sunar. Bu fonksiyonlar, dizgileri oluşturma, değiştirme, arama, karşılaştırma ve daha birçok işlem için kullanılır. 
+İşte PHP'deki en yaygın dizgi fonksiyonları ve kullanım örnekleri:
+
+### 1. **strlen()**
+Bir dizgenin uzunluğunu döndürür.
+
+```php
+<?php
+$str = "Hello, World!";
+echo strlen($str); // Outputs: 13
+?>
+```
+
+### 2. **strpos()**
+Bir dizgede belirli bir alt dizgenin ilk konumunu bulur.
+
+```php
+<?php
+$str = "Hello, World!";
+$position = strpos($str, "World");
+echo $position; // Outputs: 7
+?>
+```
+
+### 3. **str_replace()**
+Bir dizgedeki belirli bir alt dizgeyi başka bir alt dizgeyle değiştirir.
+
+```php
+<?php
+$str = "Hello, World!";
+$newStr = str_replace("World", "PHP", $str);
+echo $newStr; // Outputs: Hello, PHP!
+?>
+```
+
+### 4. **substr()**
+Bir dizgenin belirli bir kısmını döndürür.
+
+```php
+<?php
+$str = "Hello, World!";
+$subStr = substr($str, 7, 5);
+echo $subStr; // Outputs: World
+?>
+```
+
+### 5. **strtolower()**
+Bir dizgedeki tüm harfleri küçük harfe dönüştürür.
+
+```php
+<?php
+$str = "Hello, World!";
+$lowerStr = strtolower($str);
+echo $lowerStr; // Outputs: hello, world!
+?>
+```
+
+### 6. **strtoupper()**
+Bir dizgedeki tüm harfleri büyük harfe dönüştürür.
+
+```php
+<?php
+$str = "Hello, World!";
+$upperStr = strtoupper($str);
+echo $upperStr; // Outputs: HELLO, WORLD!
+?>
+```
+
+### 7. **ucfirst()**
+Bir dizgenin ilk harfini büyük harfe dönüştürür.
+
+```php
+<?php
+$str = "hello, world!";
+$capitalizedStr = ucfirst($str);
+echo $capitalizedStr; // Outputs: Hello, world!
+?>
+```
+
+### 8. **ucwords()**
+Bir dizgedeki her kelimenin ilk harfini büyük harfe dönüştürür.
+
+```php
+<?php
+$str = "hello, world!";
+$capitalizedWords = ucwords($str);
+echo $capitalizedWords; // Outputs: Hello, World!
+?>
+```
+
+### 9. **trim()**
+Bir dizgenin başındaki ve sonundaki boşlukları (veya diğer karakterleri) kaldırır.
+
+```php
+<?php
+$str = "  Hello, World!  ";
+$trimmedStr = trim($str);
+echo $trimmedStr; // Outputs: Hello, World!
+?>
+```
+
+### 10. **ltrim()**
+Bir dizgenin sadece başındaki boşlukları (veya diğer karakterleri) kaldırır.
+
+```php
+<?php
+$str = "  Hello, World!  ";
+$trimmedStr = ltrim($str);
+echo $trimmedStr; // Outputs: Hello, World!  
+?>
+```
+
+### 11. **rtrim()**
+Bir dizgenin sadece sonundaki boşlukları (veya diğer karakterleri) kaldırır.
+
+```php
+<?php
+$str = "  Hello, World!  ";
+$trimmedStr = rtrim($str);
+echo $trimmedStr; // Outputs:   Hello, World!
+?>
+```
+
+### 12. **str_repeat()**
+Bir dizgeyi belirli sayıda tekrar eder.
+
+```php
+<?php
+$str = "Hello!";
+$repeatedStr = str_repeat($str, 3);
+echo $repeatedStr; // Outputs: Hello!Hello!Hello!
+?>
+```
+
+### 13. **str_split()**
+Bir dizgeyi bir diziye böler.
+
+```php
+<?php
+$str = "Hello";
+$array = str_split($str);
+print_r($array); // Outputs: Array ( [0] => H [1] => e [2] => l [3] => l [4] => o )
+?>
+```
+
+### 14. **explode()**
+Bir dizgeyi belirli bir ayırıcıya göre parçalara böler ve bir dizi olarak döndürür.
+
+```php
+<?php
+$str = "Hello,World,PHP";
+$array = explode(",", $str);
+print_r($array); // Outputs: Array ( [0] => Hello [1] => World [2] => PHP )
+?>
+```
+
+### 15. **implode()**
+Bir diziyi belirli bir ayırıcıyla birleştirerek bir dizge oluşturur.
+
+```php
+<?php
+$array = array("Hello", "World", "PHP");
+$str = implode(" ", $array);
+echo $str; // Outputs: Hello World PHP
+?>
+```
+
+### 16. **nl2br()**
+Bir dizgedeki yeni satır karakterlerini (`\n`) HTML satır sonu etiketi (`<br>`) ile değiştirir.
+
+```php
+<?php
+$str = "Hello\nWorld\nPHP";
+$newStr = nl2br($str);
+echo $newStr; // Outputs: Hello<br>World<br>PHP
+?>
+```
+
+### 17. **htmlspecialchars()**
+Bir dizgedeki özel karakterleri HTML varlıkları ile değiştirir.
+
+```php
+<?php
+$str = "<a href='test'>Test</a>";
+$safeStr = htmlspecialchars($str);
+echo $safeStr; // Outputs: &lt;a href=&#039;test&#039;&gt;Test&lt;/a&gt;
+?>
+```
+
+### 18. **md5()**
+Bir dizgenin MD5 karma değerini döndürür.
+
+```php
+<?php
+$str = "Hello";
+$md5Str = md5($str);
+echo $md5Str; // Outputs: 8b1a9953c4611296a827abf8c47804d7
+?>
+```
+
+### 19. **sha1()**
+Bir dizgenin SHA-1 karma değerini döndürür.
+
+```php
+<?php
+$str = "Hello";
+$sha1Str = sha1($str);
+echo $sha1Str; // Outputs: f7c3bc1d808e04732adf679965ccc34ca7ae3441
+?>
+```
+
+### 20. **strcmp()**
+İki dizgeyi karşılaştırır ve aralarındaki farkı döndürür.
+
+```php
+<?php
+$str1 = "Hello";
+$str2 = "hello";
+$result = strcmp($str1, $str2);
+echo $result; // Outputs: -1 (farklı karakterler büyük/küçük harf farkı)
+?>
+```
+
+### 21. **strcasecmp()**
+İki dizgeyi büyük/küçük harfe duyarsız olarak karşılaştırır.
+
+```php
+<?php
+$str1 = "Hello";
+$str2 = "hello";
+$result = strcasecmp($str1, $str2);
+echo $result; // Outputs: 0 (aynı karakterler büyük/küçük harfe duyarsız)
+?>
+```
+
+### 22. **strrev()**
+Bir dizgeyi tersine çevirir.
+
+```php
+<?php
+$str = "Hello";
+$reversedStr = strrev($str);
+echo $reversedStr; // Outputs: olleH
+?>
+```
+
+******ekstra gerekli
+Tabii, işte PHP'de kullanabileceğiniz bazı önemli string işleme fonksiyonları:
+
+1. **str_word_count**: Bu fonksiyon bir string içindeki kelime sayısını bulur. Ayrıca string içindeki her kelimenin kaç kez geçtiğini bulabilir veya bir dizi olarak döndürebilir.
+
+   ```php
+   $str = "Merhaba dünya";
+   echo str_word_count($str);  // Çıktı: 2
+   ```
+
+2. **str_replace**: Bu fonksiyon bir string içinde belirli bir arama string'inin tüm örneklerini belirtilen bir değiştirme string'iyle değiştirir.
+
+   ```php
+   $str = "Merhaba dünya";
+   echo str_replace("dünya", "PHP", $str);  // Çıktı: Merhaba PHP
+   ```
+
+3. **substr_replace**: Bu fonksiyon bir string'in belirli bir bölümünü başka bir string ile değiştirir.
+
+   ```php
+   $str = "Merhaba dünya";
+   echo substr_replace($str, "PHP", 8, 5);  // Çıktı: Merhaba PHP
+   ```
+
+Bu fonksiyonlar, PHP içinde string manipülasyonu yaparken sıkça kullanılan ve işleri kolaylaştıran fonksiyonlardır.
+
+Bu fonksiyonlar, PHP'de dizgilerle çalışırken sıkça kullanılan ve oldukça faydalı olan fonksiyonlardır. Her biri, dizgeleri manipüle etmek ve çeşitli işlemler gerçekleştirmek için kullanılabilir.
+
+***************************************************************************************************************************************************************************************
+PHP - მასივის სორტირების ფუნქციები
+sort() - ალაგებს მასივს ზრდადობით
+rsort() - ალაგებს მასივს კლებადობით
+asort() - ალაგებს ასოცირებულ მასივს ზრდადობით (მნიშვნელობის მიხედვით)
+ksort() - ალაგებს ასოცირებულ მასივს ზრდადობით (გასაღების მიხედვით)
+arsort() - ალაგებს ასოცირებულ მასივს კლებადობით (მნიშვნელობის მიხედვით)
+krsort() - ალაგებს ასოცირებულ მასივს კლებადობით (გასაღების მიხედვით)
+
+
+***************************************************************************************************************************************************************************************
+
+
+********************************************
+lek2
+********************************************
+PHP'de URL'den değişken alma işlemi genellikle `$_GET` süper global değişkeni kullanılarak yapılır. Örneğin, bir URL'de `?` işaretiyle başlayan parametrelerle değişkenler geçirilir ve 
+bu değişkenlere PHP'de erişmek için `$_GET` kullanılır.
+
+Örneğin, şu URL'yi düşünelim: `http://example.com/index.php?name=John&age=30`
+
+Bu URL'de `name` ve `age` adında iki değişken var. Bunları PHP kodu içinde almak için şu şekilde kullanabiliriz:
+
+```php
+$name = $_GET['name'];  // $name şimdi 'John' olacak
+$age = $_GET['age'];    // $age şimdi 30 olacak
+```
+
+Eğer URL'de `name` veya `age` gibi parametreler belirtilmemişse, PHP'de `$_GET` içinde bu değişkenlere erişmeye çalıştığınızda bir hata oluşabilir. Bu durumu kontrol etmek için genellikle
+ `isset()` fonksiyonu kullanılır:
+
+```php
+if (isset($_GET['name'])) {
+    $name = $_GET['name'];
+} else {
+    $name = 'default_value';  // Varsayılan değer atama
+}
+```
+
+Bu şekilde URL'den gelen değişkenleri güvenli bir şekilde alabilir ve işleyebilirsiniz.
+`QUERY_STRING`, PHP'de `$_SERVER` süper global dizisi içinde bulunan bir anahtar olarak kullanılır. Bu anahtar, URL'de yer alan sorgu stringini (query string) tam olarak içerir.
+
+Örneğin, şu URL'i düşünelim: `http://example.com/index.php?name=John&age=30`
+
+Bu URL'de `QUERY_STRING` şu değeri içerir: `name=John&age=30`
+
+Bu değeri PHP'de kullanmak için şu şekilde yapabiliriz:
+
+```php
+$queryString = $_SERVER['QUERY_STRING'];
+echo $queryString;  // Çıktı: name=John&age=30
+```
+
+Bu şekilde `QUERY_STRING` içindeki veriyi alabilir ve daha sonra bu veriyi parçalayarak (parse) veya işleyerek kullanabilirsiniz. Örneğin, `parse_str()` fonksiyonuyla bu sorgu stringini
+ diziye dönüştürebilirsiniz:
+
+```php
+parse_str($queryString, $params);
+print_r($params);
+```
+
+Bu kod `$_GET` gibi bir dizi döndürecektir:
+
+```
+Array
+(
+    [name] => John
+    [age] => 30
+)
+```
+
+Bu şekilde URL'den gelen sorgu stringini kolayca işleyebilir ve içindeki değişkenlere erişebilirsiniz.
+***************************************************************************************************************************************************************************************
+
+GET და POST მეთოდები
+არსებობს ორი საშუალება რომლითაც კლიენტის ბრაუზერს შეუძლია გაუგზავნოს ინფორმაცია სერვერს : ესენია GET და POST მეთოდები. პირველ მეთოდზე ჩვენ მეტნაკლებად ვისაუბრეთ ავღნიშნავთ მის ძირითად თავისებურებებს:
+მეთოდს გააჩნია შეზღუდვა: შეუძია გააგზავნოს მხოლოდ 2048 სიმბოლო.
+შეგიძლიათ გამოიყენოთ ეს მეთოდი ბინარული მონაცემების გადასაგზავნად, მაგალითად სურათი ან ვორდ დოკუმენტი.
+არ გამოიყენოთ იგი პაროლების ან სხვა საიდუმლო ინფორმაციის გადაგზავნისათვის. რადგან ინფორმაცია, გაგზავნილი ფორმიდან GET მეთოდით ჩანს ყველასათვის (ის გამოისახება ბრაუზერის მიმსამართების პანელზე) 
+მონაცემები რომლებიც იგზავნება ამ მეთოდის მეშვეობით მიიწვდომება QUERY_STRING ცვლადის მეშვეობით. შეიძლება მისი დაბუქმარკება
+PHP გვაძლევს საშუალებას $_GETასოციაციური მასივის დახმარებით განვახორციელოთ წვდომა ინფორმაციაზე რომელიც იგზავნება GET მეთოდით.
+GET და POST მეთოდები
+არსებობს ორი საშუალება რომლითაც კლიენტის ბრაუზერს შეუძლია გაუგზავნოს ინფორმაცია სერვერს : ესენია GET და POST მეთოდები. პირველ მეთოდზე ჩვენ მეტნაკლებად ვისაუბრეთ ავღნიშნავთ მის ძირითად თავისებურებებს:
+მეთოდს გააჩნია შეზღუდვა: შეუძია გააგზავნოს მხოლოდ 2048 სიმბოლო.
+შეგიძლიათ გამოიყენოთ ეს მეთოდი ბინარული მონაცემების გადასაგზავნად, მაგალითად სურათი ან ვორდ დოკუმენტი.
+არ გამოიყენოთ იგი პაროლების ან სხვა საიდუმლო ინფორმაციის გადაგზავნისათვის. რადგან ინფორმაცია, გაგზავნილი ფორმიდან GET მეთოდით ჩანს ყველასათვის (ის გამოისახება ბრაუზერის მიმსამართების პანელზე) 
+მონაცემები რომლებიც იგზავნება ამ მეთოდის მეშვეობით მიიწვდომება QUERY_STRING ცვლადის მეშვეობით. შეიძლება მისი დაბუქმარკება
+PHP გვაძლევს საშუალებას $_GETასოციაციური მასივის დახმარებით განვახორციელოთ წვდომა ინფორმაციაზე რომელიც იგზავნება GET მეთოდით.
+
+PHP'de GET ve POST, HTTP isteklerini işlemek için kullanılan iki ana yöntemdir. Her ikisi de veri göndermek ve almak için kullanılır, ancak aralarında bazı önemli farklar vardır.
+
+### GET Yöntemi
+- **Kullanım**: Verileri URL üzerinden gönderir.
+- **URL'de Gösterim**: Gönderilen veriler URL'nin bir parçası olarak görünür. Örneğin: `example.com/page.php?name=John&age=25`.
+- **Veri Miktarı**: Sınırlı veri miktarını destekler (URL uzunluk sınırı).
+- **Güvenlik**: Düşük güvenlik (veriler URL'de açıkça görünür).
+- **Yenileme ve Yer İmlerine Ekleme**: Sayfa yenilendiğinde veya yer imlerine eklendiğinde veriler kalıcı olur.
+
+```php
+// GET ile gönderilen veriyi almak
+$name = $_GET['name'];
+$age = $_GET['age'];
+```
+
+### POST Yöntemi
+- **Kullanım**: Verileri HTTP başlığının gövdesinde gönderir.
+- **URL'de Gösterim**: Veriler URL'de görünmez.
+- **Veri Miktarı**: Daha büyük miktarda veri göndermeye uygundur.
+- **Güvenlik**: Daha güvenlidir (veriler URL'de görünmez).
+- **Yenileme ve Yer İmlerine Ekleme**: Sayfa yenilendiğinde veriler yeniden gönderilmez, yer imlerine eklenmez.
+
+```php
+// POST ile gönderilen veriyi almak
+$name = $_POST['name'];
+$age = $_POST['age'];
+```
+
+### Form Örnekleri
+
+**GET Metodu ile Form:**
+```html
+<form method="GET" action="process.php">
+    Name: <input type="text" name="name">
+    Age: <input type="text" name="age">
+    <input type="submit" value="Submit">
+</form>
+```
+
+**POST Metodu ile Form:**
+```html
+<form method="POST" action="process.php">
+    Name: <input type="text" name="name">
+    Age: <input type="text" name="age">
+    <input type="submit" value="Submit">
+</form>
+```
+
+### GET ve POST Kullanım Senaryoları
+- **GET**: Genellikle veri almak, sayfalar arası gezinme ve yer imi ekleme için kullanılır. Örneğin, arama sorguları.
+- **POST**: Genellikle veri göndermek, form işleme ve veritabanına kayıt yapmak için kullanılır. Örneğin, kullanıcı giriş formları.
+
+GET ve POST yöntemleri, web uygulamalarının kullanıcılarla etkileşimini ve veri işlemesini sağlar. Her iki yöntem de farklı senaryolar için uygun olup, doğru şekilde kullanıldığında
+ güvenli ve etkili bir şekilde çalışır.
+***************************************************************************************************************************************************************************************
+
+PHP'de `header()` fonksiyonu, HTTP başlıklarını (HTTP headers) göndermek için kullanılır. Bu fonksiyon, bir HTTP yanıtının başlık kısmına bilgi eklemenizi sağlar. 
+Genellikle, tarayıcı yönlendirmeleri, içerik türü tanımlamaları, önbellek kontrolü ve çerezler gibi durumlarda kullanılır.
+
+### `header()` Fonksiyonunun Kullanımı
+
+`header()` fonksiyonunun temel kullanımı şu şekildedir:
+
+```php
+header(string $header, bool $replace = true, int $response_code = 0)
+```
+
+- `$header`: Gönderilecek başlık.
+- `$replace`: Aynı başlığın önceden gönderilmiş olanını değiştirip değiştirmeyeceğini belirtir. Varsayılan olarak `true` (öncekini değiştirir).
+- `$response_code`: İsteğe bağlı olarak HTTP yanıt kodu belirtilebilir.
+
+### Örnekler
+
+#### 1. İçerik Türünü Belirleme
+
+Bir HTML sayfasının içerik türünü belirlemek:
+
+```php
+header('Content-Type: text/html; charset=UTF-8');
+```
+
+JSON veri döndürmek:
+
+```php
+header('Content-Type: application/json');
+echo json_encode($data);
+```
+
+#### 2. Yönlendirme
+
+Kullanıcıyı başka bir sayfaya yönlendirmek:
+
+```php
+header('Location: http://example.com/newpage');
+exit; // Yönlendirmeden sonra betiğin çalışmasını durdurmak için
+```
+
+#### 3. Önbellek Kontrolü
+
+Önbellekleme kontrolü yapmak:
+
+```php
+header('Cache-Control: no-cache, no-store, must-revalidate');
+header('Pragma: no-cache');
+header('Expires: 0');
+```
+
+#### 4. Çerez Ayarlama
+
+`header()` kullanarak çerez ayarlamak yerine `setcookie()` fonksiyonunu kullanmak daha yaygındır. Ancak, başlık göndererek de çerez ayarlayabilirsiniz:
+
+```php
+setcookie('user', 'John', time() + 3600, '/');  // Daha yaygın ve güvenli yöntem
+```
+
+#### 5. Özel Başlıklar Gönderme
+
+Özel bir HTTP başlığı eklemek:
+
+```php
+header('X-Custom-Header: customValue');
+```
+
+#### 6. Yanıt Kodu Gönderme
+
+HTTP yanıt kodunu değiştirmek:
+
+```php
+header('HTTP/1.1 404 Not Found');
+```
+
+Alternatif olarak, `header()` fonksiyonunun üçüncü parametresini kullanarak da yanıt kodunu belirtebilirsiniz:
+
+```php
+header('Location: http://example.com/newpage', true, 301); // 301 Moved Permanently
+```
+
+### Dikkat Edilmesi Gerekenler
+
+1. **Çıkış (Output) Göndermeden Önce Kullanılmalı**: `header()` fonksiyonu çağrılmadan önce hiçbir çıkış yapılmamalıdır. Aksi takdirde, PHP bir hata verecektir. Bu nedenle, 
+`header()` çağrılmadan önce boşluk veya yeni satır karakteri gibi herhangi bir çıkış olmadığından emin olunmalıdır.
+
+2. **Birden Fazla Başlık Gönderimi**: Aynı türde birden fazla başlık gönderiliyorsa, `header()` fonksiyonunun ikinci parametresi olan `$replace` kullanılarak önceki başlıkların 
+değiştirilip değiştirilmeyeceği kontrol edilebilir.
+
+```php
+header('Cache-Control: max-age=3600', false); // Önceki Cache-Control başlıklarını değiştirmez
+header('Cache-Control: no-store'); // Önceki Cache-Control başlıklarını değiştirir (varsayılan)
+```
+
+PHP'de `header()` fonksiyonunu kullanarak HTTP başlıkları üzerinde tam kontrol sağlayabilirsiniz.
+
+***************ekstra bilgi
+HTTP başlıkları (HTTP headers), istemci (client) ve sunucu (server) arasında veri iletişimini yöneten önemli bileşenlerdir. Bu başlıklar, hem istemci tarafından gönderilen isteklerde hem de sunucu tarafından döndürülen yanıtlarda yer alır ve çeşitli nedenlerle projelerde kritik bir rol oynar.
+
+### HTTP Başlıklarının Önemi
+
+1. **Veri İletişimi ve Kontrolü**: HTTP başlıkları, istemci ve sunucu arasındaki veri iletişimini düzenler. İçerik türü, kodlama türü, yetkilendirme bilgileri gibi birçok bilgi başlıklar aracılığıyla iletilir.
+
+2. **Güvenlik**: Güvenlikle ilgili birçok önlem HTTP başlıkları aracılığıyla alınır. Örneğin, `Authorization` başlığı yetkilendirme bilgilerini taşır, `Content-Security-Policy` başlığı güvenlik politikalarını belirtir.
+
+3. **Önbellekleme Kontrolü**: `Cache-Control`, `Expires`, ve `Pragma` gibi başlıklar, web içeriğinin nasıl ve ne kadar süreyle önbelleğe alınacağını belirler. Bu, performansı artırır ve sunucu yükünü azaltır.
+
+4. **Yönlendirme ve Yeniden Yönlendirme**: `Location` başlığı, istemciyi başka bir URL'ye yönlendirmek için kullanılır. Bu, sayfa yönlendirmeleri ve yeni URL'lere geçişler için önemlidir.
+
+5. **İçerik Müzakeresi**: `Accept`, `Accept-Encoding`, `Accept-Language` gibi başlıklar, istemcinin hangi türde içerikleri kabul edebileceğini belirtir ve sunucunun uygun içerik sunmasına olanak tanır.
+
+6. **Çerez Yönetimi**: `Set-Cookie` başlığı, istemcide çerezler ayarlamak için kullanılır. Çerezler, kullanıcı oturumlarını yönetmek ve kullanıcıya özel içerik sunmak için önemlidir.
+
+### Projelerde HTTP Başlıklarının Kullanımı
+
+Projelerde HTTP başlıkları şu amaçlarla sıkça kullanılır:
+
+1. **Güvenlik Önlemleri**:
+   - **CORS (Cross-Origin Resource Sharing)**: `Access-Control-Allow-Origin` başlığı, bir kaynağın başka bir alan adı üzerinden erişilip erişilemeyeceğini belirler.
+   - **XSS Koruması**: `Content-Security-Policy` başlığı, hangi kaynakların yüklenebileceğini belirleyerek XSS (Cross-Site Scripting) saldırılarını önler.
+   - **HSTS (HTTP Strict Transport Security)**: `Strict-Transport-Security` başlığı, tarayıcıya sadece HTTPS üzerinden bağlanılmasını zorunlu kılar.
+
+2. **Önbellekleme ve Performans**:
+   - **Önbellek Kontrolü**: `Cache-Control` ve `Expires` başlıkları, içeriğin önbelleğe alınmasını ve geçerlilik sürelerini kontrol eder.
+   - **Sıkıştırma**: `Content-Encoding` başlığı, içeriğin sıkıştırılarak daha hızlı iletilmesini sağlar (gzip, deflate gibi).
+
+3. **Kullanıcı Deneyimi ve Dil Desteği**:
+   - **Dil Müzakeresi**: `Accept-Language` başlığı, istemcinin tercih ettiği dilleri belirtir ve sunucunun uygun dilde içerik sunmasını sağlar.
+
+4. **API ve Web Servisleri**:
+   - **Versiyonlama**: API isteklerinde versiyon bilgisi taşımak için `Accept` başlığı kullanılır.
+   - **Yetkilendirme**: API anahtarları veya tokenler `Authorization` başlığı aracılığıyla iletilir.
+
+### Örnek Kullanım
+
+Aşağıda, çeşitli HTTP başlıklarının kullanıldığı bir PHP örneği verilmiştir:
+
+```php
+// Güvenlik Başlıkları
+header('Content-Security-Policy: default-src \'self\'; script-src \'self\' https://apis.example.com');
+header('Strict-Transport-Security: max-age=31536000; includeSubDomains');
+header('X-Content-Type-Options: nosniff');
+
+// Önbellekleme ve Performans
+header('Cache-Control: max-age=3600, must-revalidate');
+header('Content-Encoding: gzip');
+
+// Yönlendirme
+header('Location: http://example.com/newpage');
+exit;
+
+// Çerez Ayarlama
+setcookie('user', 'John', time() + 3600, '/', 'example.com', true, true);
+
+// API Yetkilendirme
+$token = $_SERVER['HTTP_AUTHORIZATION']; // Bearer token alma
+```
+
+HTTP başlıkları, web projelerinde veri iletişimi, güvenlik, performans ve kullanıcı deneyimi gibi kritik alanlarda önemli bir rol oynar. Bu başlıkları etkili ve doğru bir şekilde 
+kullanmak, web uygulamalarının güvenliğini artırır, performansını optimize eder ve genel kullanıcı deneyimini iyileştirir.
+***************************************************************************************************************************************************************************************
+
+optional data(ilave kaynak)
+Cross Site Scripting (XSS), bir web uygulamasına zararlı kod (genellikle JavaScript) enjekte edilerek gerçekleştirilen bir güvenlik açığı türüdür. Bu zararlı kod, başka kullanıcıların tarayıcılarında çalıştırılarak hassas bilgilerin çalınması, kullanıcı oturumlarının ele geçirilmesi veya kullanıcıya zararlı eylemlerin yaptırılması gibi kötü niyetli amaçlar için kullanılabilir. XSS saldırıları, genellikle form verileri, URL parametreleri veya diğer kullanıcı girdileri aracılığıyla yapılır.
+
+### XSS Türleri
+
+1. **Stored XSS (Depolanmış XSS)**:
+   - Zararlı kod, sunucuya kaydedilir ve başka kullanıcılar bu kodu çalıştırır.
+   - Örnek: Bir blogun yorum bölümüne zararlı JavaScript kodu eklenir ve bu kod tüm yorumları görüntüleyen kullanıcılar tarafından çalıştırılır.
+
+2. **Reflected XSS (Yansıtılmış XSS)**:
+   - Zararlı kod, kullanıcının isteği ile birlikte sunucuya gönderilir ve hemen geri döner.
+   - Örnek: URL parametreleri aracılığıyla zararlı kod gönderilir ve sunucu bu kodu yanıt olarak geri döner.
+
+3. **DOM-based XSS (DOM Tabanlı XSS)**:
+   - Zararlı kod, istemci tarafında (tarayıcıda) çalıştırılır ve doğrudan DOM (Document Object Model) manipülasyonu ile gerçekleştirilir.
+   - Örnek: JavaScript kodu, URL parametrelerini okuyarak zararlı kodu DOM'a ekler.
+
+### XSS Örnekleri
+
+#### Stored XSS Örneği
+
+Bir blog yorum sisteminde depolanmış XSS örneği:
+
+**Zararlı Yorum:**
+```html
+<script>alert('XSS Attack!');</script>
+```
+
+Bu yorum, tüm yorumları görüntüleyen kullanıcıların tarayıcısında çalıştırılır.
+
+#### Reflected XSS Örneği
+
+URL'de yansıtılmış XSS örneği:
+
+**URL:**
+```
+http://example.com/search.php?q=<script>alert('XSS Attack!');</script>
+```
+
+Eğer `search.php` dosyası kullanıcı girdiğini doğrudan yanıt olarak döndürüyorsa, zararlı kod çalıştırılır.
+
+#### DOM-based XSS Örneği
+
+JavaScript kodu ile DOM tabanlı XSS örneği:
+
+**HTML:**
+```html
+<!DOCTYPE html>
+<html>
+<body>
+    <div id="output"></div>
+    <script>
+        var param = new URLSearchParams(window.location.search).get('msg');
+        document.getElementById('output').innerHTML = param;
+    </script>
+</body>
+</html>
+```
+
+**URL:**
+```
+http://example.com/page.html?msg=<script>alert('XSS Attack!');</script>
+```
+
+Bu URL, tarayıcıda çalıştırıldığında `msg` parametresindeki zararlı kod `output` div'ine eklenir ve çalıştırılır.
+
+### XSS'ten Korunma Yöntemleri
+
+1. **Girdi Doğrulama ve Temizleme**:
+   - Kullanıcıdan gelen tüm verileri doğrulayın ve temizleyin. Örneğin, HTML özel karakterlerini kaçış yaparak (`<` → `&lt;`, `>` → `&gt;`).
+
+   **PHP Örneği:**
+   ```php
+   $safe_input = htmlspecialchars($user_input, ENT_QUOTES, 'UTF-8');
+   ```
+
+2. **Çıktı Kaçış Yapma**:
+   - Kullanıcı verilerini HTML içeriğine dahil ederken özel karakterleri kaçış yaparak XSS saldırılarını önleyin.
+
+   **PHP Örneği:**
+   ```php
+   echo htmlspecialchars($user_input, ENT_QUOTES, 'UTF-8');
+   ```
+
+3. **İçerik Güvenlik Politikası (CSP)**:
+   - `Content-Security-Policy` başlığı kullanarak sadece güvenilir kaynaklardan JavaScript çalıştırılmasına izin verin.
+
+   **Örnek CSP Başlığı:**
+   ```http
+   Content-Security-Policy: default-src 'self'; script-src 'self' https://trusted.cdn.com
+   ```
+
+4. **HTTPOnly ve Secure Çerezler**:
+   - Çerezleri `HttpOnly` ve `Secure` bayrakları ile ayarlayarak JavaScript'in çerezlere erişimini engelleyin ve HTTPS üzerinden gönderilmelerini sağlayın.
+
+   **PHP Örneği:**
+   ```php
+   setcookie('session', $session_value, time() + 3600, '/', '', true, true);
+   ```
+
+5. **Güvenlik Kütüphaneleri Kullanma**:
+   - OWASP gibi güvenlik kütüphanelerini kullanarak uygulamalarınızı koruyun.
+
+XSS saldırılarını önlemek için bu koruma yöntemlerini uygulayarak, web uygulamalarınızın güvenliğini artırabilir ve kullanıcı verilerini koruyabilirsiniz.
+
+Verdiğiniz kod örneğinde, `$_SERVER['QUERY_STRING']` kullanılarak URL'den gelen sorgu dizgesi (`query string`) alınıp, bu değer bir HTML bağlantısında (`<a href>`) kullanılıyor. Ancak, bu yaklaşım potansiyel bir XSS (Cross-Site Scripting) açığı oluşturabilir. XSS saldırılarına karşı korunmak için kullanıcı girdilerini güvenli hale getirmek önemlidir.
+
+Aşağıda kodun nasıl çalıştığını ve nasıl güvenli hale getirilebileceğini detaylı bir şekilde açıklayacağım.
+
+### Kodun İşleyişi
+
+1. **`$_SERVER['QUERY_STRING']`**:
+   - Bu süper global değişken, URL'nin sorgu kısmını (soru işaretinden sonraki kısmı) alır.
+   - Örnek URL: `http://example.com/file.php?name=John&age=30`
+   - `$_SERVER['QUERY_STRING']` değeri: `name=John&age=30`
+
+2. **Bağlantının Oluşturulması**:
+   - Sorgu dizgesi (`query string`), bir HTML bağlantısında (`<a href>`) kullanılıyor.
+   - Örnek çıktı: `<a href="file.php?name=John&age=30">Link</a>`
+
+### Güvenlik Açığı (XSS)
+
+Bu kod, kullanıcı tarafından kontrol edilen veriyi doğrudan HTML'ye yerleştirir ve bu da potansiyel XSS saldırılarına yol açabilir. Örneğin, bir saldırgan aşağıdaki gibi bir URL kullanabilir:
+
+```
+http://example.com/file.php?name=John"><script>alert('XSS');</script>&age=30
+```
+
+Bu durumda, `$_SERVER['QUERY_STRING']` şu şekilde olur:
+
+```
+name=John"><script>alert('XSS');</script>&age=30
+```
+
+Ve oluşturulan bağlantı şu şekilde olur:
+
+```html
+<a href="file.php?name=John"><script>alert('XSS');</script>&age=30">Link</a>
+```
+
+Bu bağlantıya tıklayan kullanıcılar, tarayıcılarında zararlı JavaScript kodunu çalıştırabilir.
+
+### Güvenli Hale Getirme
+
+XSS saldırılarına karşı korunmak için, kullanıcı girdilerini HTML'de kullanmadan önce uygun şekilde kaçış yapmanız gerekir. PHP'de bunu `htmlspecialchars()` fonksiyonuyla yapabilirsiniz.
+
+### Güvenli Kod Örneği
+
+Aşağıda, kullanıcı girdilerini güvenli hale getiren bir örnek bulunmaktadır:
+
+```php
+$queryString = htmlspecialchars($_SERVER['QUERY_STRING'], ENT_QUOTES, 'UTF-8');
+echo '<a href="file.php?' . $queryString . '">Link</a>';
+```
+
+### Açıklama
+
+1. **`htmlspecialchars()` Fonksiyonu**:
+   - Bu fonksiyon, özel karakterleri HTML kodlarına dönüştürür (örneğin `<` → `&lt;`, `>` → `&gt;`).
+   - `ENT_QUOTES` bayrağı, hem tek tırnak (`'`) hem de çift tırnak (`"`) karakterlerini dönüştürür.
+   - `'UTF-8'` karakter kümesi, karakterlerin doğru şekilde dönüştürülmesini sağlar.
+
+Bu şekilde, zararlı kodlar HTML içerisine yerleştirilemez ve XSS saldırıları önlenmiş olur. 
+
+### Özet
+
+- **Orijinal Kod**: Potansiyel XSS açığı içeriyor.
+- **Güvenli Kod**: `htmlspecialchars()` fonksiyonunu kullanarak XSS saldırılarına karşı korunuyor.
+
+Bu yaklaşımla, kullanıcı girdilerini güvenli bir şekilde işleyerek web uygulamanızın güvenliğini artırabilirsiniz.
+***************************************************************************************************************************************************************************************
+
+`readfile()` ve `fopen()` fonksiyonları, PHP'de dosya işlemleri yapmak için kullanılan temel işlevlerdir. Her iki fonksiyon da dosya okuma işlemleri için kullanılabilir, ancak farklı amaçlara hizmet ederler.
+
+### `fopen()` Fonksiyonu
+
+`fopen()` fonksiyonu, bir dosyayı açmak için kullanılır ve dosyanın okuma, yazma veya eklemek gibi farklı modlarda açılmasını sağlar. İşte `fopen()` fonksiyonunun temel kullanımı:
+
+```php
+resource fopen ( string $filename , string $mode [, bool $use_include_path = false [, resource $context ]] )
+```
+
+- **`$filename`**: Açılacak dosyanın yolu ve adı.
+- **`$mode`**: Dosyanın açılma modu (`'r'` : okuma, `'w'` : yazma, `'a'` : eklemek için).
+- **`$use_include_path`**: İsteğe bağlı. `true` olarak ayarlandığında, dosya include yollarında aranır.
+- **`$context`**: İsteğe bağlı. Akım bağlamı için kullanılır (örneğin SSL ayarları).
+
+Örnek kullanım:
+
+```php
+$file = fopen("example.txt", "r");
+if ($file) {
+    // Dosyayı işle
+    fclose($file); // Dosyayı kapat
+} else {
+    // Dosya açılamadı
+}
+```
+
+### `readfile()` Fonksiyonu
+
+`readfile()` fonksiyonu, belirtilen dosyanın içeriğini okuyarak doğrudan çıktıya (output) yazar. İşte `readfile()` fonksiyonunun temel kullanımı:
+
+```php
+int readfile ( string $filename [, bool $use_include_path = false [, resource $context ]] )
+```
+
+- **`$filename`**: Okunacak dosyanın yolu ve adı.
+- **`$use_include_path`**: İsteğe bağlı. `true` olarak ayarlandığında, dosya include yollarında aranır.
+- **`$context`**: İsteğe bağlı. Akım bağlamı için kullanılır (örneğin SSL ayarları).
+
+Örnek kullanım:
+
+```php
+readfile("example.txt");
+```
+
+### Farklar ve Kullanım Senaryoları
+
+- **`fopen()` ve `fclose()`**: Dosyayı açma ve kapatma işlemleri için kullanılır. Dosya üzerinde daha fazla işlem yapılacaksa (`fread()`, `fwrite()` gibi), `fopen()` kullanılır.
+  
+- **`readfile()`**: Dosyanın içeriğini doğrudan çıktıya yazar. Genellikle basit dosya okuma işlemleri için kullanılır ve ayrıca dosya boyutu gibi bilgileri döndürür.
+
+- **Performans**: Büyük dosyaları okurken `readfile()` genellikle daha verimlidir, çünkü dosyanın tümünü doğrudan çıktıya yazabilir.
+
+- **Kullanım Kolaylığı**: Basit dosya okuma veya indirme işlemleri için `readfile()` daha uygun olabilir. Daha karmaşık dosya işlemleri için `fopen()` ve ilgili işlevler kullanılır.
+
+### Öneri
+
+Dosya işlemleri yaparken, güvenlik ve performans konularını dikkate alarak doğru işlevi seçmek önemlidir. Dosya yollarını ve kullanıcı girdilerini kontrol altında tutarak güvenlik açıklarından kaçınmak önemlidir.
+
+	feof() ფუნქცია ამოწმებს, მიღწეულია თუ არა("end-of-file" (EOF)) ფაილის ბოლო.: if (feof($file)) echo "End of file";
+	feof() ფუნქცია გამოსადეგია უცნობი სიგრძის მონაცემთა ციკლირებისათვის. 
+	შევნიშნოთ რომ ჩვენ ვერ წავიკითხავთ ფაილიდან, რომელიც გახსნილია w, a, და x რეჟიმებში.
+
+მაგალითად:
+<?php
+$file file!");
+while(!feof($file)) = fopen("welcome.txt", "r") or exit("Unable to open 
+  {  //გააკეთოს რაღაც}
+fclose($file);
+?>
+
+***************************************************************************************************************************************************************************************
+PHP'de dosya işlemleri yaparken kullanabileceğiniz bazı yaygın fonksiyonlar şunlardır:
+
+### Dosya Açma ve Kapatma
+
+1. **fopen()**: Bir dosyayı belirtilen moda göre açar.
+   ```php
+   $handle = fopen("dosya.txt", "r");
+   ```
+
+2. **fclose()**: Bir dosya işaretçisini kapatır.
+   ```php
+   fclose($handle);
+   ```
+
+### Dosya Okuma ve Yazma
+
+3. **fread()**: Belirtilen dosyadan belirli bir miktarda veri okur.
+   ```php
+   $content = fread($handle, filesize("dosya.txt"));
+   ```
+
+4. **fgets()**: Belirtilen dosyadan bir satır okur.
+   ```php
+   $line = fgets($handle);
+   ```
+
+5. **file_get_contents()**: Bir dosyanın tamamını bir dize olarak okur.
+   ```php
+   $content = file_get_contents("dosya.txt");
+   ```
+
+6. **file()**: Bir dosyayı satır satır bir diziye okur.
+   ```php
+   $lines = file("dosya.txt");
+   ```
+
+7. **fwrite()**: Bir dosyaya veri yazar.
+   ```php
+   fwrite($handle, "Merhaba, dünya!");
+   ```
+
+### Dosya Yönetimi
+
+8. **file_exists()**: Bir dosya veya dizinin var olup olmadığını kontrol eder.
+   ```php
+   if (file_exists("dosya.txt")) {
+       echo "Dosya mevcut.";
+   }
+   ```
+
+9. **is_file()**: Bir yolun dosya olup olmadığını kontrol eder.
+   ```php
+   if (is_file("dosya.txt")) {
+       echo "Bu bir dosyadır.";
+   }
+   ```
+
+10. **is_dir()**: Bir yolun bir dizin olup olmadığını kontrol eder.
+    ```php
+    if (is_dir("dizin")) {
+        echo "Bu bir dizindir.";
+    }
+    ```
+
+11. **unlink()**: Bir dosyayı siler.
+    ```php
+    unlink("dosya.txt");
+    ```
+
+### Dosya Bilgileri
+
+12. **filesize()**: Bir dosyanın boyutunu döndürür.
+    ```php
+    $size = filesize("dosya.txt");
+    ```
+
+13. **filemtime()**: Bir dosyanın son değiştirilme zamanını döndürür.
+    ```php
+    $timestamp = filemtime("dosya.txt");
+    ```
+
+14. **filetype()**: Bir dosyanın türünü döndürür (örneğin "file", "dir", "link").
+    ```php
+    $type = filetype("dosya.txt");
+    ```
+
+### Diğer Fonksiyonlar
+
+15. **rename()**: Bir dosya veya dizinin adını değiştirir.
+    ```php
+    rename("eski.txt", "yeni.txt");
+    ```
+
+16. **copy()**: Bir dosyanın kopyasını oluşturur.
+    ```php
+    copy("dosya.txt", "kopya_dosya.txt");
+    ```
+
+17. **chmod()**: Bir dosyanın izinlerini ayarlar.
+    ```php
+    chmod("dosya.txt", 0644);
+    ```
+
+18. **file_put_contents()**: Bir dosyaya veri yazar (dosyayı oluşturur veya üzerine yazar).
+    ```php
+    file_put_contents("dosya.txt", "İçerik");
+    ```
+
+Bu fonksiyonlar dosya işlemlerinizde kullanabileceğiniz temel PHP fonksiyonlarıdır. Her biri farklı dosya işlemleri için kullanılır ve ihtiyacınıza göre uygun olanını seçebilirsiniz.
+***************************************************************************************************************************************************************************************
+`$_SERVER['REQUEST_METHOD']` süper global değişkeni, PHP'de bir HTTP isteğinin hangi metodla yapıldığını belirlemek için kullanılır. Bu değişken genellikle form işleme, RESTful API'ler ve diğer HTTP işlemleri için kullanılır. İşte temel HTTP metodları ve bunların kullanımıyla ilgili açıklamalar:
+
+### HTTP Metodları
+
+1. **GET**: Veriyi sunucudan almak için kullanılır.
+2. **POST**: Veriyi sunucuya göndermek için kullanılır.
+3. **PUT**: Sunucuda bir kaynağı güncellemek için kullanılır.
+4. **DELETE**: Sunucuda bir kaynağı silmek için kullanılır.
+5. **HEAD**: Sunucudan yalnızca başlık bilgilerini almak için kullanılır (GET isteğinin gövdesiz hali).
+6. **OPTIONS**: Sunucu tarafından desteklenen HTTP metodlarını almak için kullanılır.
+7. **PATCH**: Sunucuda bir kaynağın kısmi olarak güncellenmesi için kullanılır.
+
+### `$_SERVER['REQUEST_METHOD']` Kullanımı
+
+`$_SERVER['REQUEST_METHOD']` değişkenini kullanarak gelen isteğin metodunu kontrol edebilir ve buna göre işlemler yapabilirsiniz. Örneğin, form gönderimlerini GET veya POST metoduna göre ayırabilir veya RESTful API'lerde farklı metodlara göre farklı işlemler yapabilirsiniz.
+
+#### Basit Örnek: GET ve POST
+
+```php
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // POST isteği ile gelen veriyi işleyin
+    echo "This is a POST request.";
+    $name = $_POST['name'] ?? 'Unknown';
+    echo "Name: " . htmlspecialchars($name);
+} elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    // GET isteği ile gelen veriyi işleyin
+    echo "This is a GET request.";
+    $name = $_GET['name'] ?? 'Unknown';
+    echo "Name: " . htmlspecialchars($name);
+} else {
+    // Diğer HTTP metodları için işlem yapın
+    echo "Unsupported request method.";
+}
+?>
+```
+
+### RESTful API Örneği
+
+Aşağıda bir PHP betiği ile RESTful API örneği verilmiştir. Bu örnekte, farklı HTTP metodlarına göre farklı işlemler yapılmaktadır.
+
+```php
+<?php
+$method = $_SERVER['REQUEST_METHOD'];
+$request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
+$input = json_decode(file_get_contents('php://input'),true);
+
+switch ($method) {
+    case 'GET':
+        // GET işlemleri
+        if (isset($request[0])) {
+            $id = $request[0];
+            // Veriyi alın ve JSON olarak döndürün
+            echo json_encode(["id" => $id, "name" => "Sample Data"]);
+        } else {
+            // Tüm verileri alın
+            echo json_encode(["data" => "List of all data"]);
+        }
+        break;
+    case 'POST':
+        // POST işlemleri
+        // Gelen veriyi işleyin ve yanıt verin
+        echo json_encode(["message" => "Data created", "input" => $input]);
+        break;
+    case 'PUT':
+        // PUT işlemleri
+        $id = $request[0] ?? null;
+        // Veriyi güncelleyin
+        echo json_encode(["message" => "Data updated for ID " . $id, "input" => $input]);
+        break;
+    case 'DELETE':
+        // DELETE işlemleri
+        $id = $request[0] ?? null;
+        // Veriyi silin
+        echo json_encode(["message" => "Data deleted for ID " . $id]);
+        break;
+    default:
+        // Diğer metodlar
+        header("HTTP/1.1 405 Method Not Allowed");
+        echo json_encode(["message" => "Method not allowed"]);
+        break;
+}
+?>
+```
+
+### Açıklamalar
+
+1. **GET İşlemleri**: Verileri almak için kullanılır. Belirli bir ID ile veya tüm veriler için kullanılabilir.
+2. **POST İşlemleri**: Yeni veri oluşturmak için kullanılır. Gelen veriyi işleyip yanıt verir.
+3. **PUT İşlemleri**: Var olan veriyi güncellemek için kullanılır. Gelen veriyi belirli bir ID için günceller.
+4. **DELETE İşlemleri**: Belirli bir ID'ye sahip veriyi silmek için kullanılır.
+5. **Default Durum**: Desteklenmeyen HTTP metodları için yanıt verir.
+
+Bu örneklerde, `$_SERVER['REQUEST_METHOD']` kullanarak gelen isteğin metodunu belirleyip, ilgili işlemleri gerçekleştirebilirsiniz. Bu, özellikle RESTful API geliştirme ve form işleme gibi senaryolarda oldukça kullanışlıdır.
+***************************************************************************************************************************************************************************************
+
+PHP'de dosya yükleme işlemi yaparken, `$_FILES` süper global değişkeni kullanılır. Bu süper global değişken, sunucuya yüklenen dosyalarla ilgili bilgileri içerir ve dosyaları sunucunun belirli bir dizinine taşımak için kullanılır. Dosya yükleme işlemi genellikle bir HTML formu aracılığıyla gerçekleştirilir ve `enctype="multipart/form-data"` özelliği ile formun dosya yükleme desteğini aktif hale getirir.
+
+İşte PHP'de dosya yükleme işlemini adım adım nasıl gerçekleştirebileceğinizi gösteren bir örnek:
+
+### Dosya Yükleme Formu (HTML)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>File Upload Form</title>
+</head>
+<body>
+    <h2>File Upload Form</h2>
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+        <label for="fileToUpload">Select file to upload:</label>
+        <input type="file" name="fileToUpload" id="fileToUpload">
+        <br>
+        <input type="submit" value="Upload File" name="submit">
+    </form>
+</body>
+</html>
+```
+
+### Dosya Yükleme İşlemi (PHP)
+
+Dosya yükleme işlemini `upload.php` adlı bir PHP dosyasında işleyelim.
+
+```php
+<?php
+// Dosya yükleme işlemi sadece POST istekleriyle çalışır
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Yüklenen dosyanın hedef dizini ve adı
+    $target_dir = "uploads/"; // Hedef dizin
+    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]); // Tam hedef yol
+
+    // Dosya yükleme işlemini başlatır
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+        echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
+    } else {
+        echo "Sorry, there was an error uploading your file.";
+    }
+}
+?>
+```
+
+### Açıklamalar:
+
+1. **HTML Form**: Dosya yükleme işlemi için `enctype="multipart/form-data"` özelliğine sahip bir HTML formu oluşturulmuştur. Bu, formun dosya yükleme özelliklerini etkinleştirir.
+
+2. **PHP Dosya İşleme**: `upload.php` dosyasında `$_FILES["fileToUpload"]` süper global değişkeni kullanılarak dosyanın geçici konumundan (`$_FILES["fileToUpload"]["tmp_name"]`) 
+hedef dizine (`$target_file`) taşınması sağlanmıştır.
+
+3. **Hedef Dizin**: `$target_dir` değişkeni, yüklenen dosyanın nereye kaydedileceğini belirtir. Örneğin, `"uploads/"` olarak belirtilmiştir. Bu dizin oluşturulmuş olmalı ve PHP'nin 
+yazma izinlerine sahip olmalıdır (`chmod` komutuyla izinler ayarlanabilir).
+
+4. **Hata Kontrolü**: `move_uploaded_file()` işlevi, dosyanın başarıyla taşınıp taşınmadığını kontrol eder ve başarılı veya başarısız bir mesajı ekrana yazdırır.
+
+Dosya yükleme işlemi sırasında dikkat edilmesi gereken önemli noktalar şunlardır:
+
+- **Güvenlik**: Kullanıcı tarafından gönderilen dosyaların güvenliğini sağlamak için dosya adlarının doğru işlenmesi ve güvenlik kontrollerinin yapılması önemlidir. Dosya yükleme 
+alanları, kullanıcı girişlerine karşı korunmalıdır.
+  
+- **Boyut Sınırlamaları**: PHP yapılandırmasında `upload_max_filesize` ve `post_max_size` gibi sınırlamaları kontrol etmek gereklidir. Bu, sunucunun ne kadar büyük dosyaları 
+işleyebileceğini belirler.
+
+- **Dosya Türü Kontrolleri**: `$_FILES["fileToUpload"]["type"]` gibi özelliklerle dosya türüne yönelik doğrulamalar yapılabilir. Ayrıca, yalnızca belirli dosya türlerine izin vermek 
+için bir kontrol listesi oluşturabilirsiniz.
+
+Yukarıdaki örnekler, temel düzeyde bir dosya yükleme işlemi göstermektedir. Uygulamanızın gereksinimlerine göre, ek güvenlik önlemleri veya özelleştirmeler yapmanız gerekebilir.
+
+***************************************************************************************************************************************************************************************
+********************************************
+lek3
+********************************************
+
+PHP'de oturumlar (sessions), kullanıcıların web sitesindeki aktivitelerini izlemek ve belirli bir süre boyunca kullanıcıya özel verileri saklamak için kullanılır.
+ Oturumlar, özellikle kullanıcı kimlik doğrulaması, alışveriş sepetleri ve kullanıcı tercihlerinin saklanması gibi durumlar için kullanışlıdır.
+
+### PHP'de Oturumları Kullanma
+
+1. **Oturumu Başlatma**: Herhangi bir oturum verisi kullanılmadan önce `session_start()` işlevi çağrılmalıdır. Bu, oturumu başlatır veya mevcut bir oturumu yeniden başlatır.
+2. **Oturum Değişkenleri**: Oturum verileri `$_SESSION` süper global değişkeni kullanılarak saklanır ve erişilir.
+3. **Oturumu Sonlandırma**: Oturumu sonlandırmak ve oturum verilerini temizlemek için `session_destroy()` ve `unset()` işlevleri kullanılır.
+
+### Örnek: Oturum Yönetimi
+
+#### Adım 1: Oturumu Başlatma ve Oturum Değişkenlerini Ayarlama
+
+```php
+<?php
+// Oturumu başlat
+session_start();
+
+// Oturum değişkenlerini ayarla
+$_SESSION['username'] = 'john_doe';
+$_SESSION['user_id'] = 12345;
+
+echo "Oturum değişkenleri ayarlandı.<br>";
+echo "Kullanıcı Adı: " . $_SESSION['username'] . "<br>";
+echo "Kullanıcı ID: " . $_SESSION['user_id'] . "<br>";
+?>
+```
+
+#### Adım 2: Oturum Değişkenlerine Erişme
+
+Başka bir sayfada oturum değişkenlerine erişmek için:
+
+```php
+<?php
+// Oturumu başlat
+session_start();
+
+// Oturum değişkenlerine eriş
+if (isset($_SESSION['username']) && isset($_SESSION['user_id'])) {
+    echo "Kullanıcı Adı: " . $_SESSION['username'] . "<br>";
+    echo "Kullanıcı ID: " . $_SESSION['user_id'] . "<br>";
+} else {
+    echo "Oturum değişkenleri bulunamadı.";
+}
+?>
+```
+
+#### Adım 3: Oturumu Sonlandırma ve Verileri Temizleme
+
+Oturumu sonlandırmak ve tüm oturum verilerini temizlemek için:
+
+```php
+<?php
+// Oturumu başlat
+session_start();
+
+// Tüm oturum değişkenlerini temizle
+session_unset();
+
+// Oturumu sonlandır
+session_destroy();
+
+echo "Oturum sonlandırıldı ve veriler temizlendi.";
+?>
+```
+
+### Güvenlik İpuçları
+
+- **Oturum ID'si Yönetimi**: Oturum kaçırma saldırılarına karşı korunmak için oturum ID'si (`session_id()`) düzenli olarak yenilenmelidir. Örneğin, kullanıcı giriş yaptıktan sonra:
+  ```php
+  session_regenerate_id(true);
+  ```
+- **Güvenli Çerezler**: Oturum çerezlerini yalnızca güvenli bağlantılar üzerinden gönderilecek şekilde ayarlayın:
+  ```php
+  session_set_cookie_params([
+      'lifetime' => 0,
+      'path' => '/',
+      'domain' => 'yourdomain.com',
+      'secure' => true,
+      'httponly' => true,
+      'samesite' => 'Strict'
+  ]);
+  session_start();
+  ```
+- **Oturum Süresi**: Oturumların belirli bir süre sonra sona ermesini sağlayarak güvenliği artırabilirsiniz:
+  ```php
+  if (!isset($_SESSION['CREATED'])) {
+      $_SESSION['CREATED'] = time();
+  } else if (time() - $_SESSION['CREATED'] > 1800) {
+      // Oturum 30 dakika sonra sona erer
+      session_regenerate_id(true);
+      $_SESSION['CREATED'] = time();
+  }
+  ```
+
+### Özet
+
+Oturumlar, kullanıcı bilgilerini güvenli bir şekilde saklamak ve izlemek için güçlü bir yöntemdir. PHP'de oturumları başlatmak, yönetmek ve sonlandırmak için `session_start()`, 
+`$_SESSION` süper global değişkeni, `session_unset()` ve `session_destroy()` işlevlerini kullanabilirsiniz. Oturum güvenliğini sağlamak için dikkatli olmalı ve gerekli önlemleri almalısınız
+
+***************************************************************************************************************************************************************************************
+PHP'de çerezler (cookies), istemci tarafında saklanan küçük veri parçalarıdır ve istemci ile sunucu arasında veri paylaşımı sağlamak için kullanılır. Çerezler genellikle kullanıcı kimlik 
+doğrulaması, kullanıcı tercihleri veya diğer durum bilgileri gibi şeyler için kullanılır.
+
+### Çerezlerin Kullanımı
+
+Çerez oluşturma, okuma ve silme işlemleri için PHP'de `setcookie()`, `$_COOKIE` ve `setcookie()` fonksiyonları kullanılır.
+
+#### 1. Çerez Oluşturma
+
+`setcookie()` fonksiyonu çerez oluşturmak için kullanılır. Temel kullanımı şu şekildedir:
+
+```php
+setcookie(name, value, expire, path, domain, secure, httponly);
+```
+
+- `name`: Çerezin adı (zorunlu).
+- `value`: Çerezin değeri (zorunlu).
+- `expire`: Çerezin son kullanma tarihi (isteğe bağlı).
+- `path`: Çerezin geçerli olduğu sunucu yolu (isteğe bağlı).
+- `domain`: Çerezin geçerli olduğu alan adı (isteğe bağlı).
+- `secure`: `true` ise sadece HTTPS bağlantılarında gönderilir (isteğe bağlı).
+- `httponly`: `true` ise çerez sadece HTTP protokolü üzerinden erişilebilir ve JavaScript tarafından erişilemez (isteğe bağlı).
+
+Örnek:
+
+```php
+<?php
+// Çerez oluşturma
+setcookie("username", "john_doe", time() + (86400 * 30), "/"); // 1 gün boyunca geçerli çerez
+?>
+```
+
+#### 2. Çerezi Okuma
+
+`$_COOKIE` süper global değişkeni ile çerezlere erişilebilir.
+
+Örnek:
+
+```php
+<?php
+if(isset($_COOKIE["username"])) {
+    echo "Kullanıcı adı: " . $_COOKIE["username"];
+} else {
+    echo "Kullanıcı adı çerezi mevcut değil.";
+}
+?>
+```
+
+#### 3. Çerez Silme
+
+Çerezi silmek için çerezin son kullanma tarihini geçmiş bir tarihe ayarlayın.
+
+Örnek:
+
+```php
+<?php
+// Çerezi silme
+setcookie("username", "", time() - 3600, "/"); // 1 saat önceye ayarlanmış, dolayısıyla hemen silinir
+?>
+```
+
+### Tam Örnek: Çerez Oluşturma, Okuma ve Silme
+
+Aşağıda, bir form aracılığıyla çerez oluşturma, bu çerezi okuma ve silme işlemlerini içeren bir örnek bulunmaktadır.
+
+#### Form Sayfası (form.php)
+
+```php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Çerez Formu</title>
+</head>
+<body>
+    <form action="cookie_handler.php" method="post">
+        <label for="username">Kullanıcı Adı:</label>
+        <input type="text" id="username" name="username">
+        <input type="submit" value="Gönder">
+    </form>
+</body>
+</html>
+```
+
+#### Çerez İşleme Sayfası (cookie_handler.php)
+
+```php
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = htmlspecialchars($_POST["username"]);
+    
+    // Çerez oluşturma
+    setcookie("username", $username, time() + (86400 * 30), "/"); // 1 gün boyunca geçerli çerez
+
+    // Çerezi okuma
+    if (isset($_COOKIE["username"])) {
+        echo "Kullanıcı adı çerezi: " . $_COOKIE["username"];
+    } else {
+        echo "Kullanıcı adı çerezi mevcut değil.";
+    }
+
+    // Çerez silme
+    // setcookie("username", "", time() - 3600, "/"); // Yorumu kaldırarak çerezi silebilirsiniz
+}
+?>
+```
+
+Bu örnek, form üzerinden alınan kullanıcı adını çerez olarak saklar, çerezi okur ve dilerseniz siler. Çerezlerin tarayıcı tarafından nasıl saklandığını ve sunucuya nasıl 
+gönderildiğini anlamak için oldukça yararlı bir pratiktir.
+
+<?php
+// Çerezlerin etkin olup olmadığını kontrol et
+$cookie = isset($_GET['cookie']) ? $_GET['cookie'] : 0;
+$test = isset($_COOKIE['test']) ? $_COOKIE['test'] : 0;
+
+if (!$cookie) {
+    // Çerez oluşturma ve sayfayı yeniden yönlendirme
+    setcookie("test", "1", time() + (86400 * 30), "/"); // 86400 = 1 gün
+    header("Location: " . $_SERVER['PHP_SELF'] . "?cookie=1");
+    exit;
+} else {
+    if (!$test) {
+        echo ("Çerezlerin doğru çalışması için etkin olması gerekmektedir.");
+    } else {
+        // Çerezler etkinse, gerekli sayfaya yönlendir
+        header("Location: http://localhost/test1.php");
+        exit;
+    }
+}
+?>
+
+***************************************************************************************************************************************************************************************
+PHP'de çerezleri (cookies) şifrelemek ve daha sonra bu çerezleri çözmek için simetrik şifreleme yöntemleri kullanabilirsiniz. Aşağıda, çerezleri şifrelemek ve çözmek için bir örnek veriyorum. Bu örnek, OpenSSL kütüphanesini kullanarak AES-256-CBC algoritması ile çerezleri şifreleyecek ve çözecektir.
+
+### Çerezleri Şifrelemek
+
+#### `set_encrypted_cookie.php`
+Bu sayfa, çerezi şifreler ve ayarlar.
+
+```php
+<?php
+session_start();
+
+// Şifreleme fonksiyonu
+function encrypt($data, $key) {
+    $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
+    $encrypted = openssl_encrypt($data, 'aes-256-cbc', $key, 0, $iv);
+    return base64_encode($encrypted . '::' . $iv);
+}
+
+// Anahtar (key) belirle
+$key = "secretkey1234567890"; // Bu anahtar gizli tutulmalıdır
+
+// Şifrelenecek veri
+$username = "example_user";
+
+// Veriyi şifrele
+$encrypted_username = encrypt($username, $key);
+
+// Şifrelenmiş veriyi çerez olarak ayarla
+setcookie("username", $encrypted_username, time() + (86400 * 30), "/"); // 30 gün boyunca geçerli
+
+echo "Çerez ayarlandı ve şifrelendi.";
+?>
+```
+
+### Çerezleri Çözmek
+
+#### `get_decrypted_cookie.php`
+Bu sayfa, şifrelenmiş çerezi çözer ve gösterir.
+
+```php
+<?php
+session_start();
+
+// Çözme fonksiyonu
+function decrypt($data, $key) {
+    list($encrypted_data, $iv) = explode('::', base64_decode($data), 2);
+    return openssl_decrypt($encrypted_data, 'aes-256-cbc', $key, 0, $iv);
+}
+
+// Anahtar (key)
+$key = "secretkey1234567890"; // Şifrelerken kullanılan aynı anahtar
+
+if(isset($_COOKIE["username"])) {
+    // Çerezi çöz
+    $decrypted_username = decrypt($_COOKIE["username"], $key);
+    echo "Çözülmüş çerez: " . htmlspecialchars($decrypted_username);
+} else {
+    echo "Çerez bulunamadı.";
+}
+?>
+```
+
+### Açıklama
+
+1. **Şifreleme Fonksiyonu (`encrypt`)**:
+    - `openssl_random_pseudo_bytes` fonksiyonu ile rastgele bir başlangıç vektörü (IV) oluşturulur.
+    - `openssl_encrypt` fonksiyonu ile veri şifrelenir ve IV ile birleştirilip base64 ile kodlanarak geri döndürülür.
+
+2. **Çözme Fonksiyonu (`decrypt`)**:
+    - Şifrelenmiş veri ve IV, base64 ile kod çözülerek ayrıştırılır.
+    - `openssl_decrypt` fonksiyonu ile veri çözülür ve geri döndürülür.
+
+3. **Çerez Ayarlama (`set_encrypted_cookie.php`)**:
+    - Veriyi şifreler ve 30 gün boyunca geçerli olacak şekilde çerez olarak ayarlar.
+
+4. **Çerez Çözme (`get_decrypted_cookie.php`)**:
+    - Şifrelenmiş çerezi çözer ve ekrana yazdırır.
+
+### Güvenlik Önlemleri
+
+- **Anahtar Yönetimi**: Şifreleme anahtarının güvenli bir şekilde saklandığından emin olun. Bu anahtarı kodun içinde açıkça belirtmek yerine, güvenli bir şekilde yönetilen bir ortam değişkeni kullanmanız daha güvenli olabilir.
+- **Güvenli İletim**: Çerezleri sadece HTTPS üzerinden gönderdiğinizden emin olun. `setcookie` fonksiyonunda secure bayrağını kullanabilirsiniz.
+- **HttpOnly Bayrağı**: Çerezlerin JavaScript tarafından okunmasını engellemek için HttpOnly bayrağını kullanabilirsiniz.
+
+Örnek:
+
+```php
+setcookie("username", $encrypted_username, time() + (86400 * 30), "/", "", true, true); // secure ve httponly bayrakları ile
+```
+
+Bu şekilde, çerezlerinizi şifreleyebilir ve güvenli bir şekilde saklayabilirsiniz.
+
+
+
+********************************************
+lek4
+********************************************
+
